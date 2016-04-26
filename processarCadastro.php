@@ -6,7 +6,7 @@ $password = $_POST["password"];
 $password = md5($password);
 $tel = $_POST["tel"];
 $email = $_POST["email"];
-$cnpj = $_POST["email"];
+$cnpj = $_POST["cnpj"];
 
 //Buscar do banco usuários com login igual ao que está se cadastrando
 $resultado = mysqli_query($conexao, "SELECT * FROM empresa
