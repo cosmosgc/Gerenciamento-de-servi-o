@@ -23,13 +23,11 @@ if ($resultado == false) {
 		//$username=$_SESSION['username'];
 		$_SESSION['username']=$username;
 		$_SESSION['password']=$password;
-        header('Location:http://nooutroladodefurria.esy.es/admin.php');
+        header('Location:home.php');
 
 
     }else{
         //echo("acesso negado");
-        
-        //header('Location:http://nooutroladodefurria.esy.es/home/');
     }
 }
 ///////////SESSION_START!\\\\\\\\\\\
