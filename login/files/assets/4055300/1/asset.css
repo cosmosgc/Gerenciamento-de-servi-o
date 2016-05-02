@@ -1,0 +1,48 @@
+#login {
+    position: absolute;
+    width: 648.5px;
+    /*margin: 25px 50px 75px;*/
+    left:30px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #fff;
+    font-size: 26px;
+    text-shadow: 0 0 1 black;
+}
+
+
+#login > form > fieldset {
+    background: rgba(0, 0, 0, .3);
+    border: none;
+    margin: 25px 50px 75px;
+}
+
+a {
+    color: #07f;
+}
+
+input[type="submit"] {
+    /*margin-right:0;*/
+    background: rgba(255, 255, 255, .5);
+    font-size: 20px;
+    border: none;
+    float:right;
+    overflow:hidden;
+}
+
+input[type="text"]
+{
+    /*width: 180px;*/
+    background: rgba(255, 255, 255, .3);
+    border: rgba(255, 255, 255, .3);
+    font-size:15px;
+    color:white;
+    
+}
+
+input[type="password"]
+{
+    /*width: 180px;*/
+    background: rgba(255, 255, 255, .3);
+    border: rgba(255, 255, 255, .3);
+    color:white;
+}
