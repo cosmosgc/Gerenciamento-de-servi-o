@@ -4,7 +4,7 @@ require("conectar.php");
 $username = $_POST["username"];
 $password = $_POST["password"];
 $password = md5($password);
-$tel = $_POST["tel"];
+$tel = $_POST["telefone"];
 $email = $_POST["email"];
 $cnpj = $_POST["cnpj"];
 
