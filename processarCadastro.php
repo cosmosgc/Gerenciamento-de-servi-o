@@ -42,7 +42,7 @@ if ($resultado == false) {
             echo($erro);
         }
         echo("<div class='alert alert-success'><strong>Cadastro realizado com sucesso!</strong></div>");
-        echo("<h2><a href='http://beta.nooutroladodefurria.esy.es'>Voltar para a página do Admin</a></h2>");
+        echo("<h2><a href='index.php'>Voltar para a página do Admin</a></h2>");
     }
 }
 ?>
