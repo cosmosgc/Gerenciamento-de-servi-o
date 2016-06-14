@@ -17,18 +17,18 @@ function initialise() {
 }
 
 function resize() {
-	var width = container.offsetWidth, // No need to query these twice, when in an onresize they can be expensive
+	var width = container.offsetWidth, 
 		height = container.offsetHeight;
 
 	renderer.setSize(width, height);
 
-	scene.remove(mesh); // Remove the mesh and clear the canvas
+	scene.remove(mesh); // Remove o mesh e limpa o canvas
 	renderer.clear();
 	
-	geometry = new FSS.Plane(width, height, 6, 4); // Recreate the plane and then mesh
+	geometry = new FSS.Plane(width, height, 6, 4); // recria o plano e o mesh
 	mesh = new FSS.Mesh(geometry, material);
 	
-	scene.add(mesh); // Readd the mesh
+	scene.add(mesh); // adiciona o mesh
 }
 
 function animate() {
