@@ -3,7 +3,9 @@ var colorNumber = 10;
 var color = 10;
 var framerate = 50;
 var cor = "#fff";
-var direction = true
+var direction = true;
+var cor2 = 50;
+var direction2 = true;
 function Heart(){
     canvas = document.getElementById("Heart");
     var context = canvas.getContext("2d");
@@ -28,7 +30,9 @@ function Heart(){
     context.shadowOffsetY = 4.0;
     context.lineWidth = 10.0;
 	var gradient = context.createLinearGradient(0,0, 0, 170);
-	gradient.addColorStop(0, "red");
+	if (cor2 == undefined){cor2 = 10;}
+	cor = '#' + color + '1a' + cor2;
+	gradient.addColorStop(0, 'red');
 	cor = '#' + color + '1a8b';
 	gradient.addColorStop(1, cor);
     context.fillStyle = gradient;
@@ -54,7 +58,7 @@ function Heart(){
 	context.fillStyle = Textgradient;
 	context.fillText("Maise & Vinícius",30, 100);
 	context.restore();
-	
+	if (direction2 == 'undefined'){direction2 = true;}
 	if(colorNumber<99 & direction)
 	{
 		colorNumber++;
@@ -63,6 +67,15 @@ function Heart(){
 	{
 		colorNumber--;
 	}else {direction = true;}
+	
+	if(cor2<20 & direction2)
+	{
+		cor2++;
+	}else {direction2 = false;}
+	if (cor2 >10 & !direction2)
+	{
+		cor2--;
+	}else {direction2 = true;}
 	
 	
 }
