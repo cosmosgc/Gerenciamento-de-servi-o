@@ -1,7 +1,7 @@
 <?php
 include("conectar.php");
 include("var.php");
-$resultadoEmpresa = mysqli_query($conexao, "SELECT * FROM empresa WHERE nome = ".$username);
+$resultadoEmpresa = mysqli_query($conexao, "SELECT * FROM empresa WHERE nome = '$username'");
 	if (!$resultadoEmpresa) {
         $erro = mysqli_error($conexao);
         //header("location:erro.php?erro=$erro");
