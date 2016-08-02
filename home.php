@@ -1,7 +1,7 @@
 <?php
 include("conectar.php");
 include("var.php");
-$result = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "$username"');
+/*$result = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = $username');
 	if (!$result) {
         $erro = mysqli_error($conexao);
         //header("location:erro.php?erro=$erro");
@@ -10,7 +10,20 @@ $result = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "$username"
 	else {
 		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 		echo ($row["nome"].$row["telefone"]);
-    }
+    }*/
+    
+    $resultadoArtes = mysqli_query($conexao, "SELECT * FROM empresa WHERE nome = $username");
+	if (!$resultadoArtes) {
+		$erro = mysqli_errno($conexao);
+		header("location:erro.php?erro=$erro");
+		echo("FAIL");
+	}else{
+	$artes = mysqli_fetch_all($resultadoArtes, MYSQLI_ASSOC);
+	echo "<form action='processarUpdateArte.php' method='post'>";
+	echo ("<table><th>Artes</th>");
+	foreach ($artes as $umaArte){
+			echo ("<tr><td>".$umaArte["nome"]."</td><td><input type='text' name='imagem' value=".$umaArte["cnpj"]."></td></tr>");
+	}
 ?>
 
 <!DOCTYPE html>
