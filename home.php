@@ -1,7 +1,7 @@
 <?php
 include("conectar.php");
 include("var.php");
-/*$result = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = $username');
+/*$result = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "$username"');
 	if (!$result) {
         $erro = mysqli_error($conexao);
         //header("location:erro.php?erro=$erro");
@@ -11,20 +11,16 @@ include("var.php");
 		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 		echo ($row["nome"].$row["telefone"]);
     }*/
-    
-    $resultadoArtes = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "$username"');
-	if (!$resultadoArtes) {
-		$erro = mysqli_errno($conexao);
-		header("location:erro.php?erro=$erro");
-		echo("FAIL");
-	}else{
-	$artes = mysqli_fetch_all($resultadoArtes, MYSQLI_ASSOC);
-	echo "<form action='processarUpdateArte.php' method='post'>";
-	echo ("<table><th>Artes</th>");
-	foreach ($artes as $umaArte){
-			echo ("<tr><td>".$umaArte["nome"]."</td><td><input type='text' name='imagem' value=".$umaArte["cnpj"]."></td></tr>");
+    $resultadoArte = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "$username"' );
+	if (!$resultadoArte) {
+        $erro = mysqli_error($conexao);
+        echo("FAIL $erro");
+    }
+	else {   
+		while ($row = mysqli_fetch_array($resultadoArte, MYSQL_ASSOC)){
+			echo("<tr><td>".$row["nome"]."</td><td>de</td><td>".$row["cnpj"]."</td></tr>");
 		}
-	}
+    }
 ?>
 
 <!DOCTYPE html>
