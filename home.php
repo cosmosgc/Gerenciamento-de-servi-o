@@ -17,7 +17,7 @@ include("var.php");
         echo("FAIL $erro");
     }
 	else {   
-		while ($row = mysqli_fetch_array($resultadoArte, MYSQL_ASSOC)){
+		while ($row = mysqli_fetch_array($resultadoArte, MYSQLI_ASSOC)){
 			echo("<tr><td>".$row["nome"]."</td><td>de</td><td>".$row["cnpj"]."</td></tr>");
 		}
     }
