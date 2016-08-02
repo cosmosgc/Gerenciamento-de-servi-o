@@ -1,16 +1,15 @@
 <?php
 include("conectar.php");
 include("var.php");
-$resultadoEmpresa = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "$username"');
-	if (!$resultadoEmpresa) {
+$result = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "$username"');
+	if (!$result) {
         $erro = mysqli_error($conexao);
         //header("location:erro.php?erro=$erro");
         echo("FAIL $erro");
     }
 	else {
-		while ($row=mysqli_fetch_assoc($resultadoEmpresa)){
-			echo("<tr><td>".$row["id_empresa"]."</td><td>de</td><td>".$row["nome"].$row["cnpj"].$row["senha"].$row["telefone"].$row["email"]);
-		}
+		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+		echo ($row["nome"], $row["telefone"]);
     }
 ?>
 
