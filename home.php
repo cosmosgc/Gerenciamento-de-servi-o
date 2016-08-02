@@ -9,7 +9,7 @@ $result = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "$username"
     }
 	else {
 		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-		echo ($row["nome"], $row["telefone"]);
+		echo ($row["nome"].$row["telefone"]);
     }
 ?>
 
