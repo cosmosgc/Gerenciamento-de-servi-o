@@ -13,7 +13,7 @@ include("var.php");
     }*/
     echo(1);
     $resultadoArte = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "$username"' );
-    echo(mysql_num_rows($resultadoArte)."querry");
+    echo(mysqli_num_rows($resultadoArte)."querry");
 	if (!$resultadoArte) {
         $erro = mysqli_error($conexao);
         echo("FAIL $erro");
