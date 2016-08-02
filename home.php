@@ -11,15 +11,15 @@ include("var.php");
 		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 		echo ($row["nome"].$row["telefone"]);
     }*/
-    echo(1)
+    echo(1);
     $resultadoArte = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "$username"' );
-    echo(2)
+    echo(2);
 	if (!$resultadoArte) {
         $erro = mysqli_error($conexao);
         echo("FAIL $erro");
     }
 	else {   
-		echo(3)
+		echo(3);
 		while ($row = mysqli_fetch_array($resultadoArte, MYSQLI_ASSOC)){
 			echo("<tr><td>".$row["nome"]."</td><td>de</td><td>".$row["cnpj"]."</td></tr>");
 		}
