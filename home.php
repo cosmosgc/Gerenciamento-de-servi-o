@@ -20,7 +20,7 @@ include("var.php");
     }
 	else {   
 		echo(3);
-		$row = mysqli_fetch_array($resultadoArte, MYSQLI_ASSOC);
+		$row = mysqli_fetch_assoc($resultadoArte);
 		echo("<tr><td>".$row["nome"]."</td><td>de</td><td>".$row["cnpj"]."</td></tr>");
 		while ($row = mysqli_fetch_array($resultadoArte, MYSQLI_ASSOC)){
 			echo("<tr><td>".$row["nome"]."</td><td>de</td><td>".$row["cnpj"]."</td></tr>");
