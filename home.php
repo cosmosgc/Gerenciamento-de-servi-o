@@ -23,6 +23,7 @@ include("var.php");
 	echo ("<table><th>Artes</th>");
 	foreach ($artes as $umaArte){
 			echo ("<tr><td>".$umaArte["nome"]."</td><td><input type='text' name='imagem' value=".$umaArte["cnpj"]."></td></tr>");
+		}
 	}
 ?>
 
