@@ -8,10 +8,9 @@ $resultadoEmpresa = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "
         echo("FAIL $erro");
     }
 	else {
-		while ($row = mysqli_fetch_array($resultadoEmpresa, MYSQL_ASSOC)){
-
+		$row=mysqli_fetch_assoc($resultadoEmpresa);
 			echo("<tr><td>".$row["id_empresa"]."</td><td>de</td><td>".$row["nome"].$row["cnpj"].$row["senha"].$row["telefone"].$row["email"]);
-		}
+		
         echo"</table></fieldset></div>";
     }
 ?>
