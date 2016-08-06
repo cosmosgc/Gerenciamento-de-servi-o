@@ -9,13 +9,11 @@ include("var.php");
     }
 	else {   
 		$row = mysqli_fetch_assoc($resultadoArte);
-		echo("<tr><td>".$row["nome"]."</td><td>de</td><td>".$row["cnpj"]."</td></tr>");
-		while ($row = mysqli_fetch_array($resultadoArte, MYSQLI_ASSOC)){
-			$id_empresa = $row["id_empresa"];
-			$cnpj = $row["cnpj"];
-			$telefone = $row["telefone"];
-			$email = $row["email"];
-		}
+		//echo("<tr><td>".$row["nome"]."</td><td>de</td><td>".$row["cnpj"]."</td></tr>");
+		$id_empresa = $row["id_empresa"];
+		$cnpj = $row["cnpj"];
+		$telefone = $row["telefone"];
+		$email = $row["email"];
     }
 ?>
 
