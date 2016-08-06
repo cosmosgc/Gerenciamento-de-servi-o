@@ -12,7 +12,7 @@ include("var.php");
 		echo ($row["nome"].$row["telefone"]);
     }*/
     echo(1);
-    $resultadoArte = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "$username"' );
+    $resultadoArte = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "cosmosgc"' );
     echo(mysqli_num_rows($resultadoArte)."querry");
 	if (!$resultadoArte) {
         $erro = mysqli_error($conexao);
