@@ -1,17 +1,6 @@
 <?php
 include("conectar.php");
 include("var.php");
-/*$result = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "$username"');
-	if (!$result) {
-        $erro = mysqli_error($conexao);
-        //header("location:erro.php?erro=$erro");
-        echo("FAIL $erro");
-    }
-	else {
-		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-		echo ($row["nome"].$row["telefone"]);
-    }*/
-    echo(1);
     $resultadoArte = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "'.$username.'"' );
     echo(mysqli_num_rows($resultadoArte)."querry");
 	if (!$resultadoArte) {
@@ -19,11 +8,13 @@ include("var.php");
         echo("FAIL $erro");
     }
 	else {   
-		echo(3);
 		$row = mysqli_fetch_assoc($resultadoArte);
 		echo("<tr><td>".$row["nome"]."</td><td>de</td><td>".$row["cnpj"]."</td></tr>");
 		while ($row = mysqli_fetch_array($resultadoArte, MYSQLI_ASSOC)){
-			echo("<tr><td>".$row["nome"]."</td><td>de</td><td>".$row["cnpj"]."</td></tr>");
+			$id_empresa = $row["id_empresa"];
+			$cnpj = $row["cnpj"];
+			$telefone = $row["telefone"];
+			$email = $row["email"];
 		}
     }
 ?>
@@ -32,7 +23,7 @@ include("var.php");
 <html lang="en">
 
 <head>
-    <title><? echo($username.$row["cnpj"]) ?></title>
+    <title><? echo($username.$cnpj) ?></title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="">
