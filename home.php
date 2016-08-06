@@ -1,14 +1,13 @@
 <?php
 include("conectar.php");
 include("var.php");
-    $resultadoArte = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "'.$username.'"' );
-    echo(mysqli_num_rows($resultadoArte)."querry");
-	if (!$resultadoArte) {
+    $resultado = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "'.$username.'"' );
+	if (!$resultado) {
         $erro = mysqli_error($conexao);
         echo("FAIL $erro");
     }
 	else {   
-		$row = mysqli_fetch_assoc($resultadoArte);
+		$row = mysqli_fetch_assoc($resultado);
 		//echo("<tr><td>".$row["nome"]."</td><td>de</td><td>".$row["cnpj"]."</td></tr>");
 		$id_empresa = $row["id_empresa"];
 		$cnpj = $row["cnpj"];
@@ -139,9 +138,9 @@ include("var.php");
                     <img src="images/road_to_the_fuck_yeah.gif" alt="" width="150" height="150" />
                 </div>
                 <div class="profile_info">
-                    <h1>Johnny smith</h1>
+                    <h1><? $username ?></h1>
                     <h4>WEB DESIGNER</h4>
-                    <h6><span class="fa fa-location-arrow"></span>&nbsp;&nbsp;&nbsp;San Francisco , CA</h6>
+                    <h6><span class="fa fa-location-arrow"></span>&nbsp;&nbsp;&nbsp;San Francisco do sul, SC</h6>
                 </div>
                 <div style="clear:both"></div>
             </div>
