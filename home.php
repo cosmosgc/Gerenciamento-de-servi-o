@@ -124,7 +124,7 @@ include("var.php");
         <div class="aside1">
             <a class="contact-button"><i class="fa fa-paper-plane"></i></a>
             <a class="download-button"><i class="fa fa-cloud-download"></i></a>
-            <div class="aside-content"><span class="part1">Empresa</span><span class="part2">Home da empresa</span>
+            <div class="aside-content"><span class="part1"><? echo($username) ?></span><span class="part2"><? echo($email) ?></span>
             </div>
         </div>
         <aside class="hs-menu" id="hs-menu">
@@ -135,12 +135,12 @@ include("var.php");
                 <a id="my-link" href="#my-panel"><i class="fa fa-bars"></i></a>
                 <a href="#" class="download"><i class="fa fa-cloud-download"></i></a>
                 <div class="img-wrap">
-                    <img src="images/road_to_the_fuck_yeah.gif" alt="" width="150" height="150" />
+                    <img src="http://icons.iconarchive.com/icons/designbolts/free-multimedia/1024/iMac-icon.png" alt="" width="150" height="150" />
                 </div>
                 <div class="profile_info">
-                    <h1><? $username ?></h1>
+                    <h1><? echo($username) ?></h1>
                     <h4>WEB DESIGNER</h4>
-                    <h6><span class="fa fa-location-arrow"></span>&nbsp;&nbsp;&nbsp;San Francisco do sul, SC</h6>
+                    <h6><span class="fa fa-location-arrow"></span>&nbsp;&nbsp;&nbsp;Sao Francisco do sul, SC</h6>
                 </div>
                 <div style="clear:both"></div>
             </div>
