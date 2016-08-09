@@ -227,8 +227,8 @@ include("var.php");
                     <span class="sec-icon fa fa-home"></span>
                     <div class="hs-inner">
                         <span class="before-title">.01</span>
-                        <h2>ABOUT</h2>
-                        <span class="content-title">PERSONAL DETAILS</span>
+                        <h2>SOBRE</h2>
+                        <span class="content-title">DETALHES</span>
                         <div class="aboutInfo-contanier">
                             <div class="about-card">
                                 <div class="face2 card-face">
@@ -236,7 +236,7 @@ include("var.php");
                                         <div id="google-container"></div>
                                         <div id="cd-zoom-in"></div>
                                         <div id="cd-zoom-out"></div>
-                                        <address>8690 Paul Street, San fransico</address>
+                                        <address><? echo($cidade." ".$estado) ?></address>
                                         <div class="back-cover" data-card-back="data-card-back"><i class="fa fa-long-arrow-left"></i>
                                         </div>
                                     </div>
@@ -246,25 +246,25 @@ include("var.php");
                                         <a class="map-location" data-card-front="data-card-front"><img src="images/map-icon.png" alt="">
                                         </a>
                                         <div class="about-details">
-                                            <div><span class="fa fa-inbox"></span><span class="detail">Yourmail@mail.com</span>
+                                            <div><span class="fa fa-inbox"></span><span class="detail"><? echo($email) ?></span>
                                             </div>
-                                            <div><span class="fa fa-phone"></span><span class="detail">00 123 456 789</span>
+                                            <div><span class="fa fa-phone"></span><span class="detail"><? echo(format_phone_number($telefone)) ?></span>
                                             </div>
                                         </div>
 
                                         <div class="cover-content-wrapper">
-                                            <span class="about-description">Hello. I am a<span class="rw-words">
+                                            <span class="about-description">Setores:<span class="rw-words">
                                                 <span><strong>Designer</strong></span>
                                             <span><strong>Researcher</strong></span>
                                             <span><strong>Programmer</strong></span>
                                             <span><strong>Dreamer</strong></span>
                                             <span><strong>Leader</strong></span>
                                             </span>
-                                            <br>I am passionate about programming and coding
-                                            <br>Welcome to my Personal profile</span>
+                                            <br>Onde os serviços são otimizados
+                                            <br>Essa é a pagina perfil da empresa</span>
                                             <span class="status">
                                             <span class="fa fa-circle"></span>
-                                            <span class="text">Available as <strong>freelance</strong></span>
+                                            <span class="text">Available as <strong><? echo($username) ?></strong></span>
                                             </span>
                                         </div>
                                     </div>
