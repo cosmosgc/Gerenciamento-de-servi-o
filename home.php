@@ -13,6 +13,8 @@ include("var.php");
 		$cnpj = $row["cnpj"];
 		$telefone = $row["telefone"];
 		$email = $row["email"];
+		$cidade = $row["cidade"];
+		$estado = $row["estado"];
     }
 ?>
 
@@ -139,8 +141,8 @@ include("var.php");
                 </div>
                 <div class="profile_info">
                     <h1><? echo($username) ?></h1>
-                    <h4>WEB DESIGNER</h4>
-                    <h6><span class="fa fa-location-arrow"></span>&nbsp;&nbsp;&nbsp;Sao Francisco do sul, SC</h6>
+                    <h4><? echo($telefone) ?></h4>
+                    <h6><span class="fa fa-location-arrow"></span>&nbsp;&nbsp;&nbsp;<? echo($cidade) ?>, <? echo($estado) ?></h6>
                 </div>
                 <div style="clear:both"></div>
             </div>
@@ -149,10 +151,10 @@ include("var.php");
 
             <!-- menu -->
             <nav>
-                <a href="#section1"><span class="menu_name">ABOUT</span><span class="fa fa-home"></span> </a>
-                <a href="#section2"><span class="menu_name">RESUME</span><span class="fa fa-newspaper-o"></span> </a>
-                <a href="#section3"><span class="menu_name">SERVICES</span><span class="fa fa-laptop"></span> </a>
-                <a href="#section4"><span class="menu_name">PROCESS &amp; TEAM</span><span class="fa fa-users"></span> </a>
+                <a href="#section1"><span class="menu_name">SOBRE</span><span class="fa fa-home"></span> </a>
+                <a href="#section2"><span class="menu_name">RESUMO</span><span class="fa fa-newspaper-o"></span> </a>
+                <a href="#section3"><span class="menu_name">SERVIÇOS</span><span class="fa fa-laptop"></span> </a>
+                <a href="#section4"><span class="menu_name">PROCESSOS &amp; TEAM</span><span class="fa fa-users"></span> </a>
                 <a href="#section5"><span class="menu_name">PRICING</span><span class="fa fa-money"></span> </a>
                 <a href="#section6"><span class="menu_name">SKILLS</span><span class="fa fa-diamond"></span> </a>
                 <a href="#section7"><span class="menu_name">WORKS</span><span class="fa fa-archive"></span> </a>
