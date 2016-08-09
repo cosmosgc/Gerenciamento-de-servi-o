@@ -16,6 +16,10 @@ include("var.php");
 		$cidade = $row["cidade"];
 		$estado = $row["estado"];
     }
+    function format_phone_number($number) {
+    $tel = preg_replace('~.*(\d{2})[^\d]{0,7}(\d{4})[^\d]{0,7}(\d{4}).*~', '$1 $2 $3', $number);
+    return $tel;
+}
 ?>
 
 <!DOCTYPE html>
@@ -141,7 +145,7 @@ include("var.php");
                 </div>
                 <div class="profile_info">
                     <h1><? echo($username) ?></h1>
-                    <h4><? echo($telefone) ?></h4>
+                    <h4><? echo(format_phone_number($telefone)) ?></h4>
                     <h6><span class="fa fa-location-arrow"></span>&nbsp;&nbsp;&nbsp;<? echo($cidade) ?>, <? echo($estado) ?></h6>
                 </div>
                 <div style="clear:both"></div>
