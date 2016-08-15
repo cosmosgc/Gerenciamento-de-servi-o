@@ -499,7 +499,7 @@ include("var.php");
                     <div class="hs-inner">
                         <span class="before-title">.03</span>
                         <h2>SERVICES</h2>
-                        <span class="content-title">OUR SERVICES</span>
+                        <span class="content-title">ATUAIS SERVIÇOS</span>
                         <div class="services-wrap">
                             <div class="serv-wrap animated slideInDown">
                                 <span class="fa serv-icons fa-crop"></span>
@@ -572,30 +572,30 @@ include("var.php");
                                 </div>
                             </div>
                         </div>
-                        <span class="content-title">WHAT OUR CLIENTS SAYING</span>
+                        <span class="content-title">O QUE NOSSOS CLIENTES DIZEM</span>
                         <div class="testimonials-container">
                             <div class="testimonial">
                                 <figure class="testimonial__mug">
-                                    <img src="https://randomuser.me/api/portraits/med/men/61.jpg" height="100px" width="100px">
+                                    <img src="https://www.anonymousglobal.org/images/cells/AnonymousAndorra.jpg" height="100px" width="100px">
                                 </figure>
-                                <p>&ldquo;The best thing about Organised shelves was that is was so easy and they gave me a fair price&rdquo;
-                                    <br><strong>John, Taunton</strong>
+                                <p>&ldquo;Sem perguntas, serviço feito.&rdquo;
+                                    <br><strong>Alguém, Chamado Bob</strong>
                                 </p>
                             </div>
                             <div class="testimonial">
                                 <figure class="testimonial__mug">
-                                    <img src="https://randomuser.me/api/portraits/med/women/68.jpg" height="100px" width="100px">
+                                    <img src="https://www.anonymousglobal.org/images/cells/AnonymousAndorra.jpg" height="100px" width="100px">
                                 </figure>
                                 <p>&ldquo;It was so easy and they gave me a fair price&rdquo;
-                                    <br><strong>Louise, Kircaldy</strong>
+                                    <br><strong>Alguém, da FBI</strong>
                                 </p>
                             </div>
                             <div class="testimonial">
                                 <figure class="testimonial__mug">
-                                    <img src="https://randomuser.me/api/portraits/med/men/60.jpg" height="100px" width="100px">
+                                    <img src="https://www.anonymousglobal.org/images/cells/AnonymousAndorra.jpg" height="100px" width="100px">
                                 </figure>
-                                <p>&ldquo;Organised shelves was that is was so easy and they gave me a fair price&rdquo;
-                                    <br> <strong>Archie, London</strong>
+                                <p>&ldquo;Sem perguntas, serviço feito e organizado&rdquo;
+                                    <br> <strong>Alguém, Fã de Sonic</strong>
                                 </p>
                             </div>
                             <button class="prev-testimonial">Prev</button>
@@ -610,15 +610,15 @@ include("var.php");
                     <span class="sec-icon fa fa-users"></span>
                     <div class="hs-inner">
                         <span class="before-title">.04</span>
-                        <h2>PROCESS &amp; TEAM</h2>
-                        <span class="content-title">OUR PROCESS</span>
+                        <h2>PROCESSO &amp; TIME</h2>
+                        <span class="content-title">NOSSO PROCESSO</span>
                         <div class="proceess_wrap">
                             <div id="ourprocess">
                                 <ul id="progressbar">
-                                    <li class="active">IDEA</li>
-                                    <li>IMPLEMENT</li>
-                                    <li>REVIEW</li>
-                                    <li>DELIVER</li>
+                                    <li class="active">IDEIA</li>
+                                    <li>IMPLEMENTAR</li>
+                                    <li>REVISAR</li>
+                                    <li>ENTREGAR</li>
                                 </ul>
                                 <div class="process-container">
                                     <div class="proceess">
@@ -647,13 +647,13 @@ include("var.php");
                                 </div>
                             </div>
                         </div>
-                        <span class="content-title">OUR TEAM</span>
+                        <span class="content-title">DIRETORES</span>
                         <div class="team_wrapper">
                             <div class="team-card-container">
                                 <div class="card">
                                     <div class="front team1">
                                         <div class="front-detail">
-                                            <h4>JOHN DOE</h4>
+                                            <h4>JOHN WICK</h4>
                                             <h3>WEB DESIGNER</h3>
                                         </div>
                                     </div>
