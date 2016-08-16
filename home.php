@@ -158,13 +158,13 @@ include("var.php");
                 <a href="#section1"><span class="menu_name">SOBRE</span><span class="fa fa-home"></span> </a>
                 <a href="#section2"><span class="menu_name">RESUMO</span><span class="fa fa-newspaper-o"></span> </a>
                 <a href="#section3"><span class="menu_name">SERVIÇOS</span><span class="fa fa-laptop"></span> </a>
-                <a href="#section4"><span class="menu_name">PROCESSOS &amp; TEAM</span><span class="fa fa-users"></span> </a>
+                <a href="#section4"><span class="menu_name">PROCESSOS &amp; TIME</span><span class="fa fa-users"></span> </a>
                 <!--
                 <a href="#section5"><span class="menu_name">PRICING</span><span class="fa fa-money"></span> </a>
                 <a href="#section6"><span class="menu_name">SKILLS</span><span class="fa fa-diamond"></span> </a>
                 -->
-                <a href="#section7"><span class="menu_name">WORKS</span><span class="fa fa-archive"></span> </a>
-                <a href="#section8"><span class="menu_name">CONTACT</span><span class="fa fa-paper-plane"></span> </a>
+                <a href="#section7"><span class="menu_name">TRABALHOS</span><span class="fa fa-archive"></span> </a>
+                <a href="#section8"><span class="menu_name">CONTATO</span><span class="fa fa-paper-plane"></span> </a>
             </nav>
             <!-- end menu-->
             <!-- social icons -->
@@ -387,7 +387,7 @@ include("var.php");
                     <span class="sec-icon fa fa-newspaper-o"></span>
                     <div class="hs-inner">
                         <span class="before-title">.02</span>
-                        <h2>RESUME</h2>
+                        <h2>RESUMO</h2>
                         <!-- Resume Wrapper -->
                         <div class="resume-wrapper">
                             <ul class="resume">
@@ -405,7 +405,7 @@ include("var.php");
                                         </div>
                                     </div>
                                     <div class="timeline-item">
-                                        <span class="timeline-location"><i class="fa fa-map-marker"></i>San fransico</span>
+                                        <span class="timeline-location"><i class="fa fa-map-marker"></i>'Merica</span>
                                         <h3 class="timeline-header">COMPUTER ENGINEERING</h3>
                                         <div class="timeline-body">
                                             <h4>UNIVERSIDADE DA NINTENDO</h4>
@@ -423,7 +423,7 @@ include("var.php");
                                         </div>
                                     </div>
                                     <div class="timeline-item">
-                                        <span class="timeline-location"><i class="fa fa-map-marker"></i>San fransico</span>
+                                        <span class="timeline-location"><i class="fa fa-map-marker"></i>'Mérica</span>
                                         <h3 class="timeline-header">ELECTRONICS ENGINEERING</h3>
                                         <div class="timeline-body">
                                             <h4>UNIVERSIDADE DA NINTENDO</h4>
@@ -432,7 +432,7 @@ include("var.php");
                                     </div>
                                 </li>
                                 <li class="time-label">
-                                    <span class="content-title">JOBS AND EXPERIENCE</span>
+                                    <span class="content-title">TRABALHOS</span>
                                 </li>
                                 <li>
                                     <div class="resume-tag">
@@ -444,10 +444,10 @@ include("var.php");
                                         </div>
                                     </div>
                                     <div class="timeline-item">
-                                        <span class="timeline-location"><i class="fa fa-map-marker"></i>San fransico</span>
+                                        <span class="timeline-location"><i class="fa fa-map-marker"></i>Local</span>
                                         <h3 class="timeline-header">WEB DEVELOPER</h3>
                                         <div class="timeline-body">
-                                            <h4>COMPANY NAME</h4>
+                                            <h4>NOME DA COMPANIA</h4>
                                             <span>Lorem ipsum dolor sit amet, consectetur adipiscingVivam sit amet ligula non lectus cursus egestas. Cras erat lorem.</span>
                                         </div>
                                     </div>
@@ -462,10 +462,10 @@ include("var.php");
                                         </div>
                                     </div>
                                     <div class="timeline-item">
-                                        <span class="timeline-location"><i class="fa fa-map-marker"></i>San fransico</span>
+                                        <span class="timeline-location"><i class="fa fa-map-marker"></i>'Merica</span>
                                         <h3 class="timeline-header">FRONT-END DEVELOPER</h3>
                                         <div class="timeline-body">
-                                            <h4>COMPANY NAME</h4>
+                                            <h4>NOME DA COMPANIA</h4>
                                             <span>Lorem ipsum dolor sit amet, consectetur adipiscingVivam sit amet ligula non lectus cursus egestas. Cras erat lorem.</span>
                                         </div>
                                     </div>
@@ -480,10 +480,10 @@ include("var.php");
                                         </div>
                                     </div>
                                     <div class="timeline-item">
-                                        <span class="timeline-location"><i class="fa fa-map-marker"></i>San fransico</span>
+                                        <span class="timeline-location"><i class="fa fa-map-marker"></i>'Merica</span>
                                         <h3 class="timeline-header">UI/UX DESIGNER</h3>
                                         <div class="timeline-body">
-                                            <h4>UNIVERSITY OF NANTES</h4>
+                                            <h4>NOME DA UNIVERSIDADE</h4>
                                             <span>Lorem ipsum dolor sit amet, consectetur adipiscingVivam sit amet ligula non lectus cursus egestas. Cras erat lorem.</span>
                                         </div>
                                     </div>
@@ -654,7 +654,7 @@ include("var.php");
                         <div class="team_wrapper">
                             <div class="team-card-container">
                                 <div class="card">
-                                    <div ><img src="https://dakrolak.files.wordpress.com/2015/06/jon-snow-4.jpg">
+                                    <div class="front team1"><img src="https://dakrolak.files.wordpress.com/2015/06/jon-snow-4.jpg">
                                         <div class="front-detail">
                                             <h4>JOHN SNOW</h4>
                                             <h3>WEB DESIGNER</h3>
@@ -674,7 +674,7 @@ include("var.php");
                             </div>
                             <div class="team-card-container">
                                 <div class="card">
-                                    <div ><img src="https://dakrolak.files.wordpress.com/2015/06/jon-snow-4.jpg">
+                                    <div class="front team1" ><img src="https://dakrolak.files.wordpress.com/2015/06/jon-snow-4.jpg">
                                         <div class="front-detail">
                                             <h4>JENNIFER DOE</h4>
                                             <h3>WEB DEVELOPER</h3>
@@ -694,7 +694,7 @@ include("var.php");
                             </div>
                             <div class="team-card-container">
                                 <div class="card">
-                                    <div ><img src="https://dakrolak.files.wordpress.com/2015/06/jon-snow-4.jpg">
+                                    <div class="front team1"><img src="https://dakrolak.files.wordpress.com/2015/06/jon-snow-4.jpg">
                                         <div class="front-detail">
                                             <h4>JOHNATAN DOE</h4>
                                             <h3>WEB DESIGNER</h3>
@@ -714,7 +714,7 @@ include("var.php");
                             </div>
                             <div class="team-card-container">
                                 <div class="card">
-                                    <div ><img src="https://dakrolak.files.wordpress.com/2015/06/jon-snow-4.jpg">
+                                    <div class="front team1"><img src="https://dakrolak.files.wordpress.com/2015/06/jon-snow-4.jpg">
                                         <div class="front-detail">
                                             <h4>CATHERINE DOE</h4>
                                             <h3>WEB DEVELOPER</h3>
