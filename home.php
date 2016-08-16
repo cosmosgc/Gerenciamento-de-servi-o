@@ -498,7 +498,7 @@ include("var.php");
                     <span class="sec-icon serv-icon fa fa-laptop"></span>
                     <div class="hs-inner">
                         <span class="before-title">.03</span>
-                        <h2>SERVICES</h2>
+                        <h2>SERVIÇOS</h2>
                         <span class="content-title">ATUAIS SERVIÇOS</span>
                         <div class="services-wrap">
                             <div class="serv-wrap animated slideInDown">
@@ -524,7 +524,7 @@ include("var.php");
                                 <h3>Dev. Services</h3>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscingVivam sit amet ligula non lectus cursus egestas. Cras erat lorem</p>
                                 <div class="slide">
-                                    <h4>Services</h4>
+                                    <h4>Serviços</h4>
                                     <ul>
                                         <li><i class="fa fa-check"></i> Project Strategy</li>
                                         <li><i class="fa fa-check"></i> Content Management</li>
@@ -542,7 +542,7 @@ include("var.php");
                                 <h3>SEO Services</h3>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscingVivam sit amet ligula non lectus cursus egestas. Cras erat lorem</p>
                                 <div class="slide">
-                                    <h4>Services</h4>
+                                    <h4>Serviços</h4>
                                     <ul>
                                         <li><i class="fa fa-check"></i> Analytics </li>
                                         <li><i class="fa fa-check"></i> Active Search</li>
@@ -651,9 +651,9 @@ include("var.php");
                         <div class="team_wrapper">
                             <div class="team-card-container">
                                 <div class="card">
-                                    <div class="front team1">
+                                    <div img src="https://dakrolak.files.wordpress.com/2015/06/jon-snow-4.jpg" height="250" width="200">
                                         <div class="front-detail">
-                                            <h4>JOHN WICK</h4>
+                                            <h4>JOHN SNOW</h4>
                                             <h3>WEB DESIGNER</h3>
                                         </div>
                                     </div>
@@ -671,7 +671,7 @@ include("var.php");
                             </div>
                             <div class="team-card-container">
                                 <div class="card">
-                                    <div class="front team2">
+                                    <div img src="https://dakrolak.files.wordpress.com/2015/06/jon-snow-4.jpg" height="250" width="200">
                                         <div class="front-detail">
                                             <h4>JENNIFER DOE</h4>
                                             <h3>WEB DEVELOPER</h3>
@@ -691,7 +691,7 @@ include("var.php");
                             </div>
                             <div class="team-card-container">
                                 <div class="card">
-                                    <div class="front team3">
+                                    <div img src="https://dakrolak.files.wordpress.com/2015/06/jon-snow-4.jpg" height="250" width="200">
                                         <div class="front-detail">
                                             <h4>JOHNATAN DOE</h4>
                                             <h3>WEB DESIGNER</h3>
@@ -711,7 +711,7 @@ include("var.php");
                             </div>
                             <div class="team-card-container">
                                 <div class="card">
-                                    <div class="front team4">
+                                    <div img src="https://dakrolak.files.wordpress.com/2015/06/jon-snow-4.jpg" height="250" width="200">
                                         <div class="front-detail">
                                             <h4>CATHERINE DOE</h4>
                                             <h3>WEB DEVELOPER</h3>
@@ -736,6 +736,7 @@ include("var.php");
                 <!-- End Team/ process Section -->
 
                 <!-- pricing Section -->
+                <!--
                 <article class="hs-content pricing-section" id="section5">
                     <span class="sec-icon fa fa-money"></span>
                     <div class="hs-inner">
@@ -781,9 +782,12 @@ include("var.php");
                         </div>
                     </div>
                 </article>
+                -->
+
                 <!-- End pricing Section -->
 
                 <!-- Skills Section -->
+                <!--
                 <article class="hs-content skills-section" id="section6">
                     <span class="sec-icon fa fa-diamond"></span>
                     <div class="hs-inner">
@@ -852,6 +856,7 @@ include("var.php");
                         </div>
                     </div>
                 </article>
+                -->
                 <!-- End Skills Section -->
 
                 <!-- Works Section -->
@@ -859,7 +864,7 @@ include("var.php");
                     <span class="sec-icon fa fa-archive"></span>
                     <div class="hs-inner">
                         <span class="before-title">.07</span>
-                        <h2>WORKS</h2>
+                        <h2>TRABALHOS</h2>
                         <div class="portfolio">
                             <!-- Portfolio Item -->
                             <figure class="effect-milo">
@@ -1064,22 +1069,22 @@ include("var.php");
                     <span class="sec-icon fa fa-paper-plane"></span>
                     <div class="hs-inner">
                         <span class="before-title">.08</span>
-                        <h2>CONTACT</h2>
+                        <h2>CONTATO</h2>
                         <div class="contact_info">
-                            <h3>Get in touch</h3>
+                            <h3>Entre em contato</h3>
                             <hr>
-                            <h5>We are waiting to assist you</h5>
-                            <h6>Simply use the form below to get in touch</h6>
+                            <h5>Esperamos pelos seus negócios</h5>
+                            <h6>Apenas preencha o formulario a baixo para enviar o e-mail</h6>
 
                             <hr>
                         </div>
                         <!-- Contact Form -->
                         <fieldset id="contact_form">
                             <div id="result"></div>
-                            <input type="text" name="name" id="name" placeholder="NAME" />
+                            <input type="text" name="name" id="name" placeholder="NOME" />
                             <input type="email" name="email" id="email" placeholder="EMAIL" />
-                            <textarea name="message" id="message" placeholder="MESSAGE"></textarea>
-                            <span class="submit_btn" id="submit_btn">SEND MESSAGE</span>
+                            <textarea name="message" id="message" placeholder="Mensagem"></textarea>
+                            <span class="submit_btn" id="submit_btn">Enviar Mensagem</span>
                         </fieldset>
                         <!-- End Contact Form -->
                     </div>
