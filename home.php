@@ -654,7 +654,7 @@ include("var.php");
                         <div class="team_wrapper">
                             <div class="team-card-container">
                                 <div class="card">
-                                    <div img src="https://dakrolak.files.wordpress.com/2015/06/jon-snow-4.jpg" height="250" width="200">
+                                    <div ><img src="https://dakrolak.files.wordpress.com/2015/06/jon-snow-4.jpg">
                                         <div class="front-detail">
                                             <h4>JOHN SNOW</h4>
                                             <h3>WEB DESIGNER</h3>
@@ -674,7 +674,7 @@ include("var.php");
                             </div>
                             <div class="team-card-container">
                                 <div class="card">
-                                    <div img src="https://dakrolak.files.wordpress.com/2015/06/jon-snow-4.jpg" height="250" width="200">
+                                    <div ><img src="https://dakrolak.files.wordpress.com/2015/06/jon-snow-4.jpg">
                                         <div class="front-detail">
                                             <h4>JENNIFER DOE</h4>
                                             <h3>WEB DEVELOPER</h3>
@@ -694,7 +694,7 @@ include("var.php");
                             </div>
                             <div class="team-card-container">
                                 <div class="card">
-                                    <div img src="https://dakrolak.files.wordpress.com/2015/06/jon-snow-4.jpg" height="250" width="200">
+                                    <div ><img src="https://dakrolak.files.wordpress.com/2015/06/jon-snow-4.jpg">
                                         <div class="front-detail">
                                             <h4>JOHNATAN DOE</h4>
                                             <h3>WEB DESIGNER</h3>
@@ -714,7 +714,7 @@ include("var.php");
                             </div>
                             <div class="team-card-container">
                                 <div class="card">
-                                    <div img src="https://dakrolak.files.wordpress.com/2015/06/jon-snow-4.jpg" height="250" width="200">
+                                    <div ><img src="https://dakrolak.files.wordpress.com/2015/06/jon-snow-4.jpg">
                                         <div class="front-detail">
                                             <h4>CATHERINE DOE</h4>
                                             <h3>WEB DEVELOPER</h3>
