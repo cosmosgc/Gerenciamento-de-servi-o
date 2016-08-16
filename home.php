@@ -159,8 +159,10 @@ include("var.php");
                 <a href="#section2"><span class="menu_name">RESUMO</span><span class="fa fa-newspaper-o"></span> </a>
                 <a href="#section3"><span class="menu_name">SERVIÇOS</span><span class="fa fa-laptop"></span> </a>
                 <a href="#section4"><span class="menu_name">PROCESSOS &amp; TEAM</span><span class="fa fa-users"></span> </a>
+                <!--
                 <a href="#section5"><span class="menu_name">PRICING</span><span class="fa fa-money"></span> </a>
                 <a href="#section6"><span class="menu_name">SKILLS</span><span class="fa fa-diamond"></span> </a>
+                -->
                 <a href="#section7"><span class="menu_name">WORKS</span><span class="fa fa-archive"></span> </a>
                 <a href="#section8"><span class="menu_name">CONTACT</span><span class="fa fa-paper-plane"></span> </a>
             </nav>
