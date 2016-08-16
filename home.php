@@ -196,24 +196,25 @@ include("var.php");
                     </div>
                     <!-- News scroll -->
                     <div class="news-scroll">
-                        <span><i class="fa fa-line-chart"></i>RECENT ACTIVITY : </span>
+                        <span><i class="fa fa-line-chart"></i>ATIVIDADE RECENTE : </span>
                         <ul id="marquee" class="marquee">
                             <li>
-                                Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Fusce tincidunt adipiscing,massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Fusce tincidunt adipiscing,massa.</li>
-                            <li>
-                                Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Fusce tincidunt adipiscing,massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Fusce tincidunt adipiscing,massa.
+                            	Foi visto um pikachu perto do instituto federal catarinense.
                             </li>
                             <li>
-                                Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Fusce tincidunt adipiscing,massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Fusce tincidunt adipiscing,massa.
+                                É preciso de 100 Magikarps para fazer um Gyarados.
                             </li>
                             <li>
-                                Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Fusce tincidunt adipiscing,massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Fusce tincidunt adipiscing,massa.
+                                Digimon é melhor que pokémon.
                             </li>
                             <li>
-                                Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Fusce tincidunt adipiscing,massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Fusce tincidunt adipiscing,massa.
+                                Essa empresa odeia God of War.
                             </li>
                             <li>
-                                Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Fusce tincidunt adipiscing,massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Fusce tincidunt adipiscing,massa.
+                                Legend of Zelda é o melhor jogo do mundo.
+                            </li>
+                            <li>
+                                O melhor jogo competitivo online é Pac-Man Championchip Edition DX.
                             </li>
                         </ul>
                     </div>
