@@ -1348,7 +1348,7 @@ ul.marquee li {
 .team1 {
     z-index: 2;
     background: linear-gradient(rgba(43, 48, 59, 0.8), rgba(43, 48, 59, 0.8)), url(../images/team/team1.jpg);
-    background: -webkit-linear-gradient(rgba(43, 48, 59, 0.8), rgba(43, 48, 59, 0.8)), url(../images/team/team1.jpg);
+    background: -webkit-linear-gradient(rgba(43, 48, 59, 0.8), rgba(43, 48, 59, 0.8));
 }
 
 .team2 {
