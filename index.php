@@ -17,11 +17,11 @@
 			background: linear-gradient(to left, #fd746c , #ff9068); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 			margin: 0;
 			}
-			    .container {
+			    .shader {
 			      position: absolute;
 			      height: 100%;
 			      width: 100%;
-				  z-index = -100;
+				z-index = -100;
 			    }
 				
 				.stuff{
@@ -35,9 +35,10 @@
 	
         	</style>
 	</head>
-	<body id="container" class="container">	</div>
+	<body id="container" class="container">
+		<div id="shader"></div>
 	<script>
-		var container = document.getElementById('container'),
+		var container = document.getElementById('shader'),
 			renderer = new FSS.CanvasRenderer(),
 			scene = new FSS.Scene(),
 			light = new FSS.Light('#FFFFFF', '#AAAAAA'),
