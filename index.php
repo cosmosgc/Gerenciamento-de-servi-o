@@ -40,9 +40,9 @@
 		var container = document.getElementById('container'),
 			renderer = new FSS.CanvasRenderer(),
 			scene = new FSS.Scene(),
-			light = new FSS.Light('#BBBBFF', '#FF0022'),
+			light = new FSS.Light('#BBBBFF', '#660022'),
 			geometry = new FSS.Plane(container.offsetWidth, container.offsetHeight, 6, 4),
-			material = new FSS.Material('#FFFFFF', '#FFFFFF'),
+			material = new FSS.Material('#000000', '#000000'),
 			mesh = new FSS.Mesh(geometry, material),
 			now, start = Date.now();
 		
