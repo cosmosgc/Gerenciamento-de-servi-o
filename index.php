@@ -7,26 +7,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script src="fss.js"></script>
-	<script>
-		var CampoName = "campo1";
-		var inputText = "inputText1";
-		var value = 0;
-		
-		
-		function myFunction(Parametro) {
-		    document.getElementById("demo").innerHTML = "Você ativou a função!";
-			i = 0;
-			texto = "";
-			getNumber = document.getElementById(inputText).value;
-			document.getElementById(CampoName).innerHTML += vini[i] + Parametro + " " + getText +"<br>"; 
-			while (i <= getNumber)
-			{
-				texto += value + "<br>";
-				value ++;
-				i++;
-			}	
-		}
-	</script>
+	
 
                 <style>
                 
@@ -59,7 +40,7 @@
 		var container = document.getElementById('container'),
 			renderer = new FSS.CanvasRenderer(),
 			scene = new FSS.Scene(),
-			light = new FSS.Light('#FFFFFF', '#FF0022'),
+			light = new FSS.Light('#111122', '#FF0022'),
 			geometry = new FSS.Plane(container.offsetWidth, container.offsetHeight, 6, 4),
 			material = new FSS.Material('#FFFFFF', '#FFFFFF'),
 			mesh = new FSS.Mesh(geometry, material),
