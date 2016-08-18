@@ -36,7 +36,8 @@
 	
         	</style>
 	</head>
-	<body id="container" class="container">
+	<body >
+		<div id="container" class="container">
 	<script>
 		var container = document.getElementById('container'),
 			renderer = new FSS.CanvasRenderer(),
@@ -102,6 +103,6 @@
 				 <a href="cadastro.php">Cadastrar!</a
 			</fieldset>
 		</form>
-        
+        </div>
 	</body>
 </html>
