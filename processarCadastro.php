@@ -48,8 +48,9 @@ if ($resultado == false) {
 		$i = 1;
 		while ($i <= $countSector)
 		{
+			$tempPost = $_POST['setor'.$i]
 			$resultado = mysqli_query($conexao, "INSERT INTO setor (nome, fk_empresa)
-                                            VALUES ('"$_POST['setor'.$i]"',$id_empresa)");
+                                            VALUES ('$tempPost',$id_empresa)");
 		}
 		//$resultado = mysqli_query($conexao, "INSERT INTO setor (nome, fk_empresa)
         //                                    VALUES ('$nome_setor',$id_empresa)");
