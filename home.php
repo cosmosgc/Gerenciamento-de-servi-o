@@ -322,6 +322,7 @@ include("var.php");
                                                 	echo($setor[$count]);
                                                 	$count++;
                                                 }
+                                                ?>
                                                 <div class="hobbie-icon col-md-3"><i class="li_lab"></i>
                                                 </div>
                                                 <div class="hobbie-description col-md-9">
