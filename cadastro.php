@@ -208,7 +208,7 @@ body {
 		
 <?php
 include("conectar.php");
-if (isset($_POST["username"])){include("var.php")}
+
 
 if (isset($_GET["id_empresa"]))
 {
