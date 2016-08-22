@@ -377,7 +377,7 @@ $(".submit").click(function(){
 	
 	<!-- multistep form -->
 
-<form id="msform" action="processarCadastro.php" method="post" class="form-group" >
+<form id="form-group" action="processarCadastro.php" method="post" class="form-group" >
 	<!-- progressbar -->
 	<ul id="progressbar">
 		<li class="active">Configurações da conta.</li>
@@ -417,11 +417,11 @@ $(".submit").click(function(){
 	<fieldset>
 		<h2 class="fs-title">Detalhes Opcionais</h2>
 		<h3 class="fs-subtitle">Preencha se achar nescessário</h3>
-		<textarea type="" name="desc" placeholder="Descrição da empresa" form="msform"></textarea>
+		<textarea type="" name="desc" placeholder="Descrição da empresa" form="form-group"></textarea>
 		<input type="text" name="CEO" placeholder="CEO" />
 		<input type="text" name="telefone" placeholder="Telefone" />
 		<input type="text" name="cnpj" placeholder="cnpj" />
-		<textarea name="address" placeholder="Endereço" form="msform"></textarea>
+		<textarea name="address" placeholder="Endereço" form="form-group"></textarea>
 		<input type="button" name="previous" class="previous action-button" value="Previous" />
 		<input type="submit" name="submit" class="submit action-button" value="Submit" />
 	</fieldset>
