@@ -423,10 +423,23 @@ $(".submit").click(function(){
 		<input type="text" name="cnpj" placeholder="cnpj" />
 		<textarea name="address" placeholder="Endereço" form="msform"></textarea>
 		<input type="button" name="previous" class="previous action-button" value="Previous" />
-		<input type="submit" name="submit" class="submit action-button" value="Submit" />
+		<input type="submit" name="submit" class="btn btn-default" value="Submit" />
 	</fieldset>
 </form>
 
+	<!--
+        <form action="processarCadastro.php" method="post" class="form-group" >
+            <h2>Cadastrar usuario</h2>
+            nome: <input type="text" name="username" id="username" class="form-control" required/><br/>
+            cnpj: <input type="text" name="cnpj" id="cnpj" class="form-control" required/><br/>
+            senha: <input type="password" name="password" id="password" class="form-control" required/><br/>
+            telefone: <input type="tel" name="telefone" id="telefone" class="form-control" required/><br/>
+            email: <input type="email" name="email" id="email" class="form-control" required/><br/>
+            site: <input type="url" name="site" id="site" class="form-control" required/><br/>
+            <input type="submit" class="btn btn-default"/>
+        </form>
+		-->
+		
 <!-- jQuery -->
 <script src="http://thecodeplayer.com/uploads/js/jquery-1.9.1.min.js" type="text/javascript"></script>
 <!-- jQuery easing plugin -->
