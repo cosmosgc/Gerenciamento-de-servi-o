@@ -41,7 +41,7 @@ if ($resultado == false) {
         $resultado = mysqli_query($conexao, "INSERT INTO empresa (nome, senha, telefone, cnpj, email, cidade, desc_empresa)
                                             VALUES ('$username','$password','$tel','$cnpj','$email', '$address', '$desc')");
 		
-		$pegarId = mysqli_query($conexao, "SELECT id FROM empresa WHERE nome='$username'")
+		$pegarId = mysqli_query($conexao, "SELECT id FROM empresa WHERE nome='$username'");
 		$row = mysqli_fetch_assoc($pegarId);
 		$id_empresa = $row["id_empresa"];
 		
