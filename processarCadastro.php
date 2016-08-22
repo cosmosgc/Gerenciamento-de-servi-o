@@ -7,6 +7,10 @@ $password = md5($password);
 $tel = $_POST["telefone"];
 $email = $_POST["email"];
 $cnpj = $_POST["cnpj"];
+$desc = $_POST["desc"];
+$address = $_POST["address"];
+$countSector = $_POST["countSector"];
+
 
 //Buscar do banco usuários com login igual ao que está se cadastrando
 $resultado = mysqli_query($conexao, "SELECT * FROM empresa
@@ -34,11 +38,23 @@ if ($resultado == false) {
         echo("<h2><a href='cadastro.php'>Voltar para a página de cadastro</a></h2>");
     } else {
         //Se não existe usuário com o login cadastrado, insere no banco
-        $resultado = mysqli_query($conexao, "INSERT INTO empresa (nome, senha, telefone, cnpj, email)
-                                            VALUES ('$username','$password','$tel','$cnpj','$email')");
+        $resultado = mysqli_query($conexao, "INSERT INTO empresa (nome, senha, telefone, cnpj, email, cidade, desc_empresa)
+                                            VALUES ('$username','$password','$tel','$cnpj','$email', '$address', '$desc')");
+		
+		$pegarId = mysqli_query($conexao, "SELECT id FROM empresa WHERE nome='$username'")
+		$row = mysqli_fetch_assoc($pegarId);
+		$id_empresa = $row["id_empresa"];
+		
+		$i = 1;
+		while ($i <= $countSector)
+		{
+			$resultado = mysqli_query($conexao, "INSERT INTO setor (nome, fk_empresa)
+                                            VALUES ('"$_POST['setor'.$i]"',$id_empresa)");
+		}
+		//$resultado = mysqli_query($conexao, "INSERT INTO setor (nome, fk_empresa)
+        //                                    VALUES ('$nome_setor',$id_empresa)");
         if ($resultado == false) {
             $erro = mysqli_errno($conexao);
-            //header("location:erro.php?erro=$erro");
             echo($erro);
         }
         echo("<div class='alert alert-success'><strong>Cadastro realizado com sucesso!</strong></div>");
