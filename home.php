@@ -15,6 +15,23 @@ include("var.php");
 		$email = $row["email"];
 		$cidade = $row["cidade"];
 		$estado = $row["estado"];
+		
+		$resultadoSetores = mysqli_query($conexao, 'SELECT * FROM setor WHERE fk_empresa = "'.$id_empresa.'"');
+		if (!$resultado) {
+			$erro = mysqli_error($conexao);
+			echo("FAIL $erro");
+		} else {
+			$countSector = 1;
+			while ($rowSetor = mysqli_fetch_array($resultadoSetores, MYSQL_ASSOC))
+			{
+				foreach ($rowSetor as $column => $description)
+				{
+					//echo "column: $description <br>"; // teste de tabela
+					$setor[$countSector] = $rowSetor["nome"];
+					$countSector++;
+				}
+			}
+		}
     }
     function format_phone_number($number) {
     $tel = preg_replace('~.*(\d{2})[^\d]{0,7}(\d{4})[^\d]{0,7}(\d{4}).*~', '$1 $2 $3', $number);
@@ -298,6 +315,13 @@ include("var.php");
                                             <h3>AREAS</h3>
                                             <h4>SETORES DA EMPRESA</h4>
                                             <div class="hobbie-wrapper row">
+                                                <? 
+                                                $count = 1;
+                                                while ($count < $countSector)
+                                                {
+                                                	echo($setor[$count]);
+                                                	$count++;
+                                                }
                                                 <div class="hobbie-icon col-md-3"><i class="li_lab"></i>
                                                 </div>
                                                 <div class="hobbie-description col-md-9">
