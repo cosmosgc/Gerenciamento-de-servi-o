@@ -16,7 +16,8 @@ include("var.php");
 		$cidade = $row["cidade"];
 		$estado = $row["estado"];
 		
-		$resultadoSetores = mysqli_query($conexao, 'SELECT * FROM setor WHERE fk_empresa = "'.$id_empresa.'"');
+		// util para lista de setores
+		$resultadoSetores = mysqli_query($conexao, "SELECT * FROM setor WHERE fk_empresa = '".$id_empresa."'");
 		if (!$resultado) {
 			$erro = mysqli_error($conexao);
 			echo("FAIL $erro");
