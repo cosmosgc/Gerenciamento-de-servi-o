@@ -22,7 +22,7 @@ include("var.php");
 			$erro = mysqli_error($conexao);
 			echo("FAIL $erro");
 		} else {
-			$countSector = 1;
+			$countSector = 0;
 			while ($rowSetor = mysqli_fetch_array($resultadoSetores))
 			{
 				foreach ($rowSetor as $column => $description)
@@ -318,6 +318,7 @@ include("var.php");
                                             <div class="hobbie-wrapper row">
                                                 <? 
                                                 $count = 1;
+												echo($countSector);
                                                 while ($count < $countSector)
                                                 {
                                                 	echo($setor[$count]);
