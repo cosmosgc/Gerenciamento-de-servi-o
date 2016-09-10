@@ -320,7 +320,7 @@ include("var.php");
                                                 $count = 1;
                                                 while ($count < $countSector)
                                                 {
-                                                	echo($setor[$count] + "<br>");
+                                                	echo("$setor[$count] + <br>");
                                                 	$count++;
                                                 }
                                                 ?>
