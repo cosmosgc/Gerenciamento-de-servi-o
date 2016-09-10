@@ -29,8 +29,8 @@ include("var.php");
 				{
 					//echo "column: $description <br>"; // teste de tabela
 					$setor[$countSector] = $rowSetor["nome"];
-					$countSector++;
 				}
+				$countSector++;
 			}
 		}
     }
@@ -318,10 +318,14 @@ include("var.php");
                                             <div class="hobbie-wrapper row">
                                                 <? 
                                                 $count = 1;
+												echo ($countSector);
 												echo(mysqli_num_rows($resultadoSetores));
+												echo($setor[1]);
+												echo($setor[2]);
+												echo($setor[3]);
                                                 while ($count < $countSector)
                                                 {
-                                                	echo($setor[$count]);
+                                                	echo($setor[$count] + "<br>");
                                                 	$count++;
                                                 }
                                                 ?>
