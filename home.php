@@ -318,7 +318,7 @@ include("var.php");
                                             <div class="hobbie-wrapper row">
                                                 <? 
                                                 $count = 1;
-												echo($countSector);
+												echo(mysqli_num_rows($resultadoSetores));
                                                 while ($count < $countSector)
                                                 {
                                                 	echo($setor[$count]);
