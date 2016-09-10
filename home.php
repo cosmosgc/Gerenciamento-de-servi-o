@@ -22,7 +22,7 @@ include("var.php");
 			$erro = mysqli_error($conexao);
 			echo("FAIL $erro");
 		} else {
-			$countSector = 0;
+			$countSector = 1;
 			while ($rowSetor = mysqli_fetch_array($resultadoSetores))
 			{
 				foreach ($rowSetor as $column => $description)
