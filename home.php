@@ -17,7 +17,7 @@ include("var.php");
 		$estado = $row["estado"];
 		
 		// util para lista de setores
-		$resultadoSetores = mysqli_query($conexao, "SELECT * FROM setor WHERE fk_empresa = '".$id_empresa."'");
+		$resultadoSetores = mysqli_query($conexao, "SELECT DISTINCT * FROM setor WHERE fk_empresa = '".$id_empresa."'");
 		if (!$resultado) {
 			$erro = mysqli_error($conexao);
 			echo("FAIL $erro");
