@@ -402,7 +402,7 @@ $(".submit").click(function(){
 	<fieldset>
 		<h2 class="fs-title">Setores</h2>
 		<h3 class="fs-subtitle">Insira o nome de cada setor</h3>
-		<input type="text" name="setor1" placeholder="setor 1" />
+		<input type="text" name="setor1" placeholder="setor 1" required/>
 		<div id="sector"></div>
 		<script>var countSector = 1;</script>
 		<input type="button" name="addSector" value="Adicionar mais setores" onclick="myFunction()"/>
