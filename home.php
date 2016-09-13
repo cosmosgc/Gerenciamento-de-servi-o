@@ -15,6 +15,7 @@ include("var.php");
 		$email = $row["email"];
 		$cidade = $row["cidade"];
 		$estado = $row["estado"];
+        $desc = $row["desc_empresa"];
 		
 		// util para lista de setores
 		$resultadoSetores = mysqli_query($conexao, "SELECT DISTINCT * FROM setor WHERE fk_empresa = '".$id_empresa."'");
@@ -309,8 +310,11 @@ include("var.php");
                                         <div class="tab-pane fade in active" id="desc">
                                             <h3>DESCRIÇÃO</h3>
                                             <h4>SOBRE A EMPRESA</h4>
-                                            <p>Aqui a descrição da empresa, deverá ser preenchido no registro(Opcional) ou na edição do perfil.</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscingVivam sit amet ligula non lectus cursus egestas. Cras erat lorem, fringilla quis sagittis in, sagittis inNam leo tortor Nam leo.Lorem ipsum dolor sit amet, consectetur adipiscingVivam sit amet ligula non .</p>
+                                            <?
+                                                if ($desc = ""){
+                                                    echo ("<p>Aqui a descrição da empresa, deverá ser preenchido no registro(Opcional) ou na edição do perfil.</p>");
+                                                }else {echo ($desc);}
+                                            ?>
                                         </div>
                                         <div class="tab-pane fade" id="areas">
                                             <h3>AREAS</h3>

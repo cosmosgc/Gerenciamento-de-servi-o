@@ -10,6 +10,7 @@ $cnpj = $_POST["cnpj"];
 $desc = $_POST["desc"];
 $address = $_POST["address"];
 $countSector = $_POST["countSector"];
+$ceo = $_POST["CEO"];
 
 
 //Buscar do banco usuários com login igual ao que está se cadastrando
@@ -38,8 +39,8 @@ if ($resultado == false) {
         echo("<h2><a href='cadastro.php'>Voltar para a página de cadastro</a></h2>");
     } else {
         //Se não existe usuário com o login cadastrado, insere no banco
-        $resultado = mysqli_query($conexao, "INSERT INTO empresa (nome, senha, telefone, cnpj, email, cidade, desc_empresa)
-                                            VALUES ('$username','$password','$tel','$cnpj','$email', '$address', '$desc')");
+        $resultado = mysqli_query($conexao, "INSERT INTO empresa (nome, senha, telefone, cnpj, email, cidade, desc_empresa, ceo)
+                                            VALUES ('$username','$password','$tel','$cnpj','$email', '$address', '$desc', '$ceo')");
 		
 
 		$resultado = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "'.$username.'"' );

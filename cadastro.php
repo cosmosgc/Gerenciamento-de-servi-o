@@ -219,12 +219,31 @@ if (isset($_GET["id_empresa"]))
     }
 	else {   
 		$row = mysqli_fetch_assoc($resultado);
+		$username = $row ["nome"];
 		$id_empresa = $row["id_empresa"];
 		$cnpj = $row["cnpj"];
 		$telefone = $row["telefone"];
 		$email = $row["email"];
 		$cidade = $row["cidade"];
 		$estado = $row["estado"];
+
+		$resultadoSetores = mysqli_query($conexao, "SELECT DISTINCT * FROM setor WHERE fk_empresa = '".$id_empresa."'");
+		if (!$resultado) {
+			$erro = mysqli_error($conexao);
+			echo("FAIL $erro");
+		} else {
+			$countSector = 1;
+			while ($rowSetor = mysqli_fetch_array($resultadoSetores))
+			{
+				foreach ($rowSetor as $column => $description)
+				{
+					//echo "column: $description <br>"; // teste de tabela
+					$setor[$countSector] = $rowSetor["nome"];
+					$setorid[$countSector] = $rowSetor["id_setor"];
+				}
+				$countSector++;
+			}
+		}
     }
     function format_phone_number($number) {
     $tel = preg_replace('~.*(\d{2})[^\d]{0,7}(\d{4})[^\d]{0,7}(\d{4}).*~', '$1 $2 $3', $number);
@@ -243,44 +262,31 @@ if (isset($_GET["id_empresa"]))
 	</ul>
 	<!-- fieldsets -->
 	<fieldset>
-		<h2 class="fs-title">Crie a conta da empresa</h2>
+		<h2 class="fs-title">Crie a conta da empresa <? echo ($username);?></h2>
 		<h3 class="fs-subtitle">Essa é a etapa 1</h3>
 		<input type="text" name="email" placeholder="Email" required/>
 		<input type="text" name="username" placeholder="Nome da empresa" required/>
 		<input type="password" name="password" placeholder="Senha" required/>
 		<input type="password" name="passwordcheck" placeholder="Confirmar senha" required/>
 		<input type="button" name="next" class="next action-button" value="Next" />
+		<input type="submit" name="submit" class="submit action-button" value="Submit" />
 	</fieldset>
 	<fieldset>
 		<h2 class="fs-title">Setores</h2>
 		<h3 class="fs-subtitle">Insira o nome de cada setor</h3>
-		<input type="text" name="setor1" placeholder="setor 1" />
-		<div id="sector"></div>
-		<script>var countSector = 1;</script>
-		<input type="button" name="addSector" value="Adicionar mais setores" onclick="myFunction()"/>
-		<script>
-		function myFunction() {
-		countSector++;
-		document.getElementById("sector").innerHTML += "<input type='text' name='setor"+ countSector +"' placeholder='setor "+ countSector +"' />";
-		document.getElementById("countSector").innerHTML = "<input type='hidden' name='countSector' value='"+ countSector +"'/>";
-}		
-		</script>
-		<div id="countSector"><input type='hidden' name='countSector' value='1'/></div>
-		
+		<select>
+			<? //lista dos setores
+		        $count = 1;
+		        while ($count < $countSector)
+		        {
+		        	echo("<option value='$setor[$count]'>$setor[$count]</option>");
+		        	$count++;
+		        }
+            ?>
+		</select>
 		<input type="button" name="previous" class="previous action-button" value="Previous" />
 		<input type="button" name="next" class="next action-button" value="Next" />
 		
-	</fieldset>
-	<fieldset>
-		<h2 class="fs-title">Detalhes Opcionais</h2>
-		<h3 class="fs-subtitle">Preencha se achar nescessário</h3>
-		<textarea type="" name="desc" placeholder="Descrição da empresa" ></textarea>
-		<input type="text" name="CEO" placeholder="CEO" />
-		<input type="text" name="telefone" placeholder="Telefone" />
-		<input type="text" name="cnpj" placeholder="cnpj" />
-		<textarea name="address" placeholder="Endereço"></textarea>
-		<input type="button" name="previous" class="previous action-button" value="Previous" />
-		<input type="submit" name="submit" class="submit action-button" value="Submit" />
 	</fieldset>
 </form>
 
