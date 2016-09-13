@@ -279,7 +279,7 @@ if (isset($_GET["id_empresa"]))
 		        $count = 1;
 		        while ($count < $countSector)
 		        {
-		        	echo("<option value='$setor[$count]'>$setor[$count]</option>");
+		        	echo("<option value='$setorid[$count]'>$setor[$count]</option>");
 		        	$count++;
 		        }
             ?>

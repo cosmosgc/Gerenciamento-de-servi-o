@@ -276,11 +276,14 @@ include("var.php");
 
                                         <div class="cover-content-wrapper">
                                             <span class="about-description">Setores:<span class="rw-words">
-                                                <span><strong>Designer</strong></span>
-                                            <span><strong>Researcher</strong></span>
-                                            <span><strong>Programmer</strong></span>
-                                            <span><strong>Dreamer</strong></span>
-                                            <span><strong>Leader</strong></span>
+                                            <? //lista dos setores
+                                                $count = 1;
+                                                while ($count < $countSector)
+                                                {
+                                                    echo("<span><strong>$setor[$count]</strong></span>");
+                                                    $count++;
+                                                }
+                                            ?>
                                             </span>
                                             <br>Onde os serviços são otimizados
                                             <br>Essa é a pagina perfil da empresa</span>
