@@ -269,7 +269,6 @@ if (isset($_GET["id_empresa"]))
 		<input type="password" name="password" placeholder="Senha" required/>
 		<input type="password" name="passwordcheck" placeholder="Confirmar senha" required/>
 		<input type="button" name="next" class="next action-button" value="Next" />
-		<input type="submit" name="submit" class="submit action-button" value="Submit" />
 	</fieldset>
 	<fieldset>
 		<h2 class="fs-title">Setores</h2>
@@ -283,9 +282,9 @@ if (isset($_GET["id_empresa"]))
 		        	$count++;
 		        }
             ?>
-		</select>
+		</select><br>
 		<input type="button" name="previous" class="previous action-button" value="Previous" />
-		<input type="button" name="next" class="next action-button" value="Next" />
+		<input type="submit" name="submit" class="submit action-button" value="Submit" />
 		
 	</fieldset>
 </form>
@@ -410,7 +409,7 @@ $(".submit").click(function(){
 		<script>
 		function myFunction() {
 		countSector++;
-		document.getElementById("sector").innerHTML += "<input type='text' name='setor"+ countSector +"' placeholder='setor "+ countSector +"' />";
+		document.getElementById("sector").innerHTML += "<input type='text' name='setor"+ countSector +"' placeholder='setor "+ countSector +"' required/>";
 		document.getElementById("countSector").innerHTML = "<input type='hidden' name='countSector' value='"+ countSector +"'/>";
 }		
 		</script>
