@@ -341,6 +341,7 @@ include("var.php");
                                                 	$count++;
                                                 }
                                                 ?>
+                                                <!--
                                             <div class="hobbie-wrapper row">
                                                 <div class="hobbie-icon col-md-3"><i class="li_pen"></i>
                                                 </div>
@@ -367,6 +368,7 @@ include("var.php");
                                             </div>
                                             <div style="clear:both;"></div>
                                         </div>
+                                        -->
                                         <div class="tab-pane fade" id="facts">
                                             <h3>FATOS</h3>
                                             <h4>NUMEROS</h4>
