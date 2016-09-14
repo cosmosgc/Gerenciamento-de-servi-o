@@ -8,14 +8,13 @@ include("var.php");
     }
 	else {   
 		$row = mysqli_fetch_assoc($resultado);
-		//echo("<tr><td>".$row["nome"]."</td><td>de</td><td>".$row["cnpj"]."</td></tr>");
 		$id_empresa = $row["id_empresa"];
 		$cnpj = $row["cnpj"];
 		$telefone = $row["telefone"];
 		$email = $row["email"];
 		$cidade = $row["cidade"];
 		$estado = $row["estado"];
-        $desc = $row["desc_empresa"];
+		$desc = $row["desc_empresa"];
 		
 		// util para lista de setores
 		$resultadoSetores = mysqli_query($conexao, "SELECT DISTINCT * FROM setor WHERE fk_empresa = '".$id_empresa."'");
