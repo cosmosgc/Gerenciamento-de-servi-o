@@ -366,9 +366,10 @@ include("var.php");
                                                     <p>Marketing.</p>
                                                 </div>
                                             </div>
+                                             -->
                                             <div style="clear:both;"></div>
                                         </div>
-                                        -->
+                                       
                                         <div class="tab-pane fade" id="facts">
                                             <h3>FATOS</h3>
                                             <h4>NUMEROS</h4>
