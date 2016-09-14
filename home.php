@@ -314,32 +314,33 @@ include("var.php");
                                             <h3>DESCRIÇÃO</h3>
                                             <h4>SOBRE A EMPRESA</h4>
                                             <?
-                                            	echo ($desc);
-                                                if ($desc = ""){
-                                                    echo ("<p>Aqui a descrição da empresa, deverá ser preenchido no registro(Opcional) ou na edição do perfil.</p>");
-                                                }else {echo ($desc);}
+                                            	echo ($desc);//escreve descrição da empresa
                                             ?>
                                         </div>
                                         <div class="tab-pane fade" id="areas">
                                             <h3>AREAS</h3>
                                             <h4>SETORES DA EMPRESA</h4>
-                                            <div class="hobbie-wrapper row">
-                                                <? 
+                                            <? 
                                                 $count = 1;
                                                 while ($count < $countSector)
                                                 {
-                                                	echo("$setor[$count] <br>");
-                                                	$count++;
-                                                }
-                                                ?>
+                                                	?>
+                                            <div class="hobbie-wrapper row">
+                                                
+                                                	
                                                 <div class="hobbie-icon col-md-3"><i class="li_lab"></i>
                                                 </div>
                                                 <div class="hobbie-description col-md-9">
 
-                                                    <p>Cientistas.</p>
+                                                    <p><? echo("$setor[$count]");?>.</p>
                                                 </div>
                                                 <div style="clear:both;"></div>
                                             </div>
+                                            <?
+                                            
+                                                	$count++;
+                                                }
+                                                ?>
                                             <div class="hobbie-wrapper row">
                                                 <div class="hobbie-icon col-md-3"><i class="li_pen"></i>
                                                 </div>
