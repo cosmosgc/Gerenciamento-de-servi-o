@@ -314,6 +314,7 @@ include("var.php");
                                             <h3>DESCRIÇÃO</h3>
                                             <h4>SOBRE A EMPRESA</h4>
                                             <?
+                                            	echo ($desc);
                                                 if ($desc = ""){
                                                     echo ("<p>Aqui a descrição da empresa, deverá ser preenchido no registro(Opcional) ou na edição do perfil.</p>");
                                                 }else {echo ($desc);}
