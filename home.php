@@ -264,8 +264,8 @@ include("var.php");
                                 </div>
                                 <div class="face1 card-face">
                                     <div class="about-cover card-face">
-                                        <a class="map-location" data-card-front="data-card-front"><img src="images/map-icon.png" alt="">
-                                        </a>
+                                        <!--<a class="map-location" data-card-front="data-card-front"><img src="images/map-icon.png" alt="">
+                                        </a>-->
                                         <div class="about-details">
                                             <div><span class="fa fa-inbox"></span><span class="detail"><? echo($email) ?></span>
                                             </div>
