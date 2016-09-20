@@ -140,6 +140,7 @@ body {
 	color: white;
 }
         </style>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 	</head>
     <body>
 	<script src="fss.js"></script>
@@ -192,19 +193,6 @@ body {
 		resize();
 		animate();
 	</script>
-	
-	<!--
-        <form action="processarCadastro.php" method="post" class="form-group" >
-            <h2>Cadastrar usuario</h2>
-            nome: <input type="text" name="username" id="username" class="form-control" required/><br/>
-            cnpj: <input type="text" name="cnpj" id="cnpj" class="form-control" required/><br/>
-            senha: <input type="password" name="password" id="password" class="form-control" required/><br/>
-            telefone: <input type="tel" name="telefone" id="telefone" class="form-control" required/><br/>
-            email: <input type="email" name="email" id="email" class="form-control" required/><br/>
-            site: <input type="url" name="site" id="site" class="form-control" required/><br/>
-            <input type="submit" class="btn btn-default"/>
-        </form>
-		-->
 		
 <?php
 include("conectar.php");
@@ -253,39 +241,50 @@ if (isset($_GET["id_empresa"]))
 	?>
 	<!-- multistep form -->
 
-<form id="msform">
+<form id="msform" action="processarCadastroMembro.php" method="post" class="form-group">
 	<!-- progressbar -->
 	<ul id="progressbar">
 		<li class="active">Preencha os dados.</li>
-		<li>Setor <? echo($nomeSetor)?></li>
-		<li>Empresa: <? echo($username)?></li>
+		<li>Setor</li>
 	</ul>
 	<!-- fieldsets -->
 	<fieldset>
+		<li>Empresa: <? echo($username)?></li>
+		<li>Telefone: <? echo($email); ?></li>
+		<li>Telefone: <? echo($tel); ?></li>
 		<h2 class="fs-title">Crie a conta da empresa <? echo ($username);?></h2>
 		<h3 class="fs-subtitle">Essa é a etapa 1</h3>
 		<input type="text" name="email" placeholder="Email" required/>
 		<input type="text" name="username" placeholder="Nome da empresa" required/>
+		<input type="text" name="cpf" placeholder="cpf"/>
+		<input type="text" name="telefone" placeholder="Telefone" />
 		<input type="password" name="password" placeholder="Senha" required/>
 		<input type="password" name="passwordcheck" placeholder="Confirmar senha" required/>
 		<input type="button" name="next" class="next action-button" value="Next" />
 	</fieldset>
 	<fieldset>
 		<h2 class="fs-title">Setores</h2>
-		<h3 class="fs-subtitle">Insira o nome de cada setor</h3>
-		<select>
+		<h3 class="fs-subtitle">Qual setor deseja se vincular</h3>
+		<select name="setorVinculado" class="form-control" required>
+
 			<? //lista dos setores
-		        $count = 1;
-		        while ($count < $countSector)
-		        {
-		        	echo("<option value='$setorid[$count]'>$setor[$count]</option>");
-		        	$count++;
-		        }
+
+			if (isset($_GET["setor"]))//caso tenha um GET dizendo qual setor esse usuario deve pertencer.
+			{
+				echo("<option value=".$_GET['setor_id'].">".$_GET['setor']."</option>");
+			}else {
+				echo("<option value=''>Nenhum</option>");
+				$count = 1;
+				while ($count < $countSector) {
+					echo("<option value='$setorid[$count]'>$setor[$count]</option>");
+					$count++;
+				}
+			}
             ?>
 		</select><br>
 		<input type="button" name="previous" class="previous action-button" value="Previous" />
 		<input type="submit" name="submit" class="submit action-button" value="Submit" />
-		
+		<input type="hidden" name="id_empresa" value="<? echo("$id_empresa");?>">
 	</fieldset>
 </form>
 
