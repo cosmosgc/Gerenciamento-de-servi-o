@@ -255,7 +255,7 @@ if (isset($_GET["id_empresa"]))
 		<h2 class="fs-title">Crie a conta da empresa <? echo ($username);?></h2>
 		<h3 class="fs-subtitle">Essa é a etapa 1</h3>
 		<input type="text" name="email" placeholder="Email" required/>
-		<input type="text" name="username" placeholder="Nome da empresa" required/>
+		<input type="text" name="username" placeholder="Nome do usuario" required/>
 		<input type="text" name="cpf" placeholder="cpf"/>
 		<input type="text" name="telefone" placeholder="Telefone" />
 		<input type="password" name="password" placeholder="Senha" required/>
@@ -265,7 +265,7 @@ if (isset($_GET["id_empresa"]))
 	<fieldset>
 		<h2 class="fs-title">Setores</h2>
 		<h3 class="fs-subtitle">Qual setor deseja se vincular</h3>
-		<select name="setorVinculado" class="form-control" required>
+		<select name="setorVinculado" class="form-control">
 
 			<? //lista dos setores
 
@@ -283,8 +283,8 @@ if (isset($_GET["id_empresa"]))
             ?>
 		</select><br>
 		<input type="button" name="previous" class="previous action-button" value="Previous" />
-		<input type="submit" name="submit" class="submit action-button" value="Submit" />
 		<input type="hidden" name="id_empresa" value="<? echo("$id_empresa");?>">
+		<input type="submit" name="submit" class="submit action-button" value="Submit" />
 	</fieldset>
 </form>
 
