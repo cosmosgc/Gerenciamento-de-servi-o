@@ -249,9 +249,9 @@ if (isset($_GET["id_empresa"]))
 	</ul>
 	<!-- fieldsets -->
 	<fieldset>
-		<h3>Empresa: <? echo($username)?></h3>
-		<h3>email: <? echo($email); ?></h3>
-		<h3>Telefone: <? echo($telefone); ?></h3>
+		<h6>Empresa: <? echo($username)?></h6>
+		<h6>email: <? echo($email); ?></h6>
+		<h6>Telefone: <? echo($telefone); ?></h6>
 		<h2 class="fs-title">Crie a conta da empresa <? echo ($username);?></h2>
 		<h3 class="fs-subtitle">Essa é a etapa 1</h3>
 		<input type="text" name="email" placeholder="Email" required/>
