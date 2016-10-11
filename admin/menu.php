@@ -13,10 +13,11 @@ include("../var.php");
 //debug
 $username = "funcionario1";
 $sql = 'SELECT empresa.nome id_empresa, cnpj, empresa.telefone, empresa.email, cidade, estado, desc_empresa FROM empresa, funcionario, setor WHERE funcionario.nome = "funcionario1" AND fk_setor = id_setor AND funcionario.fk_empresa = id_empresa';
+debug_to_console($sql);
 $resultado = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "'.$username.'"' );
   if (!$resultado) {
     $resultado = mysqli_query($conexao, 'SELECT empresa.nome id_empresa, cnpj, empresa.telefone, empresa.email, cidade, estado, desc_empresa FROM empresa, funcionario, setor WHERE funcionario.nome = $username AND fk_setor = id_setor AND funcionario.fk_empresa = id_empresa');
-      echo ($sql);
+      echo("win");
       if (!$resultado)
     {
         $erro = mysqli_error($conexao);
