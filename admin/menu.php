@@ -1,3 +1,52 @@
+<?php
+include("conectar.php");
+include("var.php");
+    $resultado = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "'.$username.'"' );
+  if (!$resultado) {
+    $resultado = mysqli_query($conexao, 'SELECT empresa.nome id_empresa, cnpj, empresa.telefone, empresa.email, cidade, estado, desc_empresa FROM empresa, funcionario, setor WHERE funcionario.nome = "funcionario1" AND fk_setor = id_setor AND fk_empresa = id_empresa');
+    if (!$resultado)
+    {
+        $erro = mysqli_error($conexao);
+        echo("FAIL $erro");
+    }
+  }
+  else {   
+    $row = mysqli_fetch_assoc($resultado);
+    $id_empresa = $row["id_empresa"];
+    $nome_empresa = $row["nome"];
+    $cnpj = $row["cnpj"];
+    $telefone = $row["telefone"];
+    $email = $row["email"];
+    $cidade = $row["cidade"];
+    $estado = $row["estado"];
+    $desc = $row["desc_empresa"];
+    
+    // util para lista de setores
+    $resultadoSetores = mysqli_query($conexao, "SELECT DISTINCT * FROM setor WHERE fk_empresa = '".$id_empresa."'");
+    if (!$resultado) {
+      $erro = mysqli_error($conexao);
+      echo("FAIL $erro");
+    } else {
+      $countSector = 1;
+      while ($rowSetor = mysqli_fetch_array($resultadoSetores))
+      {
+        foreach ($rowSetor as $column => $description)
+        {
+          //echo "column: $description <br>"; // teste de tabela
+          $setor[$countSector] = $rowSetor["nome"];
+        }
+        $countSector++;
+      }
+    }
+    }
+    function format_phone_number($number) {
+    $tel = preg_replace('~.*(\d{2})[^\d]{0,7}(\d{4})[^\d]{0,7}(\d{4}).*~', '$1 $2 $3', $number);
+    return $tel;
+}
+
+$resultadoFuncionariosCount = mysqli_query($conexao, "SELECT count(DISTINCT (id_funcionario) FROM funcionario, empresa, setor WHERE fk_empresa = $id_empresa AND fk_setor = id_setor")
+?>
+
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -6,7 +55,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Nome da empresa! | </title>
+    <title><?php echo($nome_empresa);?> | </title>
 
     <!-- Bootstrap -->
     <link href="scripts/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -25,7 +74,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.php" class="site_title"><i class="fa fa-paw"></i> <span>Empresa!</span></a>
+              <a href="index.php" class="site_title"><i class="fa fa-paw"></i> <span><?php echo($nome_empresa);?></span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -37,7 +86,7 @@
               </div>
               <div class="profile_info">
                 <span>Bem vindo,</span>
-                <h2>Usuario</h2>
+                <h2><?php echo($username);?></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
