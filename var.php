@@ -9,5 +9,5 @@ $password=$_SESSION['password'];
 $_SESSION['username']=$username;
 $_SESSION['password']=$password;
 $existeLogin=isset($_SESSION['username']);
-if($existeLogin==false){header("location:index.php");}        
+if($existeLogin==false){echo("não esta logado");}        
 ?>
