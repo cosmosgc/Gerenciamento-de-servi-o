@@ -40,7 +40,7 @@ include("../var.php");
     }
   }
 
-$resultadoFuncionariosCount = mysqli_query($conexao, "SELECT count(DISTINCT (id_funcionario) FROM funcionario, empresa, setor WHERE fk_empresa = $id_empresa AND fk_setor = id_setor")
+$resultadoFuncionariosCount = mysqli_query($conexao, "SELECT count(DISTINCT (id_funcionario) FROM funcionario, empresa, setor WHERE fk_empresa = 20 AND fk_setor = id_setor")
 ?>
 
 <html lang="en">
