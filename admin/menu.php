@@ -25,7 +25,7 @@ $resultado = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "'.$user
     }
   }
   function coletarDados() {
-      debug_to_console("logado como 
+      debug_to_console("logado como"); 
     $row = mysqli_fetch_assoc($resultado);
     $id_empresa = $row["id_empresa"];
     $nome_empresa = $row["nome"];
