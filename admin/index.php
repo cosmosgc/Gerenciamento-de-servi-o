@@ -10,7 +10,7 @@
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-users"></i></div>
-                  <div class="count"><?php echo($resultadoFuncionariosCount);?></div>
+                  <div class="count"><?php echo($resultadoFuncionariosCount + "count");?></div>
                   <h3>membros</h3>
                   <p>Empregados da empresa.</p>
                 </div>
@@ -20,23 +20,23 @@
                   <div class="icon"><i class="fa fa-comments-o"></i></div>
                   <div class="count">179</div>
                   <h3>Outputs</h3>
-                  <p>log em serviços.</p>
+                  <p>log em serviÃ§os.</p>
                 </div>
               </div>
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
                   <div class="count">179</div>
-                  <h3>Serviços ativos</h3>
-                  <p>Quantidade de serviços faltando.</p>
+                  <h3>ServiÃ§os ativos</h3>
+                  <p>Quantidade de serviÃ§os faltando.</p>
                 </div>
               </div>
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-check-square-o"></i></div>
                   <div class="count">179</div>
-                  <h3>Serviços completos</h3>
-                  <p>Total de serviços completos.</p>
+                  <h3>ServiÃ§os completos</h3>
+                  <p>Total de serviÃ§os completos.</p>
                 </div>
               </div>
             </div>
@@ -48,7 +48,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Site desenvolvido por Vin�cius Bretas Avezani de Mello Silva
+            Site desenvolvido por Vinícius Bretas Avezani de Mello Silva
           </div>
           <div class="clearfix"></div>
         </footer>
