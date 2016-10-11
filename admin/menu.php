@@ -15,16 +15,17 @@ $username = "funcionario1";
 $sql = 'SELECT empresa.nome id_empresa, cnpj, empresa.telefone, empresa.email, cidade, estado, desc_empresa FROM empresa, funcionario, setor WHERE funcionario.nome = "funcionario1" AND fk_setor = id_setor AND funcionario.fk_empresa = id_empresa';
 debug_to_console($sql);
 $resultado = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "'.$username.'"' );
-  if (!$resultado) {
+  iif (mysql_num_rows($resultado)==0) {
     $resultado = mysqli_query($conexao, 'SELECT empresa.nome id_empresa, cnpj, empresa.telefone, empresa.email, cidade, estado, desc_empresa FROM empresa, funcionario, setor WHERE funcionario.nome = $username AND fk_setor = id_setor AND funcionario.fk_empresa = id_empresa');
-      echo("win");
+      debug_to_console("logado como funcionario")
       if (!$resultado)
     {
         $erro = mysqli_error($conexao);
         echo("FAIL $erro");
     }
   }
-  else {   
+  function coletarDados() {
+      debug_to_console("logado como 
     $row = mysqli_fetch_assoc($resultado);
     $id_empresa = $row["id_empresa"];
     $nome_empresa = $row["nome"];
@@ -53,8 +54,11 @@ $resultado = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "'.$user
       }
     }
   }
+coletarDados();
+
 
 $resultadoFuncionariosCount = mysqli_query($conexao, "SELECT count(DISTINCT (id_funcionario) FROM funcionario, empresa, setor WHERE fk_empresa = 20 AND fk_setor = id_setor")
+
 ?>
 
 <html lang="en">
