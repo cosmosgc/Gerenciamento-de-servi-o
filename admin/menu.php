@@ -38,10 +38,7 @@ include("../var.php");
         $countSector++;
       }
     }
-    function format_phone_number($number) {
-    $tel = preg_replace('~.*(\d{2})[^\d]{0,7}(\d{4})[^\d]{0,7}(\d{4}).*~', '$1 $2 $3', $number);
-    return $tel;
-}
+  }
 
 $resultadoFuncionariosCount = mysqli_query($conexao, "SELECT count(DISTINCT (id_funcionario) FROM funcionario, empresa, setor WHERE fk_empresa = $id_empresa AND fk_setor = id_setor")
 ?>
