@@ -15,7 +15,7 @@ $username = "funcionario1";
 $sql = 'SELECT empresa.nome id_empresa, cnpj, empresa.telefone, empresa.email, cidade, estado, desc_empresa FROM empresa, funcionario, setor WHERE funcionario.nome = "funcionario1" AND fk_setor = id_setor AND funcionario.fk_empresa = id_empresa';
 debug_to_console($sql);
 $resultado = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "'.$username.'"' );
-  if (mysql_num_rows($resultado)==0) {
+  if (mysqli_num_rows($resultado)==0) {
     $resultado = mysqli_query($conexao, 'SELECT empresa.nome id_empresa, cnpj, empresa.telefone, empresa.email, cidade, estado, desc_empresa FROM empresa, funcionario, setor WHERE funcionario.nome = $username AND fk_setor = id_setor AND funcionario.fk_empresa = id_empresa');
       debug_to_console("logado como funcionario");
       if (!$resultado)
