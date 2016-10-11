@@ -1,10 +1,21 @@
 <?php
+function debug_to_console( $data ) {
+
+    if ( is_array( $data ) )
+        $output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
+    else
+        $output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
+
+    echo $output;
+}
 include("../conectar.php");
 include("../var.php");
+    $sql = 'SELECT empresa.nome id_empresa, cnpj, empresa.telefone, empresa.email, cidade, estado, desc_empresa FROM empresa, funcionario, setor WHERE funcionario.nome = "funcionario1" AND fk_setor = id_setor AND funcionario.fk_empresa = id_empresa'
     $resultado = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "'.$username.'"' );
   if (!$resultado) {
-    $resultado = mysqli_query($conexao, 'SELECT empresa.nome id_empresa, cnpj, empresa.telefone, empresa.email, cidade, estado, desc_empresa FROM empresa, funcionario, setor WHERE funcionario.nome = "funcionario1" AND fk_setor = id_setor AND fk_empresa = id_empresa');
-    if (!$resultado)
+    $resultado = mysqli_query($conexao, 'SELECT empresa.nome id_empresa, cnpj, empresa.telefone, empresa.email, cidade, estado, desc_empresa FROM empresa, funcionario, setor WHERE funcionario.nome = "funcionario1" AND fk_setor = id_setor AND funcionario.fk_empresa = id_empresa');
+      echo ($sql);
+      if (!$resultado)
     {
         $erro = mysqli_error($conexao);
         echo("FAIL $erro");
