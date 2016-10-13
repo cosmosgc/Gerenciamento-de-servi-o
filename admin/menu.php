@@ -11,12 +11,10 @@ function debug_to_console( $data ) {
 include("../conectar.php");
 include("../var.php");
 //debug
-$username = "funcionario1";
-$sql = 'SELECT empresa.nome id_empresa, cnpj, empresa.telefone, empresa.email, cidade, estado, desc_empresa FROM empresa, funcionario, setor WHERE funcionario.nome = "funcionario1" AND fk_setor = id_setor AND funcionario.fk_empresa = id_empresa';
-debug_to_console($sql);
+$sql = 'SELECT empresa.nome, id_empresa, cnpj, empresa.telefone, empresa.email, cidade, estado, desc_empresa FROM empresa, funcionario, setor WHERE funcionario.nome = "'.$username.'" AND fk_setor = id_setor AND funcionario.fk_empresa = id_empresa';
 $resultado = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "'.$username.'"' );
   if (mysqli_num_rows($resultado)==0) {
-    $resultado = mysqli_query($conexao, 'SELECT empresa.nome id_empresa, cnpj, empresa.telefone, empresa.email, cidade, estado, desc_empresa FROM empresa, funcionario, setor WHERE funcionario.nome = "'.$username.'" AND fk_setor = id_setor AND funcionario.fk_empresa = id_empresa');
+    $resultado = mysqli_query($conexao, $sql);
       debug_to_console("logado como funcionario");
       if (!$resultado)
     {
@@ -24,41 +22,40 @@ $resultado = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "'.$user
         echo("FAIL $erro");
     }
   }
-  function coletarDados() {
-      debug_to_console("logado como"); 
-    $row = mysqli_fetch_assoc($resultado);
-    $id_empresa = $row["id_empresa"];
-    $nome_empresa = $row["nome"];
-    $cnpj = $row["cnpj"];
-    $telefone = $row["telefone"];
-    $email = $row["email"];
-    $cidade = $row["cidade"];
-    $estado = $row["estado"];
-    $desc = $row["desc_empresa"];
-    
-    // util para lista de setores
-    $resultadoSetores = mysqli_query($conexao, "SELECT DISTINCT * FROM setor WHERE fk_empresa = '".$id_empresa."'");
-    if (!$resultado) {
-      $erro = mysqli_error($conexao);
-      echo("FAIL $erro");
-    } else {
-      $countSector = 1;
-      while ($rowSetor = mysqli_fetch_array($resultadoSetores))
-      {
-        foreach ($rowSetor as $column => $description)
-        {
-          //echo "column: $description <br>"; // teste de tabela
-          $setor[$countSector] = $rowSetor["nome"];
-        }
-        $countSector++;
-      }
-    }
+
+$row = mysqli_fetch_assoc($resultado);
+$id_empresa = $row["id_empresa"];
+$nome_empresa = $row["nome"];
+$cnpj = $row["cnpj"];
+$telefone = $row["telefone"];
+$email = $row["email"];
+$cidade = $row["cidade"];
+$estado = $row["estado"];
+$desc = $row["desc_empresa"];
+
+// util para lista de setores
+$resultadoSetores = mysqli_query($conexao, "SELECT DISTINCT * FROM setor WHERE fk_empresa = '".$id_empresa."'");
+if (!$resultado) {
+  $erro = mysqli_error($conexao);
+  echo("FAIL $erro");
+} else {
+  $countSector = 1;
+  while ($rowSetor = mysqli_fetch_array($resultadoSetores))
+  {
+	foreach ($rowSetor as $column => $description)
+	{
+	  //echo "column: $description <br>"; // teste de tabela
+	  $setor[$countSector] = $rowSetor["nome"];
+	}
+	$countSector++;
   }
-coletarDados();
+}
 
 
-$resultadoFuncionariosCount = mysqli_query($conexao, "SELECT count(DISTINCT (id_funcionario) FROM funcionario, empresa, setor WHERE fk_empresa = 20 AND fk_setor = id_setor")
-
+$sql = "SELECT count(DISTINCT (id_funcionario)) FROM funcionario, empresa, setor WHERE funcionario.fk_empresa = $id_empresa AND fk_setor = id_setor";
+$resultadoFuncionariosCount = mysqli_query($conexao,$sql);
+$funcionarioCountArray =  mysqli_fetch_assoc($resultadoFuncionariosCount);
+$funcionarioCount = $funcionarioCountArray["count(DISTINCT (id_funcionario))"];
 ?>
 
 <html lang="en">
@@ -222,7 +219,7 @@ $resultadoFuncionariosCount = mysqli_query($conexao, "SELECT count(DISTINCT (id_
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout">
+              <a href="../logout.php" data-toggle="tooltip" data-placement="top" title="Logout">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
