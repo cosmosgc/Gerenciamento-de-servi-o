@@ -74,7 +74,17 @@ $funcionarioCount = $funcionarioCountArray["count(DISTINCT (id_funcionario))"];
     <link href="scripts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="scripts/nprogress/nprogress.css" rel="stylesheet">
+	<!-- iCheck -->
+	<link href="scripts/iCheck/skins/flat/green.css" rel="stylesheet">
 
+			    <!-- Datatables -->
+		<link href="scripts/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+		<link href="scripts/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+		<link href="scripts/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+		<link href="scripts/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+		<link href="scripts/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+			<!-- Custom Theme Style -->
+			
     <!-- Custom Theme Style -->
     <link href="scripts/custom.min.css" rel="stylesheet">
   </head>
