@@ -54,9 +54,9 @@
 
         <!-- footer content -->
         <footer>
-          <div class="pull-right">
+          <!--<div class="pull-right">
             Site desenvolvido por Vinícius Bretas Avezani de Mello Silva
-          </div>
+          </div>-->
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->
