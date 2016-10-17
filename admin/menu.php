@@ -272,11 +272,11 @@ $funcionarioCount = $funcionarioCountArray["count(DISTINCT (id_funcionario))"];
                 <li role="presentation" class="dropdown">
                   <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span><!--numero de alertas-->
+                    <span class="badge bg-green">0</span><!--numero de alertas-->
                   </a>
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
-                      <a>
+                      <!--<a>
                         <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
@@ -330,7 +330,7 @@ $funcionarioCount = $funcionarioCountArray["count(DISTINCT (id_funcionario))"];
                           <i class="fa fa-angle-right"></i>
                         </a>
                       </div>
-                    </li>
+                    </li>-->
                   </ul>
                 </li>
               </ul>
