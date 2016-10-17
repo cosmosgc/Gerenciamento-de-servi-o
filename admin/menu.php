@@ -122,11 +122,14 @@ $funcionarioCount = $funcionarioCountArray["count(DISTINCT (id_funcionario))"];
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="index.php">Dashboard</a></li>
-                      <li><a href="index2.html">Dashboard2</a></li>
+                      <!--
+			<li><a href="index2.html">Dashboard2</a></li>
                       <li><a href="index3.html">Dashboard3</a></li>
+			-->
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+                  <!--
+		  <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="form.html">General Form</a></li>
                       <li><a href="form_advanced.html">Advanced Components</a></li>
@@ -210,8 +213,10 @@ $funcionarioCount = $funcionarioCountArray["count(DISTINCT (id_funcionario))"];
                         <li><a href="#level1_2">Level One</a>
                         </li>
                     </ul>
-                  </li>                  
+                  </li>
+		
                   <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+			-->
                 </ul>
               </div>
 
