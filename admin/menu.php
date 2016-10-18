@@ -297,8 +297,7 @@ function copyToClipboard(elem) {
     return succeed;
 }
 			</script>
-<input id="copyTarget" value="Some initial text"> <button id="copyButton">Copy</button><br><br>
-<span id="copyTarget2">Some Other Text</span> <button id="copyButton2">Copy</button><br><br>
+<span id="copyTarget2">http://royalink.esy.es/cadastro.php?id_empresa=<?php echo($id_empresa);?></span> <button id="copyButton2" onclick="copyToClipboardMsg(document.getElementById('copyTarget'), 'msg')">Copy</button><br><br>
 <input id="pasteTarget"> Click in this Field and hit Ctrl+V to see what is on clipboard<br><br>
 <span id="msg"></span><br>
                 </ul>
