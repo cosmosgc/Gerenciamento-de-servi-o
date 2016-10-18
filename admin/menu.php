@@ -271,7 +271,7 @@ $funcionarioCount = $funcionarioCountArray["count(DISTINCT (id_funcionario))"];
 				    return succeed;
 				}
 			</script>
-			<input type="text" id="copyTarget" value="<?php echo($id_empresa);?>"> <button id="copyButton">Copy</button><br><br>
+			<input type="text" id="copyTarget" value="../cadastro.php?id_empresa=<?php echo($id_empresa);?>"> <button id="copyButton">Copy</button><br><br>
 			<input type="text" placeholder="Click here and press Ctrl-V to see clipboard contents">
                 </ul>
               </div>
