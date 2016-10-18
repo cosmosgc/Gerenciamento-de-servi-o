@@ -216,7 +216,7 @@ $funcionarioCount = $funcionarioCountArray["count(DISTINCT (id_funcionario))"];
 		
                   <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
 			-->
-<span id="copyTarget2">Some Other Text</span> <button id="copyButton2">Copy</button><br><br>
+<span id="copyTarget2">http://royalink.esy.es/cadastro.php?id_empresa=<?php echo($id_empresa);?></span> <button id="copyButton2">Copy</button><br><br>
 <input id="pasteTarget"> Click in this Field and hit Ctrl+V to see what is on clipboard<br><br>
 <span id="msg"></span><br>
 			<script>
