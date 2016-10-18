@@ -216,6 +216,9 @@ $funcionarioCount = $funcionarioCountArray["count(DISTINCT (id_funcionario))"];
 		
                   <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
 			-->
+<span id="copyTarget2">Some Other Text</span> <button id="copyButton2">Copy</button><br><br>
+<input id="pasteTarget"> Click in this Field and hit Ctrl+V to see what is on clipboard<br><br>
+<span id="msg"></span><br>
 			<script>
 document.getElementById("copyButton").addEventListener("click", function() {
     copyToClipboardMsg(document.getElementById("copyTarget"), "msg");
@@ -297,9 +300,7 @@ function copyToClipboard(elem) {
     return succeed;
 }
 			</script>
-<span id="copyTarget2">http://royalink.esy.es/cadastro.php?id_empresa=<?php echo($id_empresa);?></span> <button id="copyButton2" onclick="copyToClipboardMsg(document.getElementById('copyTarget'), 'msg')">Copy</button><br><br>
-<input id="pasteTarget"> Click in this Field and hit Ctrl+V to see what is on clipboard<br><br>
-<span id="msg"></span><br>
+
                 </ul>
               </div>
 
