@@ -220,10 +220,6 @@ $funcionarioCount = $funcionarioCountArray["count(DISTINCT (id_funcionario))"];
 <input id="pasteTarget"> Click in this Field and hit Ctrl+V to see what is on clipboard<br><br>
 <span id="msg"></span><br>
 			<script>
-document.getElementById("copyButton").addEventListener("click", function() {
-    copyToClipboardMsg(document.getElementById("copyTarget"), "msg");
-});
-
 document.getElementById("copyButton2").addEventListener("click", function() {
     copyToClipboardMsg(document.getElementById("copyTarget2"), "msg");
 });
