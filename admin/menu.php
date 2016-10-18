@@ -217,8 +217,16 @@ $funcionarioCount = $funcionarioCountArray["count(DISTINCT (id_funcionario))"];
                   <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
 			-->
 			<h3>Link para cadastro de funcionarios:</h3>
+			<div class="input-group">
+                            <input type="text" class="form-control">
+                            <span class="input-group-btn"><span id="copyTarget2">http://royalink.esy.es/cadastro.php?id_empresa=<?php echo($id_empresa);?></span>
+                                              <button type="button" class="btn btn-primary" id="copyButton2">Go!</button>
+                                          </span>
+                          </div>
+			<!--
 <span id="copyTarget2">http://royalink.esy.es/cadastro.php?id_empresa=<?php echo($id_empresa);?></span> <button id="copyButton2">Copy</button><br><br>
-<span id="msg"></span><br>
+			-->
+<h3><span id="msg"></span></h3><br>
 			<script>
 document.getElementById("copyButton2").addEventListener("click", function() {
     copyToClipboardMsg(document.getElementById("copyTarget2"), "msg");
