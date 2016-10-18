@@ -220,7 +220,7 @@ $funcionarioCount = $funcionarioCountArray["count(DISTINCT (id_funcionario))"];
 			<div class="input-group">
                             <input type="text" class="form-control" placeholder="http://royalink.esy.es/cadastro.php?id_empresa=<?php echo($id_empresa);?>" readonly="readonly">
                             <span class="input-group-btn"><span id="copyTarget2">http://royalink.esy.es/cadastro.php?id_empresa=<?php echo($id_empresa);?></span>
-                                              <button type="button" class="btn btn-primary" id="copyButton2">Go!</button>
+                                              <button type="button" class="btn btn-primary" id="copyButton2">Copiar!</button>
                                           </span>
                           </div>
 			<!--
