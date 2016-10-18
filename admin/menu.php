@@ -217,62 +217,90 @@ $funcionarioCount = $funcionarioCountArray["count(DISTINCT (id_funcionario))"];
                   <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
 			-->
 			<script>
-				document.getElementById("copyButton").addEventListener("click", function() {
-				    copyToClipboard(document.getElementById("copyTarget"));
-				});
+document.getElementById("copyButton").addEventListener("click", function() {
+    copyToClipboardMsg(document.getElementById("copyTarget"), "msg");
+});
 
-				function copyToClipboard(elem) {
-					  // create hidden text element, if it doesn't already exist
-				    var targetId = "_hiddenCopyText_";
-				    var isInput = elem.tagName === "INPUT" || elem.tagName === "TEXTAREA";
-				    var origSelectionStart, origSelectionEnd;
-				    if (isInput) {
-					// can just use the original source element for the selection and copy
-					target = elem;
-					origSelectionStart = elem.selectionStart;
-					origSelectionEnd = elem.selectionEnd;
-				    } else {
-					// must use a temporary form element for the selection and copy
-					target = document.getElementById(targetId);
-					if (!target) {
-					    var target = document.createElement("textarea");
-					    target.style.position = "absolute";
-					    target.style.left = "-9999px";
-					    target.style.top = "0";
-					    target.id = targetId;
-					    document.body.appendChild(target);
-					}
-					target.textContent = elem.textContent;
-				    }
-				    // select the content
-				    var currentFocus = document.activeElement;
-				    target.focus();
-				    target.setSelectionRange(0, target.value.length);
+document.getElementById("copyButton2").addEventListener("click", function() {
+    copyToClipboardMsg(document.getElementById("copyTarget2"), "msg");
+});
 
-				    // copy the selection
-				    var succeed;
-				    try {
-					  succeed = document.execCommand("copy");
-				    } catch(e) {
-					succeed = false;
-				    }
-				    // restore original focus
-				    if (currentFocus && typeof currentFocus.focus === "function") {
-					currentFocus.focus();
-				    }
+document.getElementById("pasteTarget").addEventListener("mousedown", function() {
+    this.value = "";
+});
 
-				    if (isInput) {
-					// restore prior selection
-					elem.setSelectionRange(origSelectionStart, origSelectionEnd);
-				    } else {
-					// clear temporary content
-					target.textContent = "";
-				    }
-				    return succeed;
-				}
+
+function copyToClipboardMsg(elem, msgElem) {
+	  var succeed = copyToClipboard(elem);
+    var msg;
+    if (!succeed) {
+        msg = "Copy not supported or blocked.  Press Ctrl+c to copy."
+    } else {
+        msg = "Text copied to the clipboard."
+    }
+    if (typeof msgElem === "string") {
+        msgElem = document.getElementById(msgElem);
+    }
+    msgElem.innerHTML = msg;
+    setTimeout(function() {
+        msgElem.innerHTML = "";
+    }, 2000);
+}
+
+function copyToClipboard(elem) {
+	  // create hidden text element, if it doesn't already exist
+    var targetId = "_hiddenCopyText_";
+    var isInput = elem.tagName === "INPUT" || elem.tagName === "TEXTAREA";
+    var origSelectionStart, origSelectionEnd;
+    if (isInput) {
+        // can just use the original source element for the selection and copy
+        target = elem;
+        origSelectionStart = elem.selectionStart;
+        origSelectionEnd = elem.selectionEnd;
+    } else {
+        // must use a temporary form element for the selection and copy
+        target = document.getElementById(targetId);
+        if (!target) {
+            var target = document.createElement("textarea");
+            target.style.position = "absolute";
+            target.style.left = "-9999px";
+            target.style.top = "0";
+            target.id = targetId;
+            document.body.appendChild(target);
+        }
+        target.textContent = elem.textContent;
+    }
+    // select the content
+    var currentFocus = document.activeElement;
+    target.focus();
+    target.setSelectionRange(0, target.value.length);
+    
+    // copy the selection
+    var succeed;
+    try {
+    	  succeed = document.execCommand("copy");
+    } catch(e) {
+        succeed = false;
+    }
+    // restore original focus
+    if (currentFocus && typeof currentFocus.focus === "function") {
+        currentFocus.focus();
+    }
+    
+    if (isInput) {
+        // restore prior selection
+        elem.setSelectionRange(origSelectionStart, origSelectionEnd);
+    } else {
+        // clear temporary content
+        target.textContent = "";
+    }
+    return succeed;
+}
 			</script>
-			<input type="text" id="copyTarget" value="../cadastro.php?id_empresa=<?php echo($id_empresa);?>"> <button id="copyButton">Copy</button><br><br>
-			<input type="text" placeholder="Click here and press Ctrl-V to see clipboard contents">
+<input id="copyTarget" value="Some initial text"> <button id="copyButton">Copy</button><br><br>
+<span id="copyTarget2">Some Other Text</span> <button id="copyButton2">Copy</button><br><br>
+<input id="pasteTarget"> Click in this Field and hit Ctrl+V to see what is on clipboard<br><br>
+<span id="msg"></span><br>
                 </ul>
               </div>
 
