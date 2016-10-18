@@ -241,9 +241,9 @@ function copyToClipboardMsg(elem, msgElem) {
 	  var succeed = copyToClipboard(elem);
     var msg;
     if (!succeed) {
-        msg = "Copy not supported or blocked.  Press Ctrl+c to copy."
+        msg = "Copia não suportada ou bloqueada.  aperte Ctrl+c para copiar."
     } else {
-        msg = "Text copied to the clipboard."
+        msg = "Texto copiado para clipboard."
     }
     if (typeof msgElem === "string") {
         msgElem = document.getElementById(msgElem);
