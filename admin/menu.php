@@ -8,8 +8,8 @@ function debug_to_console( $data ) {
 
     echo $output;
 }
-include("../conectar.php");
-include("../var.php");
+require_once("../conectar.php");
+require_once("../var.php");
 //debug
 $sql = 'SELECT empresa.nome, id_empresa, cnpj, empresa.telefone, empresa.email, cidade, estado, desc_empresa FROM empresa, funcionario, setor WHERE funcionario.nome = "'.$username.'" AND fk_setor = id_setor AND funcionario.fk_empresa = id_empresa';
 $resultado = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "'.$username.'"' );
@@ -61,6 +61,7 @@ $funcionarioCount = $funcionarioCountArray["count(DISTINCT (id_funcionario))"];
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -77,12 +78,7 @@ $funcionarioCount = $funcionarioCountArray["count(DISTINCT (id_funcionario))"];
 	<!-- iCheck -->
 	<link href="scripts/iCheck/skins/flat/green.css" rel="stylesheet">
 
-			    <!-- Datatables -->
-		<link href="scripts/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-		<link href="scripts/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-		<link href="scripts/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-		<link href="scripts/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-		<link href="scripts/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
 			<!-- Custom Theme Style -->
 			
     <!-- Custom Theme Style -->
@@ -131,8 +127,8 @@ $funcionarioCount = $funcionarioCountArray["count(DISTINCT (id_funcionario))"];
                   
 		  <li><a><i class="fa fa-edit"></i> Projetos <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="#">Criar Projetos</a></li>
-                      <li><a href="#">Listagem/edição de projetos</a></li>
+                      <li><a href="criarProjeto.php">Criar Projetos</a></li>
+                      <li><a href="projects.php">Listagem/edição de projetos</a></li>
                       <li><a href="#">Validação</a></li>
                       <li><a href="#">Log</a></li>
                     </ul>
@@ -232,9 +228,7 @@ document.getElementById("copyButton2").addEventListener("click", function() {
     copyToClipboardMsg(document.getElementById("copyTarget2"), "msg");
 });
 
-document.getElementById("pasteTarget").addEventListener("mousedown", function() {
-    this.value = "";
-});
+
 
 
 function copyToClipboardMsg(elem, msgElem) {
