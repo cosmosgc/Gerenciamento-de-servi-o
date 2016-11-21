@@ -155,11 +155,7 @@ else
                             <button type="button" class="<?php echo($statusColor); ?> btn-xs">Em andamento</button>
                           </td>
                           <td>
-<<<<<<< HEAD
                             <a href="verProjeto.php?id_projeto=<?php echo($projetoId);?>" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Visualizar </a>
-=======
-                            <a href="editarProjeto.php?id_projeto=<?php echo($projetoId);?>" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Visualizar </a>
->>>>>>> origin/master
                             <a href="editarProjeto.php?id_projeto=<?php echo($projetoId);?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>
                             <a href="deletarProjeto.php?id_projeto=<?php echo($projetoId);?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Deletar </a>
                           </td>
