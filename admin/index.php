@@ -52,7 +52,7 @@
 		<!-- table de funcionarios -->
 		<?php 
 		include("adminfunc.php");
-		tableFuncionarios(20);
+		tableFuncionarios($id_empresa);
 		?>
 		<!-- table de funcionarios -->
 		

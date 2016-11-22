@@ -4,7 +4,7 @@ require_once("../conectar.php");
 $data= date("d/m/Y");
 
 require_once("../var.php");
-$idProjeto = $_GET["id_projeto"];
+$id_projeto = $_GET["id_projeto"];
 $sql = "SELECT DISTINCT
   projetos.id_projeto,
   projetos.nome,
@@ -18,7 +18,7 @@ FROM
 WHERE
   projetos.fk_empresa = id_empresa AND projetos.fk_empresa = $id_empresa_session 
 AND
-projetos.id_projeto = $idProjeto";
+projetos.id_projeto = $id_projeto";
 	$resultado = mysqli_query($conexao, $sql);
 	
 if (!$resultado) {
@@ -57,7 +57,7 @@ else
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Formulario do projeto</h3>
+                <h3>Formulario do serviço</h3>
               </div>
             </div>
             <div class="clearfix"></div>
@@ -65,16 +65,13 @@ else
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Formulario do projeto <small>Use uma descricao para maior proveito</small></h2>
+                    <h2>Formulario do serviço <small>Use uma descricao para maior proveito</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
                         <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          </li>
-                          <li><a href="#">Settings 2</a>
                           </li>
                         </ul>
                       </li>
@@ -148,7 +145,13 @@ else
                         </fieldset>
 						</div>
 						<!-- DateRange Picker -->
-                     <input type="hidden" name="idProjeto" value="<?php echo ($idProjeto); ?>"></input>
+                     <input type="hidden" name="idProjeto" value="<?php echo ($id_projeto); ?>"></input>
+					 <input type="hidden" name="fk_empresa" value="<?php echo ($id_empresa); ?>"></input>
+					 <input type="hidden" name="fk_funcionario" value="<?php echo ($id_empresa); ?>"></input>
+					 <input type="hidden" name="fk_setor" value="<?php echo ($id_empresa); ?>"></input>
+					 <input type="hidden" name="completo" value="false"></input>
+					 
+					 
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">

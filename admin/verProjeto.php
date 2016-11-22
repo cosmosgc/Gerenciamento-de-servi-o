@@ -154,6 +154,13 @@ else
                      <input type="hidden" name="idProjeto" value="<?php echo ($idProjeto); ?>"></input>
                       <div class="ln_solid"></div>
                       <div class="form-group">
+					  
+					  <?php
+					  include("adminfunc.php");
+						tableServicos($idProjeto);
+					  ?>
+					  
+					  <a href="criarServico.php?idProjeto=<?php echo($idProjeto);?>" class="btn btn-info" role="button">Criar serviço</a>
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 						
                         </div>

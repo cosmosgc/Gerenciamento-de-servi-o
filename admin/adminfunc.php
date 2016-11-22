@@ -1,7 +1,11 @@
 <?php
 function tableFuncionarios($idDaEmpresa)
 {
-require_once("../conectar.php");
+$conexao=null;
+if($conexao == null)
+{
+	include("../conectar.php");
+}
 $sql = "SELECT DISTINCT id_funcionario, funcionario.nome, setor.nome, funcionario.email, cpf, funcionario.telefone FROM funcionario, empresa, setor WHERE funcionario.fk_empresa = '$idDaEmpresa' AND fk_setor = id_setor";
 	$resultado = mysqli_query($conexao, $sql);
 	if (!$resultado) {
@@ -97,7 +101,11 @@ $sql = "SELECT DISTINCT id_funcionario, funcionario.nome, setor.nome, funcionari
 
 function tableServicos($idDoProjeto)
 {
-require_once("../conectar.php");
+$conexao=null;
+if($conexao == null)
+{
+	include("../conectar.php");
+}
 $sql = "SELECT DISTINCT
   servico.descricao,
   setor.nome,
