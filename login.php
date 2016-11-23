@@ -22,7 +22,7 @@ if ($resultado == false) {
 		//$username=$_SESSION['username'];
 		$_SESSION['username']=$username;
 		$_SESSION['password']=$password;
-        header('Location:home.php');
+        header('Location:admin/');
 
 
     }else{

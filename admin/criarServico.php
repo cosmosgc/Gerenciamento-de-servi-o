@@ -4,7 +4,7 @@ require_once("../conectar.php");
 $data= date("d/m/Y");
 
 require_once("../var.php");
-$id_projeto = $_GET["id_projeto"];
+$id_projeto = $_GET["idProjeto"];
 $sql = "SELECT DISTINCT
   projetos.id_projeto,
   projetos.nome,
@@ -23,7 +23,7 @@ projetos.id_projeto = $id_projeto";
 	
 if (!$resultado) {
   $erro = mysqli_error($conexao);
-  echo("FAIL $erro");
+  echo("FAIL $erro $sql");
 } 
 else 
 {
@@ -106,7 +106,7 @@ else
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Descrição do serviço
 									</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
-								<textarea name="conteudo_post" id='ha' form='enviarServico' ></textarea>
+								<textarea name="servico_desc" id='ha' form='enviarServico' ></textarea>
 								<script language="Javascript" type="text/javascript">
 								$("#ha").css("height","100%").css("width","100%").htmlbox({
 									toolbars:[
@@ -147,10 +147,89 @@ else
 						<!-- DateRange Picker -->
                      <input type="hidden" name="idProjeto" value="<?php echo ($id_projeto); ?>"></input>
 					 <input type="hidden" name="fk_empresa" value="<?php echo ($id_empresa); ?>"></input>
-					 <input type="hidden" name="fk_funcionario" value="<?php echo ($id_empresa); ?>"></input>
-					 <input type="hidden" name="fk_setor" value="<?php echo ($id_empresa); ?>"></input>
 					 <input type="hidden" name="completo" value="false"></input>
-					 
+					 <?php
+					 $countSector = 1;
+
+
+	$resultadoSetores = mysqli_query($conexao, "SELECT DISTINCT * FROM setor WHERE fk_empresa = '".$id_empresa."'");
+		if (!$resultado) {
+			$erro = mysqli_error($conexao);
+			echo("FAIL $erro");
+		} else {
+			$countSector = 1;
+			while ($rowSetor = mysqli_fetch_array($resultadoSetores))
+			{
+				foreach ($rowSetor as $column => $description)
+				{
+					$setor[$countSector] = $rowSetor["nome"];
+					$setorid[$countSector] = $rowSetor["id_setor"];
+				}
+				$countSector++;
+			}
+		}
+		?>
+		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Descrição do serviço
+									</label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+		<?php
+echo('<select name="fk_setor" class="form-control"> required');
+echo("<option value=''>Nenhum</option>");
+$count = 1;
+
+while ($count < $countSector) {
+	echo("<option value='$setorid[$count]'>$setor[$count]</option>");
+	$count++;
+}
+echo('</select>');
+echo("</div></div>");
+////////////////////////////////////////
+
+					 $countFuncionarios = 1;
+
+
+	$resultadoSetores = mysqli_query($conexao, "SELECT DISTINCT
+  (id_funcionario),
+  funcionario.nome
+FROM
+  funcionario,
+  setor
+WHERE
+  funcionario.fk_empresa = '".$id_empresa."' AND id_setor = fk_setor");
+		if (!$resultado) {
+			$erro = mysqli_error($conexao);
+			echo("FAIL $erro");
+		} else {
+			$countFuncionarios = 1;
+			while ($rowFuncionario = mysqli_fetch_array($resultadoSetores))
+			{
+				foreach ($rowFuncionario as $column => $description)
+				{
+					$id_funcionario[$countFuncionarios] = $rowFuncionario["id_funcionario"];
+					$funcionario_nome[$countFuncionarios] = $rowFuncionario["nome"];
+				}
+				$countFuncionarios++;
+				
+			}
+		}
+		?>
+		
+		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Funcionario Responsável
+									</label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+		<?php
+echo('<select name="fk_funcionario" class="form-control">');
+echo("<option value=''>Nenhum</option>");
+$count = 1;
+
+while ($count < $countFuncionarios) {
+	echo("<option value='$id_funcionario[$count]'>$funcionario_nome[$count]</option>");
+	$count++;
+}
+
+echo('</select>');
+echo("</div></div>");
+				?>
 					 
                       <div class="ln_solid"></div>
                       <div class="form-group">
