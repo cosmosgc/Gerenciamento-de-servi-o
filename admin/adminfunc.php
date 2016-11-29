@@ -214,7 +214,7 @@ WHERE
 	}		
 }
 
-function menuFuncionario($idDaEmpresa, $idDoProjeto)
+function menuFuncionario($idDaEmpresa, $idDoProjeto, $countCanvas)
 {
 	if(!isset($ServicoCompletoCount))
 	{
@@ -374,8 +374,7 @@ else
                         </li>
                       </ul>
                       <br />
-
-                      <div id="mainb" style="height:350px;"></div>
+                      <div id="mainb<?php echo($countCanvas); ?>" style="height:350px;"></div>
 
                       <div>
 
@@ -672,7 +671,7 @@ else
           }
       };
 
-      var echartBarLine = echarts.init(document.getElementById('mainb'), theme);
+      var echartBarLine = echarts.init(document.getElementById('mainb<?php echo($countCanvas); ?>'), theme);
 
       echartBarLine.setOption({
         title: {
@@ -740,7 +739,7 @@ else
         }, {
           name: 'Cash Input',
           type: 'bar',
-          data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+          data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, <?php echo(182.2 + $countCanvas);?>, 48.7, 18.8, 6.0, 2.3]
         }, {
           name: 'Time Spent',
           type: 'line',

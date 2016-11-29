@@ -65,7 +65,17 @@
 		}
 		else if($tipo_user == "funcionario")
 		{
-			menuFuncionario($id_empresa, 4);
+			$sqlAdmin = "SELECT id_projeto FROM `projetos` WHERE fk_empresa =".$id_empresa;
+			$resultado = mysqli_query($conexao, $sqlAdmin);
+			$countCanvas = 1;
+			while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
+			{
+				menuFuncionario($id_empresa, $row["id_projeto"], $countCanvas);
+				$countCanvas++;
+			}
+			
+			
+				
 		}
 		?>
 		<!-- table de funcionarios -->
