@@ -27,23 +27,23 @@
                   <div class="icon"><i class="fa fa-comments-o"></i></div>
                   <div class="count">179</div>
                   <h3>Outputs</h3>
-                  <p>log em serviÃ§os.</p>
+                  <p>log em serviços.</p>
                 </div>
               </div>
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-                  <div class="count">179</div>
-                  <h3>ServiÃ§os ativos</h3>
-                  <p>Quantidade de serviÃ§os faltando.</p>
+                  <div class="count"><?php echo($ServicoCount);?></div>
+                  <h3>Serviços ativos</h3>
+                  <p>Quantidade de serviços faltando.</p>
                 </div>
               </div>
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-check-square-o"></i></div>
-                  <div class="count">179</div>
-                  <h3>ServiÃ§os completos</h3>
-                  <p>Total de serviÃ§os completos.</p>
+                  <div class="count"><?php echo($ServicoCompletoCount);?></div>
+                  <h3>Serviços completos</h3>
+                  <p>Total de serviços completos.</p>
                 </div>
               </div>
             </div>
@@ -52,7 +52,21 @@
 		<!-- table de funcionarios -->
 		<?php 
 		include("adminfunc.php");
-		tableFuncionarios($id_empresa);
+		$sqlAdmin = "SELECT * FROM `niveis` WHERE fk_funcionario = ".$_SESSION['id_funcionario'];
+		$resultado = mysqli_query($conexao, $sqlAdmin);
+		$quantidadeDeLinhas = mysqli_num_rows($resultado);
+		if($quantidadeDeLinhas == 1)
+		{
+			AdminTable();
+		}
+		else if($tipo_user == "empresa")
+		{
+			tableFuncionarios($id_empresa);
+		}
+		else if($tipo_user == "funcionario")
+		{
+			menuFuncionario($id_empresa, 4);
+		}
 		?>
 		<!-- table de funcionarios -->
 		

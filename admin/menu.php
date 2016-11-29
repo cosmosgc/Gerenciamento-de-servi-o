@@ -56,6 +56,19 @@ $sql = "SELECT count(DISTINCT (id_funcionario)) FROM funcionario, empresa, setor
 $resultadoFuncionariosCount = mysqli_query($conexao,$sql);
 $funcionarioCountArray =  mysqli_fetch_assoc($resultadoFuncionariosCount);
 $funcionarioCount = $funcionarioCountArray["count(DISTINCT (id_funcionario))"];
+
+
+$sql = "select COUNT(id_servico) from servico, setor where fk_setor = id_setor AND fk_empresa = $id_empresa AND completo = 0";
+$resultadoServicoCount = mysqli_query($conexao,$sql);
+$ServicoCountArray =  mysqli_fetch_assoc($resultadoServicoCount);
+$ServicoCount = $ServicoCountArray["COUNT(id_servico)"];
+
+$sql = "select COUNT(id_servico) from servico, setor where fk_setor = id_setor AND fk_empresa = $id_empresa AND completo = 1";
+$resultadoServicoCount = mysqli_query($conexao,$sql);
+$ServicoCountArray =  mysqli_fetch_assoc($resultadoServicoCount);
+$ServicoCompletoCount = $ServicoCountArray["COUNT(id_servico)"];
+
+
 ?>
 
 <html lang="en">
@@ -347,7 +360,7 @@ function copyToClipboard(elem) {
                       </a>
                     </li>
                     <li><a href="javascript:;">Ajuda</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="../logout.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
 

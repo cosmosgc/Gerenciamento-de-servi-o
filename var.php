@@ -17,10 +17,13 @@ $data= date("d/m/y");
 //$timeFloat= $_SERVER[REQUEST_TIME_FLOAT];
 
 session_start();
+$tipo_user = $_SESSION['tipo_user'];
 $username=$_SESSION['username'];
 $password=$_SESSION['password'];
 $_SESSION['username']=$username;
 $_SESSION['password']=$password;
+$_SESSION['tipo_user']=$tipo_user;
+
 
 $sql = "SELECT DISTINCT funcionario.fk_empresa FROM funcionario, empresa, setor WHERE funcionario.fk_empresa = id_empresa AND fk_setor = id_setor AND (funcionario.nome = '$username' OR empresa.nome = '$username')";
 	$resultado = mysqli_query($conexao, $sql);
