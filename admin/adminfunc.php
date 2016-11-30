@@ -290,10 +290,9 @@ function menuFuncionario($idDaEmpresa, $idDoProjeto, $countCanvas)
 FROM
   projetos,
   empresa,
-  funcionario,
-  servico
+  funcionario
 WHERE
-  projetos.fk_empresa = id_empresa AND projetos.fk_empresa = $id_empresa_session AND projetos.id_projeto = $idDoProjeto AND servico.fk_funcionario = id_funcionario";
+  projetos.fk_empresa = id_empresa AND projetos.fk_empresa = $idDaEmpresa AND projetos.id_projeto = $idDoProjeto";
 	$resultado = mysqli_query($conexao, $sql);
 	
 	if (!$resultado) {
@@ -458,6 +457,82 @@ else
     <script src="../vendors/echarts/dist/echarts.min.js"></script>
 	
 	<!-- ECharts -->
+	<?php 
+		  $sql = "SELECT distinct(id_servico), descricao, horas, completo FROM `servico` WHERE fk_projeto = $idDoProjeto";
+	$resultado = mysqli_query($conexao, $sql);
+		  $count = 1;
+	while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
+	{
+		foreach ($row as $column => $description)
+			{
+				//echo "column: $description <br>"; // teste de tabela
+				$id_servico[$count] = $row["id_servico"];
+				$descricao[$count] = $row["descricao"];
+				$horas[$count] = $row["horas"];
+				$completo[$count] = $row["completo"];
+			}
+		$count++;
+	}
+	
+	for($i = 1; $i <= count($id_servico); $i++)
+	{
+		$horasTimestamp = strtotime($horas[$i]);
+		$horasTimestampMonth = date('n', $horasTimestamp);
+		$tamanhoTempoHoras = (($horasTimestamp - $startPlacehold)/60/60);
+		$horasDoMes[$horasTimestampMonth] = round ($tamanhoTempoHoras);
+		if($completo[$i] == 1)
+		{
+			if (!isset($qtdServicosCompletoDoMes[$horasTimestampMonth])){
+			$qtdServicosCompletoDoMes[$horasTimestampMonth] = 0;
+		}
+			$qtdServicosCompletoDoMes[$horasTimestampMonth]++  ;
+		}
+		if($completo[$i] == 0)
+		{
+			
+		if (!isset($qtdServicosDoMes[$horasTimestampMonth])){
+			$qtdServicosDoMes[$horasTimestampMonth] = 0;
+		}
+		
+		$qtdServicosDoMes[$horasTimestampMonth]++;
+		}
+	}
+	$stringAtividade = null;
+	$stringServico = null;
+	$stringServicoCompleto = null;
+	for ($i = 1; $i <= 12; $i++)
+	{
+		if (!isset($horasDoMes[$i]))
+		{
+			$stringAtividade .= "0, ";
+		}
+		else
+		{
+			$stringAtividade .= "$horasDoMes[$i], ";
+		}
+		if (!isset($qtdServicosDoMes[$i]))
+		{
+			$stringServico .= "0, ";
+		}
+		else
+		{
+			$stringServico .= "$qtdServicosDoMes[$i], ";
+		}
+		if (!isset($qtdServicosCompletoDoMes[$i]))
+		{
+			$stringServicoCompleto .= "0, ";
+		}
+		else
+		{
+			$stringServicoCompleto .= "$qtdServicosCompletoDoMes[$i], ";
+		}
+	}
+	
+	if($stringAtividade == null)
+	{
+		$stringAtividade = "2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3";
+	}
+		  ?>
     <script>
       var theme = {
           color: [
@@ -723,28 +798,28 @@ else
           type: 'value',
           name: 'Quantidade',
           axisLabel: {
-            formatter: '{value} ml'
+            formatter: '{value} '
           }
         }, {
           type: 'value',
           name: 'Horas',
           axisLabel: {
-            formatter: '{value} °C'
+            formatter: '{value} h'
           }
         }],
         series: [{
-          name: 'Revenue',
+          name: 'Serviço concluido',
           type: 'bar',
-          data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+          data: [<?php echo($stringServicoCompleto); ?>]
         }, {
-          name: 'Cash Input',
+          name: 'Serviços',
           type: 'bar',
-          data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, <?php echo(182.2 + $countCanvas);?>, 48.7, 18.8, 6.0, 2.3]
+          data: [<?php echo($stringServico); ?>]
         }, {
-          name: 'Time Spent',
+          name: 'Tempo gasto',
           type: 'line',
           yAxisIndex: 1,
-          data: [2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
+          data: [<?php echo($stringAtividade); ?>]
         }]
       });
     </script>

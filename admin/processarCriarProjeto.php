@@ -10,6 +10,7 @@ $datarange = $_POST["reservation"];
 
 $time_range_from_user = '2014-03-28 17:00:00 to 2014-03-28 18:00:00';
 
+
 $ranges = explode(' - ', $datarange); //Split string on ' to '
 
 $start_timestamp = strtotime($ranges[0]); //Take first result and turn it into a timestamp

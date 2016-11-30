@@ -29,10 +29,12 @@ while ($rowStatus = mysqli_fetch_array($resultadoStatus))
 				$id_status = $rowStatus["id_status"];
 			}
 
+$horas = time();
+$horasTimestamp = date('Y/m/d H:i:s', $horas);
 
 
 $sql = "INSERT INTO servico (descricao, fk_projeto, fk_funcionario, fk_setor, completo, horas, fk_status)
-                                            VALUES ('$servico_desc','$idProjeto','$fk_funcionario','$fk_setor','$completo','0', '$id_status')";
+                                            VALUES ('$servico_desc','$idProjeto','$fk_funcionario','$fk_setor','$completo','$horasTimestamp', '$id_status')";
     $resultado = mysqli_query($conexao, $sql);
 	if ($resultado == false) {
             $erro = mysqli_error($conexao);
