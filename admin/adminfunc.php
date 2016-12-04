@@ -379,9 +379,7 @@ else
 
                       <div>
 
-                        <h4>Atividade recente</h4>
-
-                        <!-- end of user messages -->
+                        
 						<?php
 						
 						$sqlServ = "SELECT distinct(id_servico), descricao, horas, completo FROM `servico` WHERE fk_projeto = $idDoProjeto AND completo = 0 ORDER BY id_servico ASC LIMIT 1";
@@ -397,12 +395,15 @@ else
 	}
 						?>
 						<?php 
-						if($rowServ != null){
+						if(isset($id_servicoX)){
 						?>
 						<a href="updateServico.php?idServico=<?php echo($id_servicoX);?>&projetoNome=<?php echo($projetoNome);?>&projetoDesc=<?php echo($projetoDescricao);?>&servDesc=<?php echo($descricaoX);?>" class="btn btn-info" role="button">AtualizarServiço</a>
                         <?php 
 						}
 						?>
+						<h4>Atividade recente</h4>
+
+                        <!-- end of user messages -->
 						<ul class="messages">
 						<!----------- log começa aqui ---------------->
 						<?php

@@ -65,6 +65,7 @@ $resultado = mysqli_query($conexao, $sql);
         }
 		
 if(isset($_POST["completar"])){
+	$finalizado = '<span class="label label-default">Finalizado com sucesso</span>';
 	$sql = "INSERT
 INTO
   `registro`(
@@ -75,7 +76,7 @@ INTO
     `fk_status`
   )
 VALUES(
-'$descricao Finalizado com sucesso',
+'$descricao $finalizado',
 '$horasTimestamp',
 '$id_funcionario',
 '$id_servico',
