@@ -32,8 +32,6 @@ FROM
 WHERE
   projetos.fk_empresa = id_empresa AND projetos.fk_empresa = $id_empresa_session";
 	$resultado = mysqli_query($conexao, $sql);
-
-
 ?>
 
         <!-- page content -->

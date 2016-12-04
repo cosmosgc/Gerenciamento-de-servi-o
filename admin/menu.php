@@ -54,6 +54,7 @@ if (!$resultado) {
 
 $sql = "SELECT count(DISTINCT (id_funcionario)) FROM funcionario, empresa, setor WHERE funcionario.fk_empresa = $id_empresa AND fk_setor = id_setor";
 $resultadoFuncionariosCount = mysqli_query($conexao,$sql);
+
 $funcionarioCountArray =  mysqli_fetch_assoc($resultadoFuncionariosCount);
 $funcionarioCount = $funcionarioCountArray["count(DISTINCT (id_funcionario))"];
 

@@ -4,14 +4,14 @@
 <form id="msform" action="processarCadastro.php" method="post" class="form-group" >
 	<!-- progressbar -->
 	<ul id="progressbar">
-		<li class="active">Configurações da conta.</li>
+		<li class="active">ConfiguraÃ§Ã´es da conta.</li>
 		<li>Setores</li>
 		<li>Detalhes opcionais</li>
 	</ul>
 	<!-- fieldsets -->
 	<fieldset>
 		<h2 class="fs-title">Crie a conta da empresa</h2>
-		<h3 class="fs-subtitle">Essa é a etapa 1</h3>
+		<h3 class="fs-subtitle">Essa Ã© a etapa 1</h3>
 		<input type="text" name="email" placeholder="Email" required/>
 		<input type="text" name="username" placeholder="Nome da empresa" required/>
 		<input type="password" name="password" placeholder="Senha" required/>
@@ -40,12 +40,12 @@
 	</fieldset>
 	<fieldset>
 		<h2 class="fs-title">Detalhes Opcionais</h2>
-		<h3 class="fs-subtitle">Preencha se achar nescessário</h3>
-		<textarea type="" name="desc" placeholder="Descrição da empresa" form="msform"></textarea>
+		<h3 class="fs-subtitle">Preencha se achar nescessÃ¡rio</h3>
+		<textarea type="" name="desc" placeholder="DescriÃ§Ã£o da empresa" form="msform"></textarea>
 		<input type="text" name="CEO" placeholder="CEO" />
-		<input type="text" name="telefone" placeholder="Telefone" />
-		<input type="text" name="cnpj" placeholder="cnpj" />
-		<textarea name="address" placeholder="Endereço" form="msform"></textarea>
+		<input type="text" name="telefone" placeholder="Telefone" data-inputmask="'mask' : '(999) 9999-9999'" />
+		<input type="text" name="cnpj" placeholder="cnpj" data-inputmask="'mask' : '99.999.999/9999-99'" />
+		<textarea name="address" placeholder="EndereÃ§o" form="msform"></textarea>
 		<input type="button" name="previous" class="previous action-button" value="Previous" />
 		<input type="submit" name="submit" class="btn btn-default" value="Submit" />
 	</fieldset>
@@ -151,6 +151,14 @@ $(".submit").click(function(){
 
 		</script>
 		
-	
+	<!-- jquery.inputmask -->
+    <script src="vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+	 <!-- jquery.inputmask -->
+    <script>
+      $(document).ready(function() {
+        $(":input").inputmask();
+      });
+    </script>
+    <!-- /jquery.inputmask -->
     </body>
 </html>

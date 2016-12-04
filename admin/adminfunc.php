@@ -380,6 +380,20 @@ else
                         <h4>Atividade recente</h4>
 
                         <!-- end of user messages -->
+						<?php
+						
+						$sqlServ = "SELECT distinct(id_servico), descricao, horas, completo FROM `servico` WHERE fk_projeto = $idDoProjeto ORDER BY id_servico ASC LIMIT 1";
+	$resultadoServ = mysqli_query($conexao, $sqlServ);
+	while ($rowServ = mysqli_fetch_array($resultadoServ, MYSQLI_BOTH))
+	{
+		foreach ($rowServ as $column => $description)
+			{
+				//echo "column: $description <br>"; // teste de tabela
+				$id_servicoX = $rowServ["id_servico"];
+			}
+	}
+						?>
+						<a href="updateServico.php?idServico=<?php echo($id_servicoX);?>&projetoNome=<?php echo($projetoNome);?>&projetoDesc=<?php echo($projetoDescricao);?>" class="btn btn-info" role="button">AtualizarServiço</a>
                         <ul class="messages">
 						<!----------- log começa aqui ---------------->
                           <li>
