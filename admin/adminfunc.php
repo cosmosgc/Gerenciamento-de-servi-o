@@ -112,7 +112,8 @@ $sql = "SELECT DISTINCT
   status.descricao,
   funcionario.nome,
   completo,
-  id_funcionario
+  id_funcionario,
+  servico.id_servico
 FROM
   servico,
   setor,
@@ -180,6 +181,7 @@ WHERE
 				$funcionarioResponsavel[$count] = $row[3];
 				$ativo[$count] = $row[4];
 				$id_funcionario[$count] = $row[5];
+				$id_servico[$count] = $row[6];
 				if ($ativo[$count] == 0)
 				{
 					$ativo[$count] = "em progresso";
@@ -192,7 +194,7 @@ WHERE
 		//output
 		?>
 		<tr>
-			<td><a href="editarServico.php?id=<?php echo($id_funcionario[$count]);?>" class="fa fa-wrench" name="table_records"></a></td>
+			<td><a href="editarServico.php?id=<?php echo($id_servico[$count]);?>" class="fa fa-wrench" name="table_records"></a></td>
 			<td><?php echo($nomeServico[$count]); ?></td>
 			<td><?php echo($nomeSetor[$count]); ?></td>
 			<td><?php echo($status[$count]); ?></td>
