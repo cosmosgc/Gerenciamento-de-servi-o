@@ -25,7 +25,7 @@
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-comments-o"></i></div>
-                  <div class="count">179</div>
+                  <div class="count"><?php echo($logCount);?></div>
                   <h3>Outputs</h3>
                   <p>log em serviços.</p>
                 </div>
@@ -73,9 +73,6 @@
 				menuFuncionario($id_empresa, $row["id_projeto"], $countCanvas);
 				$countCanvas++;
 			}
-			
-			
-				
 		}
 		?>
 		<!-- table de funcionarios -->

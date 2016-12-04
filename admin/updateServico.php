@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 
-<?php include("menu.php");?>
+<?php include("menu.php");
+
+?>
 			    <!-- Datatables -->
 		<link href="scripts/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
 		<link href="scripts/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
@@ -39,12 +41,18 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <form class="form-horizontal form-label-left">
+                    <form action='processarUpdateServico.php' id='enviarServico' method="post" class="form-horizontal form-label-left">
 
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Descrição do Projeto</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                           <?php if (isset($_GET["projetoDesc"]))echo($_GET["projetoDesc"]);?>
+                        </div>
+                      </div>
+					  <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Descrição do serviço</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <?php if (isset($_GET["servDesc"]))echo($_GET["servDesc"]);?>
                         </div>
                       </div>
                       
@@ -76,6 +84,7 @@
                       </div>
                       <input type="hidden" name="id_servico" value="<?php echo($_GET["idServico"]); ?>">
 					  <input type="hidden" name="id_funcionario" value="<?php echo($_SESSION['id_funcionario']); ?>">
+					  <input type="hidden" name="fk_status" value="<?php echo($_SESSION['id_funcionario']); ?>">
 
 
                       <div class="ln_solid"></div>

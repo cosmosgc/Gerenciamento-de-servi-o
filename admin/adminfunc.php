@@ -384,7 +384,7 @@ else
                         <!-- end of user messages -->
 						<?php
 						
-						$sqlServ = "SELECT distinct(id_servico), descricao, horas, completo FROM `servico` WHERE fk_projeto = $idDoProjeto ORDER BY id_servico ASC LIMIT 1";
+						$sqlServ = "SELECT distinct(id_servico), descricao, horas, completo FROM `servico` WHERE fk_projeto = $idDoProjeto AND completo = 0 ORDER BY id_servico ASC LIMIT 1";
 	$resultadoServ = mysqli_query($conexao, $sqlServ);
 	while ($rowServ = mysqli_fetch_array($resultadoServ, MYSQLI_BOTH))
 	{
@@ -392,23 +392,54 @@ else
 			{
 				//echo "column: $description <br>"; // teste de tabela
 				$id_servicoX = $rowServ["id_servico"];
+				$descricaoX = $rowServ["descricao"];
 			}
 	}
 						?>
-						<a href="updateServico.php?idServico=<?php echo($id_servicoX);?>&projetoNome=<?php echo($projetoNome);?>&projetoDesc=<?php echo($projetoDescricao);?>" class="btn btn-info" role="button">AtualizarServiço</a>
-                        <ul class="messages">
+						<?php 
+						if($rowServ != null){
+						?>
+						<a href="updateServico.php?idServico=<?php echo($id_servicoX);?>&projetoNome=<?php echo($projetoNome);?>&projetoDesc=<?php echo($projetoDescricao);?>&servDesc=<?php echo($descricaoX);?>" class="btn btn-info" role="button">AtualizarServiço</a>
+                        <?php 
+						}
+						?>
+						<ul class="messages">
 						<!----------- log começa aqui ---------------->
-                          <li>
-                            <div class="message_date">
-                              <h3 class="date text-info">24</h3>
-                              <p class="month">Maio</p>
-                            </div>
-                            <div class="message_wrapper">
-                              <h4 class="heading">Usuario</h4>
-                              <blockquote class="message">Descrição do log.</blockquote>
-                              <br />
-                            </div>
-                          </li>
+						<?php
+						$sqlLog = "SELECT distinct(id_registro), registro.descricao, horasLog, registro.fk_funcionario, registro.fk_servico, registro.fk_status, nome FROM `registro`, servico, funcionario WHERE registro.fk_funcionario = id_funcionario AND fk_servico = id_servico AND fk_projeto = $idDoProjeto ORDER BY id_registro DESC";
+						
+						$resultadoLog = mysqli_query($conexao, $sqlLog);
+	
+						if (!$resultadoLog) {
+						  $erro = mysqli_error($conexao);
+						  echo("FAIL $erro");
+						} 
+						else 
+						{
+							while ($rowLog = mysqli_fetch_array($resultadoLog, MYSQLI_BOTH))
+							{
+								$descricaoY = $rowLog["descricao"];
+								$horasY = $rowLog["horasLog"];
+								$nomeY = $rowLog["nome"];
+								$horas_timestamp = strtotime($horasY);
+								$dia = date('d', $horas_timestamp);
+								$mes = date('M', $horas_timestamp);
+								?>
+								  <li>
+									<div class="message_date">
+									  <h3 class="date text-info"><?php echo($dia);?></h3>
+									  <p class="month"><?php echo($mes);?></p>
+									</div>
+									<div class="message_wrapper">
+									  <h4 class="heading"><?php echo($nomeY);?></h4>
+									  <blockquote class="message"><?php echo($descricaoY);?></blockquote>
+									  <br />
+									</div>
+								  </li>
+								<?php
+							}
+						}
+						?>
 						  <!----------- log acaba aqui ---------------->
                           
                         </ul>

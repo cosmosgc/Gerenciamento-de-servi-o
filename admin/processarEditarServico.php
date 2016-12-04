@@ -24,7 +24,7 @@ SET
   `descricao` = '$servico_desc',
   `horas` = '$horasTimestamp',
   `fk_funcionario` = $fk_funcionario,
-  `fk_setor` = $fk_setor  
+  `fk_setor` = $fk_setor 
 WHERE
   id_servico = $id_servico";
   
