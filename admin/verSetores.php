@@ -53,7 +53,7 @@ projetos.id_projeto = $idProjeto";
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Projects <small></small></h3>
+                <h3>Serviços <small></small></h3>
               </div>
 
               
@@ -77,97 +77,99 @@ projetos.id_projeto = $idProjeto";
                   </div>
                   <div class="x_content">
 
-                    <p>Visualizar projeto</p>
+                    <p>Visualizar serviço</p>
 
-                    <!-- start project list -->
-					
+                    <!-- start service list -->
 <?php
-if (!$resultado) {
-  $erro = mysqli_error($conexao);
-  echo("FAIL $erro");
-} 
-else 
+	$conexao=null;
+if($conexao == null)
 {
-	$count = 1;
-	while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
+	include("../conectar.php");
+}
+$sqlAdmin = "SELECT id_setor, setor.nome as NomeSetor, fk_empresa, empresa.nome as NomeEmpresa FROM `setor`, empresa WHERE fk_empresa = id_empresa AND fk_empresa = ".$id_empresa;
+	$resultado = mysqli_query($conexao, $sqlAdmin);
+	if (!$resultado) {
+	  $erro = mysqli_error($conexao);
+	  echo("FAIL $erro");
+	} 
+	else 
 	{
+		?>
+		    
+		<link href="scripts/custom.min.css" rel="stylesheet">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Tabela de serviços</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      
+					  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        
+						<ul class="dropdown-menu" role="menu">
+                          </li>
+                        </ul>
+						
+                      </li>
+					  
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action">
+                      <thead>
+                        <tr>
+                          <th><input type="checkbox" id="check-all" class="flat"></th>
+                          <th>nome</th>
+						  <th>Empresa</th>
+                        </tr>
+                      </thead>
+
+
+                      <tbody>
+					  
+		<?php
+		$count = 1;
+		while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
+		{
 		foreach ($row as $column => $description)
 			{
 				//echo "column: $description <br>"; // teste de tabela
+				$id_setor[$count] = $row[0];
+				$setor_nome[$count] = $row[1];
+				$id_empresa[$count] = $row[2];
+				$nome_empresa[$count] = $row[3];
 			}
-		$projetoId = $row["id_projeto"];
-		$projetoNome = $row["nome"];
-		$projetoDescricao = $row["descricao"];
-		$projetoStartDate = $row["startDate"];
-		$projetoEndDate = $row["endDate"];
-		$projetoHoras = $row["horas"];
-		$startPlacehold = strtotime($projetoStartDate);
-		$projetoStartDateConverted = date('m/d/Y', $startPlacehold);
-		$endPlacehold = strtotime($projetoEndDate);
-		$projetoEndDateConverted = date('m/d/Y', $endPlacehold);
-		$status = "Em andamento";
-		$statusColor = "btn btn-warning";
-		$progressoPercent = rand(0, 100);
-		$count++;
-		
+		//output
 		?>
-		<form id="msform" action="UpdateProjeto.php" method="post" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
-
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nome do projeto 
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="nomeProjeto" id="first-name" value="<?php echo($projetoNome); ?>" readonly="readonly" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Descricao do projeto 
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                         <?php echo($projetoDescricao); ?>
-                        </div>
-                      </div>
-                      <div class="well">
-
-                      <!-- DateRange Picker -->
-                        <fieldset>
-                          <div class="control-group">
-                            <div class="controls">
-                              <div class="input-prepend input-group">
-                                <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-                                <input type="text" style="width: 200px" name="reservation" id="reservation" class="form-control" value="<?php echo($projetoStartDateConverted); ?> - <?php echo($projetoEndDateConverted); ?>"readonly="readonly">
-                              </div>
-                            </div>
-                          </div>
-                        </fieldset>
-						</div>
-						<!-- DateRange Picker -->
-                     <input type="hidden" name="idProjeto" value="<?php echo ($idProjeto); ?>"></input>
-                      <div class="ln_solid"></div>
-                      <div class="form-group">
-					  
-					  <?php
-					  include("adminfunc.php");
-						tableServicos($idProjeto);
-					  ?>
-					  
-					  <a href="criarServico.php?idProjeto=<?php echo($idProjeto);?>" class="btn btn-info" role="button">Criar serviço</a>
+		<tr>
+			<td><a href='editarSetor.php?id=<?php echo($id_setor[$count]);?>';" class="fa fa-wrench" name="table_records"></td>
+			<td><?php echo($setor_nome[$count]); ?></td>
+			<td><?php echo($nome_empresa[$count]); ?></td>
+		</tr>
+		<?php
+		$count++;
+	    }
+		?>
+		
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+			  
+		<?php
+	}
+	?>
+                    <!-- end service list -->
+					<a href="criarSetor.php?idProjeto=<?php echo($id_empresa);?>" class="btn btn-info" role="button">Criar setor</a>
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 						
                         </div>
-                      </div>
-					  
-					
-					  
-								
-								
-		
-		<?php
-	}
-}
-?>
-
-                    <!-- end project list -->
 
                   </div>
                 </div>

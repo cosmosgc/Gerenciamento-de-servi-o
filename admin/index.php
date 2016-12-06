@@ -52,6 +52,10 @@
 		<!-- table de funcionarios -->
 		<?php 
 		include("adminfunc.php");
+		if(isset($_SESSION['id_funcionario']))
+		{
+			
+		}
 		$sqlAdmin = "SELECT * FROM `niveis` WHERE fk_funcionario = ".$_SESSION['id_funcionario'];
 		$resultado = mysqli_query($conexao, $sqlAdmin);
 		$quantidadeDeLinhas = mysqli_num_rows($resultado);
@@ -62,6 +66,7 @@
 		else if($tipo_user == "empresa")
 		{
 			tableFuncionarios($id_empresa);
+			donutChart(5, 1);
 		}
 		else if($tipo_user == "funcionario")
 		{
