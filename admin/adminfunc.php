@@ -941,4 +941,86 @@ WHERE
 		<?php
 	}		
 }
+
+function donutChart($id_projeto, $count)
+{
+		include("../conectar.php");
+
+	$sql = "SELECT * FROM projetos WHERE id_projeto = $id_projeto";
+	$resultado = mysqli_query($conexao, $sql);
+	while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
+		{
+				//echo "column: $description <br>"; // teste de tabela
+				$startDate = $row["startDate"];
+				$start_timestamp = strtotime($startDate); //Take first result and turn it into a timestamp
+
+		}
+	$sql = "SELECT * FROM servico WHERE fk_projeto = $id_projeto";
+	$resultado = mysqli_query($conexao, $sql);
+	$i = 1;
+	while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
+		{
+			
+		foreach ($row as $column => $description)
+			{
+				//echo "column: $description <br>"; // teste de tabela
+				$id_servico[$i] = $row["id_servico"];
+				$descricao[$i] = $row["descricao"];
+				$horas[$i] = $row["horas"];
+				$completo[$i] = $row["completo"];
+			}
+			if(!isset($label))
+				$label = "";
+			$label .= '"'.$descricao[$i].'"'.", ";
+			$tempoNovo = (strtotime($horas[$i]) - $start_timestamp);
+			if($i != 1)
+			{
+			$data .= $tempoNovo - $tempoVelho;
+			}else{
+				$data = $tempoNovo.", ";
+			}
+			
+			$tempoVelho = $tempoNovo;
+
+			
+			$i++;
+		}
+	echo("<div class='x_content'>
+                    <canvas id='canvasDoughnut$count'></canvas>
+                  </div>");
+	?>
+	<script>
+	// Doughnut chart
+      var ctx = document.getElementById("canvasDoughnut<?php echo($count); ?>");
+      var data = {
+        labels: [<?php echo($label); ?>
+        ],
+        datasets: [{
+          data: [<?php echo($data); ?>],
+          backgroundColor: [
+            "#455C73",
+            "#9B59B6",
+            "#BDC3C7",
+            "#26B99A",
+            "#3498DB"
+          ],
+          hoverBackgroundColor: [
+            "#34495E",
+            "#B370CF",
+            "#CFD4D8",
+            "#36CAAB",
+            "#49A9EA"
+          ]
+
+        }]
+      };
+
+      var canvasDoughnut = new Chart(ctx, {
+        type: 'doughnut',
+        tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+        data: data
+      });
+	  </script>
+	  <?php
+}
 ?>
