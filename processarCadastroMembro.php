@@ -48,7 +48,7 @@ if ($quantidadeDeLinhas == 1) {
 			}
 			$countSector++;
 		  }
-
+	header("location:index.html");
     echo("<div class='alert alert-success'><strong>Cadastro realizado com sucesso! $username na $id_empresa </strong></div>");
 	var_dump($_POST);
     echo("<h2><a href='index.php'>Voltar para a página do Admin</a></h2>");

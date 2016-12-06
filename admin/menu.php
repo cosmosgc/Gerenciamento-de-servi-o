@@ -54,6 +54,7 @@ if (!$resultado) {
 
 $sql = "SELECT count(DISTINCT (id_funcionario)) FROM funcionario, empresa, setor WHERE funcionario.fk_empresa = $id_empresa AND fk_setor = id_setor";
 $resultadoFuncionariosCount = mysqli_query($conexao,$sql);
+
 $funcionarioCountArray =  mysqli_fetch_assoc($resultadoFuncionariosCount);
 $funcionarioCount = $funcionarioCountArray["count(DISTINCT (id_funcionario))"];
 
@@ -67,6 +68,23 @@ $sql = "select COUNT(id_servico) from servico, setor where fk_setor = id_setor A
 $resultadoServicoCount = mysqli_query($conexao,$sql);
 $ServicoCountArray =  mysqli_fetch_assoc($resultadoServicoCount);
 $ServicoCompletoCount = $ServicoCountArray["COUNT(id_servico)"];
+
+$sql = "SELECT
+  COUNT(id_registro)
+FROM
+  servico,
+  registro,
+  projetos
+WHERE
+  fk_servico = id_servico AND fk_empresa = $id_empresa and fk_projeto = id_projeto";
+$resultadoLogCount = mysqli_query($conexao,$sql);
+$LogCountArray =  mysqli_fetch_assoc($resultadoLogCount);
+if($LogCountArray["COUNT(id_registro)"] != null){
+	$logCount = $LogCountArray["COUNT(id_registro)"];
+}else{
+	$logCount = 0;
+}
+
 
 
 ?>

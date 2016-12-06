@@ -4,8 +4,8 @@ require_once("../conectar.php");
 $data= date("d/m/Y");
 
 require_once("../var.php");
-$id_projeto = $_GET["id"];
-$sql = "SELECT * FROM `servico` WHERE `id_servico` = 1";
+$id_servico = $_GET["id"];
+$sql = "SELECT * FROM `servico` WHERE `id_servico` = ".$id_servico;
 	$resultado = mysqli_query($conexao, $sql);
 	
 if (!$resultado) {
@@ -17,10 +17,6 @@ else
 	$count = 1;
 	while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
 	{
-		foreach ($row as $column => $description)
-			{
-				//echo "column: $description <br>"; // teste de tabela
-			}
 		$id_servico = $row["id_servico"];
 		$descricao = $row["descricao"];
 		$horas = $row["horas"];
@@ -65,15 +61,8 @@ else
                   <div class="x_content">
                     <br>
                     <!--FORMULARIO-->
-					<form action='processarCriarServico.php' id='enviarServico' method="post" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+					<form action='processarEditarServico.php' id='enviarServico' method="post" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
 
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nome do serviço <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name='NomeServico' placeholder='Nome do serviço' id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
                       <div class="well">
 
                       <!-- DateRange Picker -->
@@ -85,10 +74,10 @@ else
 								<script language="Javascript" src="textToolbox\xhtml.js" type="text/javascript"></script>
 								<script language="Javascript" src="textToolbox\htmlbox.min.js" type="text/javascript"></script>
 								<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Descrição do serviço
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">DescriÃ§Ã£o do serviÃ§o
 									</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
-								<textarea name="servico_desc" id='ha' form='enviarServico' ></textarea>
+								<textarea name="servico_desc" id='ha' form='enviarServico' ><?php echo($descricao);?></textarea>
 								<script language="Javascript" type="text/javascript">
 								$("#ha").css("height","100%").css("width","100%").htmlbox({
 									toolbars:[
@@ -127,9 +116,10 @@ else
                         </fieldset>
 						</div>
 						<!-- DateRange Picker -->
-                     <input type="hidden" name="idProjeto" value="<?php echo ($id_projeto); ?>"></input>
+                     <input type="hidden" name="id_servico" value="<?php echo ($id_servico); ?>"></input>
 					 <input type="hidden" name="fk_empresa" value="<?php echo ($id_empresa); ?>"></input>
-					 <input type="hidden" name="completo" value="false"></input>
+					 <input type="hidden" name="horas" value="<?php echo ($horas); ?>"></input>
+					 <input type="hidden" name="completo" value="<?php echo ($completo); ?>"></input>
 					 <?php
 					 $countSector = 1;
 
@@ -151,7 +141,8 @@ else
 			}
 		}
 		?>
-		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Descrição do serviço
+		<div class="form-group">
+		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Setor responsavel *
 									</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
 		<?php
@@ -160,7 +151,11 @@ echo("<option value=''>Nenhum</option>");
 $count = 1;
 
 while ($count < $countSector) {
+	if($setorid[$count] == $fk_setor){
+		echo("<option value='$setorid[$count]' selected>$setor[$count]</option>");
+	}else{
 	echo("<option value='$setorid[$count]'>$setor[$count]</option>");
+	}
 	$count++;
 }
 echo('</select>');
@@ -195,8 +190,8 @@ WHERE
 			}
 		}
 		?>
-		
-		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Funcionario Responsável
+		</div>
+		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Funcionario ResponsÃ¡vel *
 									</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
 		<?php
@@ -205,7 +200,11 @@ echo("<option value=''>Nenhum</option>");
 $count = 1;
 
 while ($count < $countFuncionarios) {
+	if($id_funcionario[$count] == $fk_funcionario){
+		echo("<option value='$id_funcionario[$count]' selected>$funcionario_nome[$count]</option>");
+	}else{
 	echo("<option value='$id_funcionario[$count]'>$funcionario_nome[$count]</option>");
+	}
 	$count++;
 }
 

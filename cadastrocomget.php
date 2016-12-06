@@ -11,10 +11,9 @@
 		<h3 class="fs-subtitle">Essa é a etapa 1</h3>
 		<input type="text" name="email" placeholder="Email" required/>
 		<input type="text" name="username" placeholder="Nome do usuario" required/>
-		<input type="text" name="cpf" placeholder="cpf"/>
-		<input type="text" name="telefone" placeholder="Telefone" />
+		<input type="text" name="cpf" placeholder="cpf" data-inputmask="'mask' : '999.999.999-99'"/>
+		<input type="text" name="telefone" placeholder="Telefone" data-inputmask="'mask' : '(999) 9999-9999'" />
 		<input type="password" name="password" placeholder="Senha" required/>
-		<input type="password" name="passwordcheck" placeholder="Confirmar senha" required/>
 	<!--</fieldset>
 	<fieldset> -->
 		<h2 class="fs-title">Setores</h2>
@@ -128,6 +127,14 @@ $(".submit").click(function(){
 
 		</script>
 		
-	
+	    <!-- jquery.inputmask -->
+    <script src="vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+	 <!-- jquery.inputmask -->
+    <script>
+      $(document).ready(function() {
+        $(":input").inputmask();
+      });
+    </script>
+    <!-- /jquery.inputmask -->
     </body>
 </html>
