@@ -39,8 +39,9 @@ if ($resultado == false) {
         echo("<h2><a href='cadastro.php'>Voltar para a página de cadastro</a></h2>");
     } else {
         //Se não existe usuário com o login cadastrado, insere no banco
-        $resultado = mysqli_query($conexao, "INSERT INTO empresa (nome, senha, telefone, cnpj, email, cidade, desc_empresa, ceo)
-                                            VALUES ('$username','$password','$tel','$cnpj','$email', '$address', '$desc', '$ceo')");
+		$sqlResultado = "INSERT INTO empresa (nome, senha, telefone, cnpj, email, cidade, desc_empresa, ceo)
+                                            VALUES ('$username','$password','$tel','$cnpj','$email', '$address', '$desc', '$ceo')";
+        $resultado = mysqli_query($conexao, $sqlResultado);
 		
 
 		$resultado = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "'.$username.'"' );
@@ -63,10 +64,10 @@ if ($resultado == false) {
 		//$resultado = mysqli_query($conexao, "INSERT INTO setor (nome, fk_empresa)
         //                                    VALUES ('$nome_setor',$id_empresa)");
         if ($resultado == false) {
-            $erro = mysqli_errno($conexao);
-            echo($erro);
+            $erro = mysqli_error($conexao);
+            echo($erro.$sqlResultado);
         }
-		header("location:index.html");
+		//header("location:index.html");
         echo("<div class='alert alert-success'><strong>Cadastro realizado com sucesso!</strong></div>");
         echo("<h2><a href='index.php'>Voltar para a página do Admin</a></h2>");
     }

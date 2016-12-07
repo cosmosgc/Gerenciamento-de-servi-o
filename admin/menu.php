@@ -242,13 +242,13 @@ if(!isset($verSetores))
                     </ul>
                   </li>
                   <?php 
-				  if($criarServico == 1 || $modificarServico == 1){
+				  if($criarServico == 1 || $modificarServico == 1 || $ceo == 1){
 				  ?>
 		  <li><a><i class="fa fa-edit"></i> Projetos <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-					<?php if($criarServico == 1){echo('<li><a href="criarProjeto.php">Criar Projetos</a></li>');}?>
+					<?php if($criarServico == 1 || $ceo == 1){echo('<li><a href="criarProjeto.php">Criar Projetos</a></li>');}?>
                       
-					  <?php if($modificarServico == 1){echo('<li><a href="projects.php">Listagem/edição de projetos</a></li>');}?>
+					  <?php if($modificarServico == 1 || $ceo == 1){echo('<li><a href="projects.php">Listagem/edição de projetos</a></li>');}?>
                       
                       
                     </ul>
@@ -524,7 +524,7 @@ GROUP BY
 							}
 						}
 						?>
-                    <span class="badge bg-green"><?php echo($countLogAlert);?></span><!--numero de alertas-->
+                    <span class="badge bg-green"><?php if(isset($countLogAlert)){echo($countLogAlert);} else{echo("0");}?></span><!--numero de alertas-->
                   </a>
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
 				  <!----------- log começa aqui ---------------->
