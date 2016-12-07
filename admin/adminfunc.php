@@ -521,12 +521,14 @@ else
 			}
 		$count++;
 	}
+	if(isset($id_servico)){
+		
 	
 	for($i = 1; $i <= count($id_servico); $i++)
 	{
 		$horasTimestamp = strtotime($horas[$i]);
 		$horasTimestampMonth = date('n', $horasTimestamp);
-		$tamanhoTempoHoras = (($horasTimestamp - $startPlacehold)/60/60);
+		$tamanhoTempoHoras = (($horasTimestamp - $startPlacehold)/60/60/24);
 		$horasDoMes[$horasTimestampMonth] = round ($tamanhoTempoHoras);
 		if($completo[$i] == 1)
 		{
@@ -850,9 +852,9 @@ else
           }
         }, {
           type: 'value',
-          name: 'Horas',
+          name: 'Dias',
           axisLabel: {
-            formatter: '{value} h'
+            formatter: '{value} D'
           }
         }],
         series: [{
@@ -864,7 +866,7 @@ else
           type: 'bar',
           data: [<?php echo($stringServico); ?>]
         }, {
-          name: 'Tempo gasto',
+          name: 'Dia finalizado',
           type: 'line',
           yAxisIndex: 1,
           data: [<?php echo($stringAtividade); ?>]
@@ -873,6 +875,7 @@ else
     </script>
     <!-- /ECharts -->
 	<?php
+}else{echo("Ainda não há dados para criar um resumo");}
 }
 
 function AdminTable()
@@ -889,7 +892,8 @@ $sqlAdmin = "SELECT DISTINCT
   funcionario.email,
   cpf,
   funcionario.telefone,
-  empresa.nome AS nomeEmpresa
+  empresa.nome AS nomeEmpresa,
+  id_empresa
 FROM
   funcionario,
   empresa,
@@ -960,6 +964,7 @@ WHERE
 				$cpf[$count] = $row[4];
 				$telefone[$count] = $row[5];
 				$nomeEmpresa[$count] = $row[6];
+				$id_empresa_All[$count] = $row["id_empresa"];
 			}
 		//output
 		?>
@@ -971,7 +976,7 @@ WHERE
 			<td><?php echo($cpf[$count]); ?></td>
 			<td><?php echo($telefone[$count]); ?></td>
 			<td><?php echo($id_funcionario[$count]);?></td>
-			<td><?php echo($nomeEmpresa[$count]);?></td>
+			<td><a href="editarEmpresa.php?id=<?php echo($id_empresa_All[$count]);?>"><?php echo($nomeEmpresa[$count]);?></a></td>
 		</tr>
 		<?php
 		$count++;
@@ -1019,11 +1024,11 @@ function donutChart($id_projeto, $count)
 				$label = "";
 			$label .= '"'.$descricao[$i].'"'.", ";
 			$tempoNovo = (strtotime($horas[$i]) - $start_timestamp);
-			if($i != 1)
+			if(isset($data))
 			{
-			$data .= $tempoNovo - $tempoVelho;
+			$data .= (($tempoNovo - $tempoVelho)/60/60/24).", " ;
 			}else{
-				$data = $tempoNovo.", ";
+				$data = ($tempoNovo/60/60/24).", ";
 			}
 			
 			$tempoVelho = $tempoNovo;
@@ -1031,11 +1036,46 @@ function donutChart($id_projeto, $count)
 			
 			$i++;
 		}
-	echo("<div class='x_content'>
-                    <canvas id='canvasDoughnut$count'></canvas>
-                  </div>");
+	echo("");
 	?>
+	<div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Resumo de projetos</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      
+					  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        
+						<ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Settings 1</a>
+                          </li>
+                          <li><a href="#">Settings 2</a>
+                          </li>
+                        </ul>
+						
+                      </li>
+					  
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+	<div class='x_content'>
+                    <canvas id='canvasDoughnut<?php echo($count); ?>'></canvas>
+                  </div>
+				  </div>
+                </div>
+				
+				<!-- Chart.js -->
+    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+	
 	<script>
+	Chart.defaults.global.legend = {
+        enabled: false
+      };
 	// Doughnut chart
       var ctx = document.getElementById("canvasDoughnut<?php echo($count); ?>");
       var data = {

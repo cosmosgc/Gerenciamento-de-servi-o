@@ -62,59 +62,15 @@ else
                     <br>
                     <!--FORMULARIO-->
 					<form action='processarEditarServico.php' id='enviarServico' method="post" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
-
-                      <div class="well">
-
-                      <!-- DateRange Picker -->
-                        <fieldset>
-                          <script language="Javascript" src="textToolbox\jquery-1.3.2.min.js" type="text/javascript"></script>
-								<script language="Javascript" src="textToolbox\htmlbox.colors.js" type="text/javascript"></script>
-								<script language="Javascript" src="textToolbox\htmlbox.styles.js" type="text/javascript"></script>
-								<script language="Javascript" src="textToolbox\htmlbox.syntax.js" type="text/javascript"></script>
-								<script language="Javascript" src="textToolbox\xhtml.js" type="text/javascript"></script>
-								<script language="Javascript" src="textToolbox\htmlbox.min.js" type="text/javascript"></script>
-								<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Descrição do serviço
-									</label>
-									<div class="col-md-6 col-sm-6 col-xs-12">
-								<textarea name="servico_desc" id='ha' form='enviarServico' ><?php echo($descricao);?></textarea>
-								<script language="Javascript" type="text/javascript">
-								$("#ha").css("height","100%").css("width","100%").htmlbox({
-									toolbars:[
-										[
-										// Undo, Redo
-										"separator","undo","redo",
-										// Bold, Italic, Underline, Strikethrough, Sup, Sub
-										"separator","bold","italic","underline","strike","sup","sub",
-										// Left, Right, Center, Justify
-										"separator","justify","left","center","right",
-										// Ordered List, Unordered List, Indent, Outdent
-										"separator","ol","ul","indent","outdent",
-										// Hyperlink, Remove Hyperlink, Image
-										"separator","link","unlink","image"
-										
-										],
-										[// Show code
-										"separator","code",
-										// Formats, Font size, Font family, Font color, Font, Background
-										"separator","formats","fontsize","fontfamily",
-										"separator","fontcolor","highlight",
-										],
-										[
-										//Strip tags
-										"separator","removeformat","striptags","hr","paragraph",
-										// Styles, Source code syntax buttons
-										"separator","quote","styles","syntax"
-										]
-									],
-									skin:"blue"
-								});
-
-								</script>
-									</div>
-								</div>
-                        </fieldset>
-						</div>
+						
+						
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Descrição <span class="required"></span>
+                        </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input type="text" class="form-control" name="ServDesc" value='<?php echo($descricao);?>'>
+                        </div>
+                      </div>
 						<!-- DateRange Picker -->
                      <input type="hidden" name="id_servico" value="<?php echo ($id_servico); ?>"></input>
 					 <input type="hidden" name="fk_empresa" value="<?php echo ($id_empresa); ?>"></input>

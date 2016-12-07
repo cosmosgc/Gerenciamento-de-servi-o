@@ -12,6 +12,24 @@
 		<div class="right_col" role="main">
           <div class="">
 		<!-- widgets -->
+		<?php 
+$sql = "SELECT count(DISTINCT (id_funcionario)) FROM funcionario, empresa, setor WHERE funcionario.fk_empresa = id_empresa AND fk_setor = id_setor";
+$resultadoFuncionariosCount = mysqli_query($conexao,$sql);
+
+$funcionarioCountArray =  mysqli_fetch_assoc($resultadoFuncionariosCount);
+$funcionarioCount = $funcionarioCountArray["count(DISTINCT (id_funcionario))"];
+
+
+$sql = "select COUNT(id_servico) from servico, setor where fk_setor = id_setor AND  completo = 0";
+$resultadoServicoCount = mysqli_query($conexao,$sql);
+$ServicoCountArray =  mysqli_fetch_assoc($resultadoServicoCount);
+$ServicoCount = $ServicoCountArray["COUNT(id_servico)"];
+
+$sql = "select COUNT(id_servico) from servico, setor where fk_setor = id_setor AND  completo = 1";
+$resultadoServicoCount = mysqli_query($conexao,$sql);
+$ServicoCountArray =  mysqli_fetch_assoc($resultadoServicoCount);
+$ServicoCompletoCount = $ServicoCountArray["COUNT(id_servico)"];
+		?>
         
             <div class="row top_tiles">
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -52,23 +70,9 @@
 		<!-- table de funcionarios -->
 		<?php 
 		include("adminfunc.php");
-		$countCanvas = 1;
-		if($tipo_user == "empresa")
-		{
-			tableFuncionarios($id_empresa);
-			donutChart(5, $countCanvas);
-		}
-		else if($tipo_user == "funcionario")
-		{
-			$sqlAdmin = "SELECT * FROM `projetos` WHERE `fk_empresa` = ".$id_empresa;
-			$resultado = mysqli_query($conexao, $sqlAdmin);
-			
-			while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
-			{
-				menuFuncionario($id_empresa, $row["id_projeto"], $countCanvas);
-				$countCanvas++;
-			}
-		}
+		
+		AdminTable();
+		
 		?>
 		<!-- table de funcionarios -->
 		
@@ -77,7 +81,7 @@
         <!-- footer content -->
         <footer>
           <!--<div class="pull-right">
-            Site desenvolvido por VinÃ­cius Bretas Avezani de Mello Silva
+            Site desenvolvido por Vinícius Bretas Avezani de Mello Silva
           </div>-->
           <div class="clearfix"></div>
         </footer>

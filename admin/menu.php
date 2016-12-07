@@ -16,11 +16,11 @@ $resultado = mysqli_query($conexao, 'SELECT * FROM empresa WHERE nome = "'.$user
   if (mysqli_num_rows($resultado)==0) {
     $resultado = mysqli_query($conexao, $sql);
       debug_to_console("logado como funcionario");
-      if (!$resultado)
-    {
-        $erro = mysqli_error($conexao);
-        echo("FAIL $erro");
-    }
+	  $tipo_user = "funcionario";
+	  
+  }else{
+	  debug_to_console("logado como empresa");
+	  $tipo_user = "empresa";
   }
 
 $row = mysqli_fetch_assoc($resultado);
@@ -85,7 +85,93 @@ if($LogCountArray["COUNT(id_registro)"] != null){
 	$logCount = 0;
 }
 
+$sqlFuncionario = "SELECT
+  id_funcionario,
+  cpf,
+  funcionario.nome AS nomeFuncionario,
+  email,
+  telefone,
+  senha,
+  fk_setor,
+  setor.nome AS nomeSetor,
+  funcionario.fk_empresa AS id_empresa
+FROM
+  `funcionario`,
+  setor
+WHERE
+  fk_setor = id_setor AND funcionario.nome = '$username'";
+	  	$resultado = mysqli_query($conexao, $sqlFuncionario);
+	
+if (!$resultado) {
+  $erro = mysqli_error($conexao);
+  echo("FAIL $erro $sqlFuncionario");
+} 
 
+else 
+{
+	$count = 1;
+	while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
+	{
+		$id_funcionario = $row["id_funcionario"];
+		$cpf = $row["cpf"];
+		$nome = $row["nomeFuncionario"];
+		$email = $row["email"];
+		$telefone = $row["telefone"];
+		$fk_setor = $row["fk_setor"];
+		$senha = $row["senha"];
+		$setor = $row["nomeSetor"];
+		$id_empresa = $row["id_empresa"];
+		$count++;
+	}
+	
+}
+if($tipo_user == "funcionario"){      
+$sql = "SELECT * FROM `niveis` WHERE `fk_funcionario` = ".$id_funcionario;
+	$resultado = mysqli_query($conexao, $sql);
+	
+if (!$resultado) {
+  $erro = mysqli_error($conexao);
+  echo("FAIL $erro $sql");
+} 
+else 
+{
+	$count = 1;
+	while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
+	{
+		$admin = $row["admin"];
+		$ceo = $row["ceo"];
+		$criarServico = $row["criarServico"];
+		$modificarServico = $row["modificarServico"];
+		$verSetores = $row["verSetores"];
+		$count++;
+		
+	}
+	
+}
+}
+
+if(!isset($admin))
+{
+	$admin = 0;
+}
+if(!isset($ceo) && $tipo_user == "funcionario")
+{
+	$ceo = 0;
+}else{
+	$ceo = 1;
+}
+if(!isset($criarServico))
+{
+	$criarServico = 0;
+}
+if(!isset($modificarServico))
+{
+	$modificarServico = 0;
+}
+if(!isset($verSetores))
+{
+	$verSetores = 0;
+}
 
 ?>
 
@@ -155,15 +241,35 @@ if($LogCountArray["COUNT(id_registro)"] != null){
 			-->
                     </ul>
                   </li>
-                  
+                  <?php 
+				  if($criarServico == 1 || $modificarServico == 1){
+				  ?>
 		  <li><a><i class="fa fa-edit"></i> Projetos <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="criarProjeto.php">Criar Projetos</a></li>
-                      <li><a href="projects.php">Listagem/edição de projetos</a></li>
-                      <li><a href="#">Validação</a></li>
-                      <li><a href="#">Log</a></li>
+					<?php if($criarServico == 1){echo('<li><a href="criarProjeto.php">Criar Projetos</a></li>');}?>
+                      
+					  <?php if($modificarServico == 1){echo('<li><a href="projects.php">Listagem/edição de projetos</a></li>');}?>
+                      
+                      
                     </ul>
                   </li>
+				  <?php
+				  }
+				  ///////////////////////////////////////////////////////////////////////////////////////////////////////
+				  ?>
+				  <?php 
+				  if($admin == 1){
+				  ?>
+		  <li><a><i class="fa fa-edit"></i> Admin <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+					<?php if($admin == 1){echo('<li><a href="admin.php">Area Admin</a></li>');}?>
+                      
+                    </ul>
+                  </li>
+				  <?php
+				  }
+				  ?>
+				  
 			<!--
                   <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
@@ -356,6 +462,7 @@ function copyToClipboard(elem) {
         </div>
 
         <!-- top navigation -->
+		
         <div class="top_nav">
           <div class="nav_menu">
             <nav>
@@ -385,65 +492,100 @@ function copyToClipboard(elem) {
                 <li role="presentation" class="dropdown">
                   <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">0</span><!--numero de alertas-->
+					<?php
+						$sqlLog = "SELECT DISTINCT
+  (id_registro) AS id,
+  COUNT(DISTINCT(id_registro)) AS COUNT,
+  funcionario.nome,
+  horasLog,
+  registro.descricao
+FROM
+  `registro`,
+  servico,
+  setor,
+  funcionario
+WHERE
+  fk_servico = id_servico AND servico.fk_funcionario = id_funcionario AND completo = 0 AND funcionario.fk_empresa = $id_empresa
+GROUP BY
+  id_registro";
+						
+						$resultadoLog = mysqli_query($conexao, $sqlLog);
+	
+						if (!$resultadoLog) {
+						  $erro = mysqli_error($conexao);
+						  echo("FAIL $erro");
+						} 
+						else 
+						{
+							while ($rowLog = mysqli_fetch_array($resultadoLog, MYSQLI_BOTH))
+							{
+								$countLogAlert = $rowLog["COUNT"];
+								
+							}
+						}
+						?>
+                    <span class="badge bg-green"><?php echo($countLogAlert);?></span><!--numero de alertas-->
                   </a>
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <!--<a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Atualizei o servi?..
-                        </span>
-                      </a>
-                    </li>
+				  <!----------- log começa aqui ---------------->
+						<?php
+						$sqlLog = "SELECT DISTINCT
+  (id_registro),
+  funcionario.nome,
+  horasLog,
+  registro.descricao
+FROM
+  `registro`,
+  servico,
+  setor,
+  funcionario
+WHERE
+  fk_servico = id_servico AND servico.fk_funcionario = id_funcionario AND completo = 0 AND funcionario.fk_empresa = 20";
+						
+						$resultadoLog = mysqli_query($conexao, $sqlLog);
+	
+						if (!$resultadoLog) {
+						  $erro = mysqli_error($conexao);
+						  echo("FAIL $erro");
+						} 
+						else 
+						{
+							while ($rowLog = mysqli_fetch_array($resultadoLog, MYSQLI_BOTH))
+							{
+								$descricaoY = $rowLog["descricao"];
+								$horasY = $rowLog["horasLog"];
+								$nomeY = $rowLog["nome"];
+								$horas_timestamp = strtotime($horasY);
+								$dia = date('d', $horas_timestamp);
+								$mes = date('M', $horas_timestamp);
+								$horas = time();
+								
+								$placeholdHoras = ($horas - $horas_timestamp)/60/60;
+								$tempo = round($placeholdHoras , 2)." Horas atras";
+								if($tempo < 1)
+								{
+									$placeholdHoras = ($horas - $horas_timestamp)/60;
+									$tempo = round($placeholdHoras, 2)." Minutos atras";
+								}
+								?>
+						  <!----------- log acaba aqui ---------------->
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                         <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
+                          <span><?php echo($nomeY); ?></span>
+                          <span class="time"><?php echo($tempo); ?></span>
                         </span>
                         <span class="message">
-                          O sistema ganhou melhorias incriveis...
+                          <?php echo($descricaoY); ?>
                         </span>
                       </a>
                     </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Podemlhor aperfei?r mais o sistema...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Temos uma semana para finalizar esse servi?..
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="text-center">
-                        <a>
-                          <strong>Veja todos os alertas</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>-->
+                    
+					<?php
+					
+							}
+						}
+						?>
                   </ul>
                 </li>
               </ul>

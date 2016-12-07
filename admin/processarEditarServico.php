@@ -2,7 +2,7 @@
 require_once("../conectar.php");
 require_once("../var.php");
 
-$servico_desc = $_POST['servico_desc'];
+$servico_desc = $_POST['ServDesc'];
 $fk_funcionario = $_POST['fk_funcionario'];
 $fk_setor = $_POST['fk_setor'];
 $id_servico = $_POST['id_servico'];

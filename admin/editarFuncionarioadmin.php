@@ -14,17 +14,12 @@ $sql = "SELECT
   senha,
   fk_setor,
   setor.nome AS nomeSetor,
-  admin,
-  ceo,
-  criarServico,
-  modificarServico,
-  verSetores
+  funcionario.fk_empresa AS id_empresa
 FROM
   `funcionario`,
-  setor,
-  niveis
+  setor
 WHERE
-  fk_setor = id_setor AND niveis.fk_funcionario = id_funcionario AND `id_funcionario` = ".$id_funcionario;
+  fk_setor = id_setor AND `id_funcionario` = ".$id_funcionario;
 	$resultado = mysqli_query($conexao, $sql);
 	
 if (!$resultado) {
@@ -40,20 +35,24 @@ else
 		$cpf = $row["cpf"];
 		$nome = $row["nomeFuncionario"];
 		$email = $row["email"];
-		$telefone = $row["fk_setor"];
+		$telefone = $row["telefone"];
+		$fk_setor = $row["fk_setor"];
 		$senha = $row["senha"];
 		$setor = $row["nomeSetor"];
-		$admin = $row["admin"];
+		$id_empresa = $row["id_empresa"];
+		/*$admin = $row["admin"];
 		$ceo = $row["ceo"];
 		$criarServico = $row["criarServico"];
 		$modificarServico = $row["modificarServico"];
 		$verSetores = $row["verSetores"];
+		*/
 		$count++;
 	}
 }
 ?>
 
         <!-- page content -->
+		
 		<div class="right_col" role="main" style="min-height: 3936px;">
           <div class="">
             <div class="page-title">
@@ -84,35 +83,74 @@ else
                   <div class="x_content">
                     <br>
                     <!--FORMULARIO-->
-					<form action='processarEditarServico.php' id='enviarServico' method="post" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+					<form action='processarEditarFuncionario.php' id='enviarFuncionario' method="post" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
 						<div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Nome <span class="required"></span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" name="ServDesc" value="">
+                          <input type="text" class="form-control" name="nomeFuncionario" value="<?php echo($nome);?>">
                         </div>
                       </div>
 					  <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">CPF <span class="required"></span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" name="ServDesc" value="" data-inputmask="'mask' : '999.999.999-99'">
+                          <input type="text" class="form-control" name="cpf" value="<?php echo($cpf);?>" data-inputmask="'mask' : '999.999.999-99'">
                         </div>
                       </div>
 					  <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">E-Mail <span class="required"></span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" name="ServDesc" value="">
+                          <input type="text" class="form-control" name="email" value="<?php echo($email);?>">
                         </div>
                       </div>
 					  <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Telefone <span class="required"></span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" name="ServDesc" value="" data-inputmask="'mask' : '(999) 9999-9999'">
+                          <input type="text" class="form-control" name="telefone" value="<?php echo($telefone);?>" data-inputmask="'mask' : '(999) 9999-9999'">
                         </div>
                       </div>
+					  
+					  <?php 
+$sql = "SELECT * FROM `niveis` WHERE `fk_funcionario` = ".$id_funcionario;
+	$resultado = mysqli_query($conexao, $sql);
+	
+if (!$resultado) {
+  $erro = mysqli_error($conexao);
+  echo("FAIL $erro $sql");
+} 
+else 
+{
+	$count = 1;
+	while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
+	{
+		$admin = $row["admin"];
+		$ceo = $row["ceo"];
+		$criarServico = $row["criarServico"];
+		$modificarServico = $row["modificarServico"];
+		$verSetores = $row["verSetores"];
+		$count++;
+	}
+	
+}
+if(!isset($admin)){
+		$admin = 0;
+	}
+	if(!isset($ceo)){
+		$ceo = 0;
+	}
+	if(!isset($criarServico)){
+		$criarServico = 0;
+	}
+	if(!isset($modificarServico)){
+		$modificarServico = 0;
+	}
+	if(!isset($verSetores)){
+		$verSetores = 0;
+	}
+					  ?>
                       <div class="form-group">
                         <label class="col-md-3 col-sm-3 col-xs-12 control-label">Serviços
                           <br>
@@ -122,7 +160,7 @@ else
                         <div class="col-md-9 col-sm-9 col-xs-12">
                           <div class="checkbox">
                             <label>
-                              <input type="checkbox" name="completar" class="flat"> Modificar Serviços
+                              <input type="checkbox" name="modServ" <?php if($modificarServico == 1){echo("checked='checked'");}?> class="flat"> Modificar Serviços
                             </label>
                           </div>
                           
@@ -137,7 +175,7 @@ else
                         <div class="col-md-9 col-sm-9 col-xs-12">
                           <div class="checkbox">
                             <label>
-                              <input type="checkbox" name="completar" class="flat"> CEO
+                              <input type="checkbox" name="ceo" <?php if($ceo == 1){echo("checked='checked'");}?> class="flat"> CEO
                             </label>
                           </div>
                           
@@ -152,7 +190,7 @@ else
                         <div class="col-md-9 col-sm-9 col-xs-12">
                           <div class="checkbox">
                             <label>
-                              <input type="checkbox" name="completar" class="flat"> Criar Serviço
+                              <input type="checkbox" name="criarServ" <?php if($criarServico == 1){echo("checked='checked'");}?> class="flat"> Criar Serviço
                             </label>
                           </div>
                           
@@ -167,7 +205,7 @@ else
                         <div class="col-md-9 col-sm-9 col-xs-12">
                           <div class="checkbox">
                             <label>
-                              <input type="checkbox" name="completar" class="flat"> Ver Setores
+                              <input type="checkbox" name="verSetor" <?php if($verSetores == 1){echo("checked='checked'");}?> class="flat"> Ver Setores
                             </label>
                           </div>
                           
@@ -182,16 +220,58 @@ else
                         <div class="col-md-9 col-sm-9 col-xs-12">
                           <div class="checkbox">
                             <label>
-                              <input type="checkbox" name="completar" class="flat"> Admin
+                              <input type="checkbox" name="admin" <?php if($admin == 1){echo("checked='checked'");}?> class="flat"> Admin
                             </label>
                           </div>
                           
                         </div>
                       </div>
+					  <?php
+
+
+	$resultadoSetores = mysqli_query($conexao, "SELECT DISTINCT * FROM setor WHERE fk_empresa = '".$id_empresa."'");
+		if (!$resultado) {
+			$erro = mysqli_error($conexao);
+			echo("FAIL $erro");
+		} else {
+			$countSector = 1;
+			while ($rowSetor = mysqli_fetch_array($resultadoSetores))
+			{
+				
+				$setorNome[$countSector] = $rowSetor["nome"];
+				$setorid[$countSector] = $rowSetor["id_setor"];
+				
+				$countSector++;
+			}
+		}
+		?>
+		<div class="form-group">
+		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Setor
+									</label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+		<?php
+echo('<select name="fk_setor" class="form-control"> required');
+echo("<option value=''>Nenhum</option>");
+$countSec = 1;
+
+while ($countSec < $countSector) {
+	if($setorid[$countSec] == $fk_setor){
+		echo("<option value='$setorid[$countSec]' selected>$setorNome[$countSec]</option>");
+	}else{
+	echo("<option value='$setorid[$countSec]'>$setorNome[$countSec]</option>");
+	}
+	$countSec++;
+}
+
+echo('</select>');
+echo("</div></div>");
+?>
 					 
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+						<input type="hidden" name="id_funcionario" value="<?php echo($id_funcionario);?>" class="flat">
+						<input type="hidden" name="id_empresa" value="<?php echo($id_empresa);?>" class="flat">
                           <button type="submit" class="btn btn-primary">Cancel</button>
                           <button type="submit" class="btn btn-success">Submit</button>
                         </div>

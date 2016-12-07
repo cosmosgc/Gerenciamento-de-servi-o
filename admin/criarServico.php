@@ -86,10 +86,10 @@ else
 					<form action='processarCriarServico.php' id='enviarServico' method="post" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
 
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nome do serviço <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nome do projeto <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name='NomeServico' placeholder='Nome do serviço' id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                          <?php echo($projetoNome);?>
                         </div>
                       </div>
                       <div class="well">
@@ -106,40 +106,8 @@ else
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Descrição do serviço
 									</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
-								<textarea name="servico_desc" id='ha' form='enviarServico' ></textarea>
-								<script language="Javascript" type="text/javascript">
-								$("#ha").css("height","100%").css("width","100%").htmlbox({
-									toolbars:[
-										[
-										// Undo, Redo
-										"separator","undo","redo",
-										// Bold, Italic, Underline, Strikethrough, Sup, Sub
-										"separator","bold","italic","underline","strike","sup","sub",
-										// Left, Right, Center, Justify
-										"separator","justify","left","center","right",
-										// Ordered List, Unordered List, Indent, Outdent
-										"separator","ol","ul","indent","outdent",
-										// Hyperlink, Remove Hyperlink, Image
-										"separator","link","unlink","image"
-										
-										],
-										[// Show code
-										"separator","code",
-										// Formats, Font size, Font family, Font color, Font, Background
-										"separator","formats","fontsize","fontfamily",
-										"separator","fontcolor","highlight",
-										],
-										[
-										//Strip tags
-										"separator","removeformat","striptags","hr","paragraph",
-										// Styles, Source code syntax buttons
-										"separator","quote","styles","syntax"
-										]
-									],
-									skin:"blue"
-								});
-
-								</script>
+								<input type="text" class="form-control" name="servico_desc" value=''>
+								
 									</div>
 								</div>
                         </fieldset>
@@ -169,7 +137,8 @@ else
 			}
 		}
 		?>
-		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Descrição do serviço
+		<div class="form-group">
+		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Setor
 									</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
 		<?php
