@@ -67,7 +67,7 @@ if ($resultado == false) {
             $erro = mysqli_error($conexao);
             echo($erro.$sqlResultado);
         }
-		//header("location:index.html");
+		header("location:index.html");
         echo("<div class='alert alert-success'><strong>Cadastro realizado com sucesso!</strong></div>");
         echo("<h2><a href='index.php'>Voltar para a página do Admin</a></h2>");
     }

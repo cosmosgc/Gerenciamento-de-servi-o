@@ -21,6 +21,14 @@ require_once("../conectar.php");
 $data= date("d/m/Y");
 
 require_once("../var.php");
+if($id_empresa_session == null){
+	$resultado = mysqli_query($conexao, "SELECT * FROM empresa
+                                    WHERE nome='$username' AND senha='$password' OR cnpj='$username' AND senha='$password'");
+while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
+		{
+			$id_empresa_session = $row["id_empresa"];
+		}
+}
 $idProjeto = $_GET["id_projeto"];
 $sql = "SELECT DISTINCT
   projetos.id_projeto,

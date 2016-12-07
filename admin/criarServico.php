@@ -4,6 +4,14 @@ require_once("../conectar.php");
 $data= date("d/m/Y");
 
 require_once("../var.php");
+if($id_empresa_session == null){
+	$resultado = mysqli_query($conexao, "SELECT * FROM empresa
+                                    WHERE nome='$username' AND senha='$password' OR cnpj='$username' AND senha='$password'");
+while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
+		{
+			$id_empresa_session = $row["id_empresa"];
+		}
+}
 $id_projeto = $_GET["idProjeto"];
 $sql = "SELECT DISTINCT
   projetos.id_projeto,
@@ -130,7 +138,7 @@ else
 			{
 				foreach ($rowSetor as $column => $description)
 				{
-					$setor[$countSector] = $rowSetor["nome"];
+					$setorNome[$countSector] = $rowSetor["nome"];
 					$setorid[$countSector] = $rowSetor["id_setor"];
 				}
 				$countSector++;
@@ -144,11 +152,11 @@ else
 		<?php
 echo('<select name="fk_setor" class="form-control"> required');
 echo("<option value=''>Nenhum</option>");
-$count = 1;
+$counti = 1;
 
-while ($count < $countSector) {
-	echo("<option value='$setorid[$count]'>$setor[$count]</option>");
-	$count++;
+while ($counti < $countSector) {
+	echo("<option value='$setorid[$counti]'>$setorNome[$counti]</option>");
+	$counti++;
 }
 echo('</select>');
 echo("</div></div>");

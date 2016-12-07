@@ -19,6 +19,12 @@ $end_timestamp = strtotime($ranges[1]); //Take second result and turn it into a 
 $endDate = date('Y/m/d H:i:s', $end_timestamp);
 $tempo = ($end_timestamp - $start_timestamp) / 60 / 60;
 
+$resultado = mysqli_query($conexao, "SELECT * FROM empresa
+                                    WHERE nome='$username' AND senha='$password' OR cnpj='$username' AND senha='$password'");
+while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
+		{
+			$id_empresa_session = $row["id_empresa"];
+		}
 $sql = "INSERT INTO projetos (nome, descricao, horas, startDate, endDate, fk_empresa)
                                             VALUES ('$nomeProjeto','$descProjeto','$tempo','$startDate','$endDate', '$id_empresa_session')";
     $resultado = mysqli_query($conexao, $sql);

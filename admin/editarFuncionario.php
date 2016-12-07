@@ -47,7 +47,7 @@ else
 
         <!-- page content -->
 		
-		<div class="right_col" role="main" style="min-height: 3936px;">
+		<div class="right_col" role="main" style="min-height: 396px;">
           <div class="">
             <div class="page-title">
               <div class="title_left">
@@ -77,12 +77,26 @@ else
                   <div class="x_content">
                     <br>
                     <!--FORMULARIO-->
-					<form action='processarEditarFuncionario.php' id='enviarFuncionario' method="post" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+					<form action='processarEditarFuncionarioSemAdmin.php' id='enviarFuncionario' method="post" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
 						<div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Nome <span class="required"></span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                           <input type="text" class="form-control" name="nomeFuncionario" value="<?php echo($nome);?>">
+                        </div>
+                      </div>
+					  <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Senha atual <span class="required"></span>
+                        </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input type="password" class="form-control" name="pass" value="">
+                        </div>
+                      </div>
+					  <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Nova senha <span class="required"></span>
+                        </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input type="password" class="form-control" name="NewPass" value="">
                         </div>
                       </div>
 					  <div class="form-group">
@@ -107,150 +121,6 @@ else
                         </div>
                       </div>
 					  
-					  <?php 
-$sql = "SELECT * FROM `niveis` WHERE `fk_funcionario` = ".$id_funcionario;
-	$resultado = mysqli_query($conexao, $sql);
-	
-if (!$resultado) {
-  $erro = mysqli_error($conexao);
-  echo("FAIL $erro $sql");
-} 
-else 
-{
-	$count = 1;
-	$admin = 0;
-	$ceo = 0;
-	$criarServico = 0;
-	$modificarServico = 0;
-	$verSetores = 0;
-	while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
-	{
-		$admin = $row["admin"];
-		$ceo = $row["ceo"];
-		$criarServico = $row["criarServico"];
-		$modificarServico = $row["modificarServico"];
-		$verSetores = $row["verSetores"];
-		$count++;
-	}
-	
-}
-
-					  ?>
-                      <div class="form-group">
-                        <label class="col-md-3 col-sm-3 col-xs-12 control-label">Serviços
-                          <br>
-                          <small class="text-navy">Previlégio de modificar Serviços</small>
-                        </label>
-
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                          <div class="checkbox">
-                            <label>
-                              <input type="checkbox" name="modServ" <?php if($modificarServico == 1){echo("checked='checked'");}?> class="flat"> Modificar Serviços
-                            </label>
-                          </div>
-                          
-                        </div>
-                      </div>
-					  <div class="form-group">
-                        <label class="col-md-3 col-sm-3 col-xs-12 control-label">CEO
-                          <br>
-                          <small class="text-navy">Titulo de CEO da empresa</small>
-                        </label>
-
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                          <div class="checkbox">
-                            <label>
-                              <input type="checkbox" name="ceo" <?php if($ceo == 1){echo("checked='checked'");}?> class="flat"> CEO
-                            </label>
-                          </div>
-                          
-                        </div>
-                      </div>
-					  <div class="form-group">
-                        <label class="col-md-3 col-sm-3 col-xs-12 control-label">Serviço
-                          <br>
-                          <small class="text-navy">Previlégio de criar serviços em projetos</small>
-                        </label>
-
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                          <div class="checkbox">
-                            <label>
-                              <input type="checkbox" name="criarServ" <?php if($criarServico == 1){echo("checked='checked'");}?> class="flat"> Criar Serviço
-                            </label>
-                          </div>
-                          
-                        </div>
-                      </div>
-					  <div class="form-group">
-                        <label class="col-md-3 col-sm-3 col-xs-12 control-label">Setores
-                          <br>
-                          <small class="text-navy">Previlégio de ver setores da empresa</small>
-                        </label>
-
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                          <div class="checkbox">
-                            <label>
-                              <input type="checkbox" name="verSetor" <?php if($verSetores == 1){echo("checked='checked'");}?> class="flat"> Ver Setores
-                            </label>
-                          </div>
-                          
-                        </div>
-                      </div>
-					  <div class="form-group">
-                        <label class="col-md-3 col-sm-3 col-xs-12 control-label">ADMIN
-                          <br>
-                          <small class="text-navy">Dar previlégio admin a esse usuario</small>
-                        </label>
-
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                          <div class="checkbox">
-                            <label>
-                              <input type="checkbox" name="admin" <?php if($admin == 1){echo("checked='checked'");}?> class="flat"> Admin
-                            </label>
-                          </div>
-                          
-                        </div>
-                      </div>
-					  <?php
-
-
-	$resultadoSetores = mysqli_query($conexao, "SELECT DISTINCT * FROM setor WHERE fk_empresa = '".$id_empresa."'");
-		if (!$resultado) {
-			$erro = mysqli_error($conexao);
-			echo("FAIL $erro");
-		} else {
-			$countSector = 1;
-			while ($rowSetor = mysqli_fetch_array($resultadoSetores))
-			{
-				
-				$setorNome[$countSector] = $rowSetor["nome"];
-				$setorid[$countSector] = $rowSetor["id_setor"];
-				
-				$countSector++;
-			}
-		}
-		?>
-		<div class="form-group">
-		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Setor
-									</label>
-									<div class="col-md-6 col-sm-6 col-xs-12">
-		<?php
-echo('<select name="fk_setor" class="form-control"> required');
-echo("<option value=''>Nenhum</option>");
-$countSec = 1;
-
-while ($countSec < $countSector) {
-	if($setorid[$countSec] == $fk_setor){
-		echo("<option value='$setorid[$countSec]' selected>$setorNome[$countSec]</option>");
-	}else{
-	echo("<option value='$setorid[$countSec]'>$setorNome[$countSec]</option>");
-	}
-	$countSec++;
-}
-
-echo('</select>');
-echo("</div></div>");
-?>
 					 
                       <div class="ln_solid"></div>
                       <div class="form-group">

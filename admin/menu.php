@@ -444,7 +444,7 @@ function copyToClipboard(elem) {
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="Settings">
+              <a href="editarFuncionario.php?id=<?php if($tipo_user == "funcionario"){echo($id_funcionario);}else{echo($id_empresa);} ?>" data-toggle="tooltip" data-placement="top" title="Settings">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
               </a>
               <a data-toggle="tooltip" data-placement="top" title="FullScreen">
@@ -477,11 +477,11 @@ function copyToClipboard(elem) {
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Perfil</a></li>
+                    
                     <li>
-                      <a href="javascript:;">
+                      <a href="editarFuncionario.php?id=<?php if($tipo_user == "funcionario"){echo($id_funcionario);}else{echo($id_empresa);} ?>"">
                         <span class="badge bg-red pull-right">pessoal</span>
-                        <span>Configura?s</span>
+                        <span>Configurações</span>
                       </a>
                     </li>
                     <li><a href="javascript:;">Ajuda</a></li>

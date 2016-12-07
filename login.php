@@ -5,6 +5,7 @@ require("conectar.php");
 $username = $_POST["username"];
 $password = $_POST["password"];
 $password = md5($password);
+
 //Busca do banco usuário e senha iguais aos do login
 $resultado = mysqli_query($conexao, "SELECT * FROM empresa
                                     WHERE nome='$username' AND senha='$password' OR cnpj='$username' AND senha='$password'");
@@ -17,18 +18,27 @@ if ($resultado == false) {
     if($quantidadeDeLinhas == 1){
         //echo("bem-vindo $username");
         
-
-        session_start();
+while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
+		{
+			$id_empresa_session = $row["id_empresa"];
+		$senha = $row["senha"];
+		}
+		if($senha == $password)
+		{
+			session_start();
 		//$username=$_SESSION['username'];
 		$_SESSION['username']=$username;
 		$_SESSION['password']=$password;
 		$_SESSION['tipo_user']="empresa";
+		
         header('Location:admin/');
+		}
+        
 
 
     }else{
-        $resultado = mysqli_query($conexao, "SELECT * FROM funcionario
-                                    WHERE nome='$username' AND senha='$password' OR cpf='$username' AND senha='$password'");
+        $resultado = mysqli_query($conexao, "SELECT id_funcionario, nome, fk_setor, email, telefone, senha FROM funcionario
+                                    WHERE nome='$username' OR cpf='$username'");
 		session_start();
 		while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
 		{
@@ -41,8 +51,14 @@ if ($resultado == false) {
 				$email = $row[3];
 				$cpf = $row[4];
 				$telefone = $row[5];
+				
+				$senha = $row["senha"];
+				
 			}
 		}
+		if($senha == $password)
+		{
+			
 		$_SESSION['username']=$username;
 		$_SESSION['password']=$password;
 		$_SESSION['tipo_user']="funcionario";
@@ -51,8 +67,10 @@ if ($resultado == false) {
 		$_SESSION['email']=$email;
 		$_SESSION['cpf']=$cpf;
 		header('Location:admin/');
+		}
 
     }
 }
 ///////////SESSION_START!\\\\\\\\\\\
+
 ?>

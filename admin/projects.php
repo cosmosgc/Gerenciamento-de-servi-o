@@ -19,6 +19,12 @@ $data= date("d/m/Y");
 
 require_once("../var.php");
 
+$resultado = mysqli_query($conexao, "SELECT * FROM empresa
+                                    WHERE nome='$username' AND senha='$password' OR cnpj='$username' AND senha='$password'");
+while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
+		{
+			$id_empresa_session = $row["id_empresa"];
+		}
 $sql = "SELECT DISTINCT
   projetos.id_projeto,
   projetos.nome,
@@ -155,7 +161,7 @@ else
                           <td>
                             <a href="verProjeto.php?id_projeto=<?php echo($projetoId);?>" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Visualizar </a>
                             <a href="editarProjeto.php?id_projeto=<?php echo($projetoId);?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>
-                            <a href="deletarProjeto.php?id_projeto=<?php echo($projetoId);?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Deletar </a>
+                            <!--<a href="deletarProjeto.php?id_projeto=<?php echo($projetoId);?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Deletar </a>-->
                           </td>
                         </tr>
 		
