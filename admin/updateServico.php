@@ -66,8 +66,16 @@
                       
 
                       
-
-                      <div class="form-group">
+					<?php
+					require_once("../conectar.php");
+					$idQuero = $_SESSION["id_funcionario"];
+					$id_servico = $_GET["idServico"];
+					$sql = "SELECT * FROM `servico` WHERE fk_funcionario = $idQuero and id_servico = $id_servico";
+					$resultado = mysqli_query($conexao, $sql);
+					while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
+					{
+						?>
+						<div class="form-group">
                         <label class="col-md-3 col-sm-3 col-xs-12 control-label">Finalizar esse serviço
                           <br>
                           <small class="text-navy">isso irá apresentar o próximo serviço aos funcionarios</small>
@@ -82,6 +90,10 @@
                           
                         </div>
                       </div>
+						<?php
+					}
+					?>
+                      
                       <input type="hidden" name="id_servico" value="<?php echo($_GET["idServico"]); ?>">
 					  <input type="hidden" name="id_funcionario" value="<?php echo($_SESSION['id_funcionario']); ?>">
 					  <input type="hidden" name="fk_status" value="<?php echo($_SESSION['id_funcionario']); ?>">

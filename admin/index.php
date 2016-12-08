@@ -52,11 +52,21 @@
 		<!-- table de funcionarios -->
 		<?php 
 		include("adminfunc.php");
-		$countCanvas = 1;
+		include("donut.php");
+		$countCanvasCeo = 0;
 		if($tipo_user == "empresa")
 		{
+			
+			
 			tableFuncionarios($id_empresa);
-			donutChart(5, $countCanvas);
+			
+			$sqlCeo = "SELECT * FROM `projetos` WHERE `fk_empresa` = ".$id_empresa;
+			$resultadoCeo = mysqli_query($conexao, $sqlCeo);
+			while ($row = mysqli_fetch_array($resultadoCeo, MYSQLI_BOTH))
+			{
+				TheDonut($id_empresa, $row["id_projeto"], $countCanvasCeo);
+				$countCanvasCeo++;
+			}
 		}
 		else if($tipo_user == "funcionario")
 		{

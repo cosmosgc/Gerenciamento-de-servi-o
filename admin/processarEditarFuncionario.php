@@ -96,14 +96,16 @@ INTO
     `verSetores`,
     `modificarServico`,
     `admin`,
-    `ceo`
+    `ceo`,
+	fk_funcionario
   )
 VALUES(
   $criarServ,
   $verSetor,
   $modServ,
   $admin,
-  $ceo
+  $ceo,
+  $id_funcionario
 )";
 $resultadoNiveis = mysqli_query($conexao, $sqlNiveis);
 if (!$resultadoNiveis) {
@@ -111,9 +113,9 @@ if (!$resultadoNiveis) {
   echo("FAIL $erro $sql");
 } 
 	}
-	
+	header("Location: index.php");
 	
 
 }
-	header("Location: index.php");
+	//header("Location: index.php");
 ?>

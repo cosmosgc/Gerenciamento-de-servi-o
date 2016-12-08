@@ -21,7 +21,7 @@ if ($resultado == false) {
 while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
 		{
 			$id_empresa_session = $row["id_empresa"];
-		$senha = $row["senha"];
+			$senha = $row["senha"];
 		}
 		if($senha == $password)
 		{
@@ -70,6 +70,9 @@ while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
 		}
 
     }
+	echo($password);
+	//header('Location:index.html');
+	
 }
 ///////////SESSION_START!\\\\\\\\\\\
 

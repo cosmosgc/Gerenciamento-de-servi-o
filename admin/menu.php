@@ -540,7 +540,7 @@ FROM
   setor,
   funcionario
 WHERE
-  fk_servico = id_servico AND servico.fk_funcionario = id_funcionario AND completo = 0 AND funcionario.fk_empresa = 20";
+  fk_servico = id_servico AND servico.fk_funcionario = id_funcionario AND completo = 0 AND funcionario.fk_empresa = $id_empresa";
 						
 						$resultadoLog = mysqli_query($conexao, $sqlLog);
 	

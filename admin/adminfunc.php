@@ -993,23 +993,23 @@ WHERE
 	}		
 }
 
-function donutChart($id_projeto, $count)
+function donutChart($id_empresa, $id_projeto, $count)
 {
 		include("../conectar.php");
 
-	$sql = "SELECT * FROM projetos WHERE id_projeto = $id_projeto";
-	$resultado = mysqli_query($conexao, $sql);
-	while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
+	$sqlDonut = "SELECT * FROM projetos WHERE id_projeto = $id_projeto";
+	$resultadoDonut = mysqli_query($conexao, $sqlDonut);
+	while ($row = mysqli_fetch_array($resultadoDonut, MYSQLI_BOTH))
 		{
 				//echo "column: $description <br>"; // teste de tabela
 				$startDate = $row["startDate"];
 				$start_timestamp = strtotime($startDate); //Take first result and turn it into a timestamp
 
 		}
-	$sql = "SELECT * FROM servico WHERE fk_projeto = $id_projeto";
-	$resultado = mysqli_query($conexao, $sql);
+	$sqlDonut = "SELECT * FROM servico WHERE fk_projeto = $id_projeto";
+	$resultadoDonut = mysqli_query($conexao, $sqlDonut);
 	$i = 1;
-	while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
+	while ($row = mysqli_fetch_array($resultadoDonut, MYSQLI_BOTH))
 		{
 			
 		foreach ($row as $column => $description)
@@ -1026,11 +1026,10 @@ function donutChart($id_projeto, $count)
 			$tempoNovo = (strtotime($horas[$i]) - $start_timestamp);
 			if(isset($data))
 			{
-			$data .= (($tempoNovo - $tempoVelho)/60/60/24).", " ;
+			$data .= round((($tempoNovo - $tempoVelho)/60/60/24)).", " ;
 			}else{
-				$data = ($tempoNovo/60/60/24).", ";
+				$data = round(($tempoNovo/60/60/24)).", ";
 			}
-			
 			$tempoVelho = $tempoNovo;
 
 			
@@ -1063,7 +1062,7 @@ function donutChart($id_projeto, $count)
                     </ul>
                     <div class="clearfix"></div>
                   </div>
-	<div class='x_content'>
+					<div class='x_content'>
                     <canvas id='canvasDoughnut<?php echo($count); ?>'></canvas>
                   </div>
 				  </div>

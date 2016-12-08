@@ -48,16 +48,7 @@ WHERE
                 <h3>Projects <small>Listing design</small></h3>
               </div>
 
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                  </div>
-                </div>
-              </div>
+              
             </div>
             
             <div class="clearfix"></div>
@@ -105,8 +96,6 @@ else
 	$count = 1;
 	while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
 	{
-		foreach ($row as $column => $description)
-			{
 				//echo "column: $description <br>"; // teste de tabela
 				$projetoId = $row["id_projeto"];
 				$projetoNome = $row["nome"];
@@ -120,8 +109,31 @@ else
 				$projetoEndDateConverted = date('d/m/Y', $endPlacehold);
 				$status = "Em andamento";
 				$statusColor = "btn btn-warning";
-				$progressoPercent = rand(0, 100);
-			}
+				
+				$sqlServ = "select * from servico WHERE fk_projeto = $projetoId";
+				$resultadoServ = mysqli_query($conexao, $sqlServ);
+				$countServ = 0;
+				$servCompleto = 0;
+				while ($row = mysqli_fetch_array($resultadoServ, MYSQLI_BOTH))
+					{
+						if($row["completo"] == 1)
+						{
+							$servCompleto++;
+						}
+						$countServ ++;
+					}
+					if(!isset($servCompleto))
+					{
+						$progressoPercent = 0;
+					}else{
+						if($servCompleto != 0)
+						{
+						$progressoPercent = round(($servCompleto/$countServ)*100);
+						}else{
+							$progressoPercent = 0;
+						}
+					}
+			
 		$count++;
 		
 		?>
