@@ -26,7 +26,7 @@
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-comments-o"></i></div>
                   <div class="count"><?php echo($logCount);?></div>
-                  <h3>Outputs</h3>
+                  <h3>Registro</h3>
                   <p>log em serviços.</p>
                 </div>
               </div>

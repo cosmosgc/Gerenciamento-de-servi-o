@@ -44,7 +44,7 @@ $ServicoCompletoCount = $ServicoCountArray["COUNT(id_servico)"];
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-comments-o"></i></div>
                   <div class="count"><?php echo($logCount);?></div>
-                  <h3>Outputs</h3>
+                  <h3>Registro</h3>
                   <p>log em serviços.</p>
                 </div>
               </div>
@@ -187,7 +187,30 @@ $ServicoCompletoCount = $ServicoCountArray["COUNT(id_servico)"];
           'order': [[ 1, 'asc' ]],
           'columnDefs': [
             { orderable: false, targets: [0] }
-          ]
+          ],
+		  "language": {
+    "sEmptyTable": "Nenhum registro encontrado",
+    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+    "sInfoPostFix": "",
+    "sInfoThousands": ".",
+    "sLengthMenu": "_MENU_ resultados por página",
+    "sLoadingRecords": "Carregando...",
+    "sProcessing": "Processando...",
+    "sZeroRecords": "Nenhum registro encontrado",
+    "sSearch": "Pesquisar",
+    "oPaginate": {
+        "sNext": "Próximo",
+        "sPrevious": "Anterior",
+        "sFirst": "Primeiro",
+        "sLast": "Último"
+    },
+    "oAria": {
+        "sSortAscending": ": Ordenar colunas de forma ascendente",
+        "sSortDescending": ": Ordenar colunas de forma descendente"
+    }
+}
         });
         $datatable.on('draw.dt', function() {
           $('input').iCheck({
