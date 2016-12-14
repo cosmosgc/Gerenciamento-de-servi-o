@@ -70,7 +70,6 @@ while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
 		}
 
     }
-	echo($password);
 	//header('Location:index.html');
 	
 }

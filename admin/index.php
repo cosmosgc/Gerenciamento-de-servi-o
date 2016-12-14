@@ -75,6 +75,10 @@
 			
 			while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
 			{
+				if(!isset($countCanvas))
+				{
+					$countCanvas = 0;
+				}
 				menuFuncionario($id_empresa, $row["id_projeto"], $countCanvas);
 				$countCanvas++;
 			}

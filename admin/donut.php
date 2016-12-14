@@ -382,6 +382,6 @@ else
 	}
 		  ?>
 	<?php
-}else{echo("Ainda não há dados para criar um resumo");}
+}else{echo("Ainda nÃ£o hÃ¡ dados para criar um resumo");}
 }
 ?>
