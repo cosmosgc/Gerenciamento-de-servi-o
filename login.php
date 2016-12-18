@@ -5,7 +5,7 @@ require("conectar.php");
 $username = $_POST["username"];
 $password = $_POST["password"];
 $password = md5($password);
-
+$login = false;
 //Busca do banco usuário e senha iguais aos do login
 $resultado = mysqli_query($conexao, "SELECT * FROM empresa
                                     WHERE nome='$username' AND senha='$password' OR cnpj='$username' AND senha='$password'");
@@ -32,6 +32,7 @@ while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
 		$_SESSION['tipo_user']="empresa";
 		
         header('Location:admin/');
+		$login = true;
 		}
         
 
@@ -67,10 +68,14 @@ while ($row = mysqli_fetch_array($resultado, MYSQLI_BOTH))
 		$_SESSION['email']=$email;
 		$_SESSION['cpf']=$cpf;
 		header('Location:admin/');
+		$login = true;
 		}
 
     }
-	//header('Location:index.html');
+	
+	if($login == false){
+		header('Location:error/');
+	}
 	
 }
 ///////////SESSION_START!\\\\\\\\\\\

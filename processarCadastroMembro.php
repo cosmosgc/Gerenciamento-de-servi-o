@@ -9,6 +9,7 @@ $email = $_POST["email"];
 $cpf = $_POST["cpf"];
 $setor = $_POST["setorVinculado"];
 $id_empresa = $_POST["id_empresa"];
+$cadastrado = false;
 
 
 //Buscar do banco usuários com login igual ao que está se cadastrando
@@ -49,10 +50,15 @@ if ($quantidadeDeLinhas == 1) {
 			$countSector++;
 		  }
 	header("location:index.html");
+	$cadastrado = true;
     echo("<div class='alert alert-success'><strong>Cadastro realizado com sucesso! $username na $id_empresa </strong></div>");
 	var_dump($_POST);
     echo("<h2><a href='index.php'>Voltar para a página do Admin</a></h2>");
 	}
 }
+}
+if($cadastrado = false)
+{
+	header("location:cadastro.php?id_empresa=$id_empresa");
 }
 ?>

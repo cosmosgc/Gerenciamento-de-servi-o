@@ -11,6 +11,7 @@ $desc = $_POST["desc"];
 $address = $_POST["address"];
 $countSector = $_POST["countSector"];
 $ceo = $_POST["CEO"];
+$cadastrado = false;
 
 
 //Buscar do banco usuários com login igual ao que está se cadastrando
@@ -68,8 +69,14 @@ if ($resultado == false) {
             echo($erro.$sqlResultado);
         }
 		header("location:index.html");
+		$cadastrado = true;
         echo("<div class='alert alert-success'><strong>Cadastro realizado com sucesso!</strong></div>");
         echo("<h2><a href='index.php'>Voltar para a página do Admin</a></h2>");
     }
+}
+
+if($cadastrado = false)
+{
+	header("location:erroCadastro/");
 }
 ?>
